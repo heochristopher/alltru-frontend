@@ -16,9 +16,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-// .home {
-//   h1 {
-//     font-family: Arial, Helvetica, sans-serif;
-//   }
-// }
+@import "../assets/scss/variables.scss";
+.home {
+  background-color: $bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
