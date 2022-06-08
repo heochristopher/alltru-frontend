@@ -1,9 +1,16 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  server: {
+    port: 8080
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -47,7 +54,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.BASE_URL,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
