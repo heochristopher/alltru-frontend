@@ -16,9 +16,9 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.home {
-  h1 {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-}
+// .home {
+//   h1 {
+//     font-family: Arial, Helvetica, sans-serif;
+//   }
+// }
 </style>
