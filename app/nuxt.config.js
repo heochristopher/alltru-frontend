@@ -3,7 +3,7 @@ export default {
   ssr: false,
 
   server: {
-    port: 8080
+    port: 8080,
   },
 
   // Target: https://go.nuxtjs.dev/config-target
@@ -22,7 +22,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -57,6 +57,19 @@ export default {
     },
   },
 
+  styleResources: {
+    scss: ['~assets/scss/mixins.scss', '~assets/scss/variables.scss'],
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    loaders: {
+      sass: {
+        implementation: require('sass'),
+      },
+      scss: {
+        implementation: require('sass'),
+      },
+    },
+  },
 }
