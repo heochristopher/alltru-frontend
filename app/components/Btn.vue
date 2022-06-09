@@ -1,6 +1,6 @@
 <template>
     <button class="btn">
-        <slot/>
+        <slot></slot>
     </button>
 </template>
 
@@ -9,7 +9,7 @@
     border: none;
     width: 5rem;
     height: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
 }
 </style>
 

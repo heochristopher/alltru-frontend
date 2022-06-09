@@ -1,9 +1,10 @@
 <template>
   <div class="home">
-    <h1>hello world</h1>
+    <!-- <h1>hello world</h1>
     <btn>
       submit
-    </btn>
+    </btn> -->
+    <listing/>
   </div>
 </template>
 
