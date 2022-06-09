@@ -1,15 +1,18 @@
 <template>
   <div class="home">
-    <div class="filters">
-      <search/>
-    </div>
-    <div class="listings">
-      <listing/>
-      <listing/>
-      <listing/>
-      <listing/>
-      <listing/>
-      <listing/>
+    <navbar/>
+    <div class="content">
+      <div class="filters">
+        <search/>
+      </div>
+      <div class="listings">
+        <listing/>
+        <listing/>
+        <listing/>
+        <listing/>
+        <listing/>
+        <listing/>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +28,7 @@ export default Vue.extend(
 
 <style lang="scss" scoped>
 @import "../assets/scss/variables.scss";
-.home {
+.content {
   display: flex;
   justify-content: center;
   align-items: start;

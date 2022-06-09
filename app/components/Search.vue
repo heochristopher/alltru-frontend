@@ -212,7 +212,7 @@ export default {
         font-size: 0.9rem;
     }
     .pin {
-        position: fixed;
+        position: absolute;
         margin: 0.5rem;
     }
 }
