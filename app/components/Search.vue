@@ -41,7 +41,7 @@
             <div class="search">
                 <label for="zip">Search Zipcode</label>
                 <img class="pin" src="../assets/icons/map-pin.svg" alt="pin">
-                <input class="searchbar" id="zip" type="text" placeholder="Anywhere">
+                <input class="searchbar" id="zip" type="number" placeholder="Anywhere" maxlength="5">
             </div>
             <!-- <div class="tags">
             </div> -->
@@ -148,7 +148,7 @@ export default {
         opacity: 0;
         animation-name: fadeDown;
         -webkit-animation-name: fadeDown;
-        animation-duration: 0.4s;
+        animation-duration: 0.3s;
         animation-fill-mode: both;
         -webkit-animation-duration: 0.4s;
         -webkit-animation-fill-mode: both;
@@ -220,6 +220,16 @@ export default {
 ::placeholder {
     font-size: 0.9rem;
     font-family: 'Kumbh Sans', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .search-btn {
