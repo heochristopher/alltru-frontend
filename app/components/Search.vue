@@ -5,7 +5,7 @@
                 <label for="opportunities">Opportunity Type</label>
                 <div class="select-menu">
                     <div class="select-btn">
-                        <span class="sBtn-text">Select your option</span>
+                        <span class="sBtn-text">Select Type</span>
                         <img src="../assets/icons/chevron-down.svg" alt="down">
                     </div>
                     <ul class="options">
@@ -82,7 +82,7 @@ export default {
     justify-content: center;
     align-items: start;
     height: 100vh;
-    width: 100%;
+    width: 90%;
 }
 
 .content {

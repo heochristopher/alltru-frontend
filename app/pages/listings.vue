@@ -9,21 +9,16 @@
         <listing/>
         <listing/>
         <listing/>
-        <listing/>
-        <listing/>
-        <listing/>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+export default {
+   name: 'Listings'
+}
 
-export default Vue.extend(
-  {
-   name: 'HomePage'
-  })
 </script>
 
 <style lang="scss" scoped>
@@ -42,7 +37,7 @@ export default Vue.extend(
 }
 
 .listings {
-  width: 60vw;
+  width: 57vw;
   margin: 1rem;
   display: flex;
   flex-direction: column;

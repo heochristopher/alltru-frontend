@@ -42,7 +42,7 @@
     height: 25vh;
     border-radius: 0.3rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #f5f4f4;
     margin: 0.5rem;
@@ -77,7 +77,7 @@
     justify-content: center;
     align-items: start;
     height: 100%;
-    width: 100%;
+    width: 28rem;
     // background-color: green;
     
     h5 {
@@ -126,15 +126,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 10rem;
+    height: 100%;
 
     button {
         background-color: #f5f4f4;
-        width: 8rem;
+        width: 6rem;
         height: 2.4rem;
         border-radius: 0.5rem;
         border: none;
         cursor: pointer;
         margin: 0.4rem;
+        overflow: visible;
         transition: background-color 0.2s ease-in-out;
 
         &:hover {
