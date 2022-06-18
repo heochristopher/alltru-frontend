@@ -21,6 +21,8 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  devServerHandlers: [],
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~assets/css/main.css'],
 
@@ -35,6 +37,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
     // '@nuxtjs/style-resources',
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

@@ -1,18 +1,23 @@
 <template>
     <div class="user">
         <div class="icon">
-            <div class="placeholder"></div>
+            <img :src="user.avatar" class="placeholder" alt="">
         </div>
         <div class="info">
-            <h2>Christopher Heo, 17</h2>
-            <h4>Staten Island Technical High School</h4>
+            <h2>{{`${user.firstName} ${user.lastName}`}}</h2>
+            <h4>{{user.affiliation}}</h4>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "User"
+    name: "User",
+    data() {
+        return {
+            user: this.$store.state.user
+        }
+    }
 }
 </script>
 
