@@ -1,6 +1,7 @@
 <template>
     <div class="signin">
-        <form @submit.prevent="handleSubmit">
+      <div class="error" v-if="error">{{ error }}</div>
+        <form @submit.prevent="login" method="POST">
             <h3>Welcome back,</h3>
             <div class="email">
                 <!-- <label for="email">Email</label> -->
@@ -10,7 +11,6 @@
                 <!-- <label for="password">Password</label> -->
                 <input id="password" type="password" name="password" v-model="password" placeholder="Password" required />
             </div>
-            <div class="error" v-if="error">{{ error }}</div>
             <div class="btn">
                 <Button>Sign In</Button>
             </div>
@@ -21,6 +21,26 @@
 <script>
 export default {
     name: "Signin",
+    data() {
+      return {
+        email: null,
+        password: null,
+        error: null,
+      }
+    },
+    methods: {
+      login: async function() {
+        try {
+          const res = await this.$axios.$post('/login', {
+          email: this.email,
+          password: this.password
+        })
+          console.log(res)
+        } catch (error) {
+          this.error = error.response.data
+        }
+      }
+    },
 }
 </script>
 
@@ -82,8 +102,6 @@ export default {
 }
 
 .error {
-  position: absolute;
-  padding-left: 1.5rem;
   color: red;
   font-family: 'Kumbh Sans', sans-serif;
 }

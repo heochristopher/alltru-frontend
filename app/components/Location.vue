@@ -1,16 +1,22 @@
 <template>
     <div class="locationpref">
         <!-- use v-show to toggle -->
-        <div class="remote">
+        <div v-if="listing.remote" class="remote">
             <p>Remote</p>
         </div>
-        <!-- <div class="onsite">
-            <p>On-Site</p>
-        </div> -->
+        <div v-else class="onsite-container">
+            <div class="onsite"><p>On-Site</p></div>
+            <h6 class="location">{{listing.location.borough}}</h6>
+        </div>
     </div>
 </template>
 
 <script>
+export default {
+    props: {
+        listing: Object
+    }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,4 +42,14 @@
 .onsite {
     background-color: skyblue;
 }
+
+.location {
+    margin-left: 0.5rem;
+}
+.onsite-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 </style>

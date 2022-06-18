@@ -1,14 +1,13 @@
 <template>
   <div class="home">
     <navbar/>
+    <h1>{{user.firstName}}</h1>
     <div class="content">
       <div class="filters">
         <search/>
       </div>
       <div class="listings">
-        <listing/>
-        <listing/>
-        <listing/>
+        <listing v-for="listing in listings" :key="listing" :listing="listing" />
       </div>
     </div>
   </div>
@@ -16,7 +15,16 @@
 
 <script>
 export default {
-   name: 'Listings'
+   name: 'Listings',
+   data() {
+    return {
+      user: this.$store.state.user
+    }
+   },
+   async asyncData({$axios}) {
+    const listings = await $axios.$get('/queryListings')
+    return {listings}
+   }
 }
 
 </script>

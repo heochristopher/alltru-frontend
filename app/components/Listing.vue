@@ -5,15 +5,14 @@
                 <div class="placeholder"></div>
             </div>
             <div class="info">
-                <h5>Ready, Set, Spike!</h5>
-                <h3>Social Media Manager</h3>
+                <h5>{{listing.org.affiliation}}</h5>
+                <h3>{{listing.position}}</h3>
                 <!-- <div class="type">
                     <h5>Internship</h5>
                     <h5>$15/hour</h5>
                 </div> -->
                 <div class="location">
-                    <location/>
-                    <h6>Brooklyn, NY</h6>
+                    <location :listing="listing"/>
                 </div>
                 <!-- <div class="tags">
                 </div> -->
@@ -33,7 +32,11 @@
 </template>
 
 <script>
-
+export default {
+    props: {
+        listing: Object
+    }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -100,16 +103,6 @@
 //     align-items: center;
 // }
 
-.location {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
-    h6 {
-        font-size: 1rem;
-        padding-left: 0.5rem;
-    }
-}
 
 .date {
     font-size: 0.8rem;

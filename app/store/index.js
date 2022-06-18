@@ -1,37 +1,27 @@
-// import { createStore } from 'vuex'
-
-// const store = createStore({
-//   state: {
-//     isHidden: false,
-//     tempStore: [],
-//   },
-//   mutations: {
-//     openModal(state, payload) {
-//       state.isHidden = true
-//       state.tempStore.push(payload)
-//     },
-//     closeModal(state) {
-//       state.isHidden = false
-//       state.tempStore = []
-//     },
-//   },
-//   actions: {
-//     openModal({ commit }, payload) {
-//       const popupPost = {
-//         title: payload.title,
-//         location: payload.location,
-//         imageUrl: payload.imageUrl,
-//         author: payload.author,
-//         description: payload.description,
-//         postDate: payload.postDate,
-//         uuid: payload.uuid,
-//       }
-//       commit('openModal', popupPost)
-//     },
-//     closeModal({ commit }) {
-//       commit('closeModal')
-//     },
-//   },
-// })
-
-// export default store
+export const state = () => ({
+    user: null
+  })
+  
+  export const getter = {
+    getUser(state) {
+      return state.user
+    }
+  }
+  
+  export const mutations = {
+    SET_USER_DATA(state, userData) {
+        state.user = userData
+    }
+  }
+  
+  export const actions = {
+    async nuxtServerInit ({ commit }) {
+        try {
+            const res = await this.$axios.$get('/validateToken')
+            commit('SET_USER_DATA', res)
+        } catch (error) {
+            console.log(error)
+        }
+      }
+  }
+  

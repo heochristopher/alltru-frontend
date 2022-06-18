@@ -6,7 +6,7 @@
                 <div class="select-menu">
                     <div class="select-btn">
                         <span class="sBtn-text">Select Type</span>
-                        <img src="../assets/icons/chevron-down.svg" alt="down">
+                        <img src="@/assets/icons/chevron-down.svg" alt="down">
                     </div>
                     <ul class="options">
                         <li class="option">
@@ -40,7 +40,7 @@
             </div>
             <div class="search">
                 <label for="zip">Search Zipcode</label>
-                <img class="pin" src="../assets/icons/map-pin.svg" alt="pin">
+                <img class="pin" src="@/assets/icons/map-pin.svg" alt="pin">
                 <input class="searchbar" id="zip" type="number" placeholder="Anywhere" maxlength="5">
             </div>
             <!-- <div class="tags">
