@@ -35,7 +35,7 @@ export default {
           email: this.email,
           password: this.password
         })
-          console.log(res)
+          this.$router.push('studentdash')
         } catch (error) {
           this.error = error.response.data
         }
