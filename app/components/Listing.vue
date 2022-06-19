@@ -1,29 +1,29 @@
 <template>
-    <div class="listing">
-        <div class="content">
-            <div class="logo">
-                <div class="placeholder"></div>
+    <div id="listing" class="flex justify-center item-start">
+        <div id="content">
+            <div id="logo">
+                <div id="placeholder" class="w-8 h-8"></div>
             </div>
-            <div class="info">
+            <div id="info">
                 <h5>{{listing.org.affiliation}}</h5>
                 <h3>{{listing.position}}</h3>
-                <!-- <div class="type">
+                <!-- <div id="type">
                     <h5>Internship</h5>
                     <h5>$15/hour</h5>
                 </div> -->
-                <div class="location">
+                <div id="location">
                     <location :listing="listing"/>
                 </div>
-                <!-- <div class="tags">
+                <!-- <div id="tags">
                 </div> -->
-                <p class="date">Posted x days ago</p>
+                <p id="date">Posted x days ago</p>
             </div>
-            <div class="divider"></div>
-            <div class="options">
-                <div class="save">
+            <div id="divider"></div>
+            <div id="options">
+                <div id="save">
                     <button>Save</button>
                 </div>
-                <div class="apply">
+                <div id="apply">
                     <button>Apply</button>
                 </div>
             </div>
