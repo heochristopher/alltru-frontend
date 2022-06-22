@@ -1,8 +1,11 @@
 <template>
-  <div class="register">
-    <div class="content">
-      <student-register/>
-      <org-register/>
+  <div
+    id="register"
+    class="w-full h-screen flex flex-col justify-center items-center relative"
+  >
+    <div id="content" class="flex justify-center items-start">
+      <student-register id="student" class="block" />
+      <org-register id="org" class="hidden" />
     </div>
   </div>
 </template>
@@ -12,24 +15,6 @@ import OrgRegister from '../components/OrgRegister.vue'
 import StudentRegister from '../components/StudentRegister.vue'
 export default {
   components: { StudentRegister, OrgRegister },
-    name: "register",
+  name: 'register',
 }
 </script>
-
-<style lang="scss" scoped>
-.register {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>
