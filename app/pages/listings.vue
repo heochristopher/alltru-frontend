@@ -1,12 +1,9 @@
 <template>
   <div class="home">
     <navbar/>
-    <h1>{{user.firstName}}</h1>
     <div class="content">
-      <div class="filters">
-        <search/>
-      </div>
-      <div class="listings">
+      <search/>
+      <div class="flex flex-col">
         <listing v-for="listing in listings" :key="listing" :listing="listing" />
       </div>
     </div>
@@ -31,26 +28,26 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/variables.scss";
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
+// .content {
+//   display: flex;
+//   justify-content: center;
+//   align-items: start;
+// }
 
-.filters {
-  width: 30vw;
-  min-height: 100vh;
-  margin: 2rem 1rem;
-  // background-color: skyblue;
-}
+// .filters {
+//   width: 30vw;
+//   min-height: 100vh;
+//   margin: 2rem 1rem;
+//   // background-color: skyblue;
+// }
 
-.listings {
-  width: 57vw;
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  // background-color: lightcoral;
-}
+// .listings {
+//   width: 57vw;
+//   margin: 1rem;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: start;
+//   align-items: center;
+//   // background-color: lightcoral;
+// }
 </style>

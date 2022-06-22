@@ -1,40 +1,42 @@
 <template>
-    <div class="filter">
-        <div class="content">
+    <div class="flex content-center item-start h-full mt-2">
+        <form class="flex flex-col mx-auto space-y-8" @submit.prevent="search" method="GET">
             <div class="type">
-                <label for="opportunities">Opportunity Type</label>
-                <div class="select-menu">
-                    <div class="select-btn">
-                        <span class="sBtn-text">Select Type</span>
-                        <img src="@/assets/icons/chevron-down.svg" alt="down">
+                <label for="type">Opportunity Type</label>
+                <div class="flex content-center w-full border border-gray-400 rounded-sm justify-evenly divide-x h-11 text-center items-center">
+                    <div class="hover:bg-blue-300 w-1/4 h-full items-center relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="all" value="all" v-model="type" />
+	                    <label class="" for="all">All</label>
                     </div>
-                    <ul class="options">
-                        <li class="option">
-                        <span class="option-text">All</span>
-                        </li>
-                        <li class="option">
-                        <span class="option-text">Volunteer</span>
-                        </li>
-                        <li class="option">
-                        <span class="option-text">Internships</span>
-                        </li>
-                        <li class="option">
-                        <span class="option-text">Jobs</span>
-                        </li>
-                    </ul>
+                    <div class="hover:bg-blue-300 w-1/4 h-full my-auto relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="volunteer" value="volunteer" v-model="type" />
+	                    <label class="" for="volunteer">Volunteer</label>
+                    </div>
+                    <div class="hover:bg-blue-300 w-1/4 h-full my-auto relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="internship" value="internship" v-model="type" />
+	                    <label class="" for="internship">Internship</label>
+                    </div>
+                    <div class="hover:bg-blue-300 w-1/4 h-full my-auto relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="job" value="job" v-model="type" />
+	                    <label class="" for="job">Job</label>
+                    </div>
+                    
                 </div>
             </div>
             <div class="location">
                 <label for="location">Location Preferences</label>
-                <div class="toggler">
-                    <div class="all">
-                        <p>All</p>
+                <div class="flex content-center w-full border border-gray-400 rounded-sm justify-evenly divide-x h-11 text-center items-center">
+                    <div class="hover:bg-blue-300 w-1/3 h-full items-center relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="all" value="all" v-model="location" />
+	                    <label class="" for="all">All</label>
                     </div>
-                    <div class="onsite">
-                        <p>On-site</p>
+                    <div class="hover:bg-blue-300 w-1/3 h-full items-center relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="on-site" value="on-site" v-model="location" />
+	                    <label class="" for="on-site">On-Site</label>
                     </div>
-                    <div class="remote">
-                        <p>Remote</p>
+                    <div class="hover:bg-blue-300 w-1/3 h-full items-center relative">
+                        <input type="radio" class="opacity-0 absolute w-full h-full left-0" id="remote" value="remote" v-model="location" />
+	                    <label class="" for="remote">Remote</label>
                     </div>
                 </div>
             </div>
@@ -45,156 +47,31 @@
             </div>
             <!-- <div class="tags">
             </div> -->
-            <div class="search-btn">
-                <button>Search</button>
+            <div class=" m-1 flex justify-center items-center">
+                <button class="">Search</button>
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
 <script>
 export default {
-    mounted() {
-        const optionMenu = document.querySelector(".select-menu"),
-        selectBtn = optionMenu.querySelector(".select-btn"),
-        options = optionMenu.querySelectorAll(".option"),
-        sBtn_text = optionMenu.querySelector(".sBtn-text");
-
-        selectBtn.addEventListener("click", () =>
-        optionMenu.classList.toggle("active")
-        );
-
-        options.forEach((option) => {
-        option.addEventListener("click", () => {
-            let selectedOption = option.querySelector(".option-text").innerText;
-            sBtn_text.innerText = selectedOption;
-
-            optionMenu.classList.remove("active");
-        });
-        });
+    data() {
+        return {
+            type: "",
+            location: "",
+        }
+    },
+    methods: {
+        search: function() {
+            console.log(this.type)
+            console.log(this.location)
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.filter {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    height: 100vh;
-    width: 90%;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.type, .location, .search {
-    margin: 1rem 0;
-}
-
-.select-menu {
-    width: 20rem;
-    font-family: 'Kumbh Sans', sans-serif;
-
-    .select-btn {
-        display: flex;
-        height: 3rem;
-        margin: 0.5rem 0;
-        background: #f5f4f4;
-        padding: 1rem;
-        // padding-top: 1.5rem;
-        font-size: 0.9rem;
-        border-radius: 0.3rem;
-        align-items: center;
-        cursor: pointer;
-        justify-content: space-between;
-        // box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        border: 1px solid #a1a1a1;
-    }
-
-    &.active .select-btn img {
-        transform: rotate(-180deg);
-    }
-    .options {
-        position: absolute;
-        width: 20rem;
-        padding: 1rem;
-        margin-top: 0.5rem;
-        border-radius: 0.3rem;
-        background: #f5f4f4;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border: 1px solid #a1a1a1;
-        display: none;
-        z-index: 3;
-        .option {
-            display: flex;
-            height: 3rem;
-            cursor: pointer;
-            padding: 0 1rem;
-            border-radius: 0.3rem;
-            align-items: center;
-            background: #f5f4f4;
-
-            &:hover {
-                background: #d9d9d9;
-            }
-        }
-    }
-    &.active .options {
-        display: block;
-        opacity: 0;
-        animation-name: fadeDown;
-        -webkit-animation-name: fadeDown;
-        animation-duration: 0.3s;
-        animation-fill-mode: both;
-        -webkit-animation-duration: 0.4s;
-        -webkit-animation-fill-mode: both;
-    }
-}
-
-@keyframes fadeDown {
-    from {
-        transform: translate3d(0, -25px, 0);
-    }
-    to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
-}
-
-.toggler {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20rem;
-    margin: 0.5rem 0;
-    border-radius: 0.3rem;
-    border: 1px solid #a1a1a1;
-    .all, .onsite, .remote {
-        width: 33.33%;
-        height: 3rem;
-        background-color: #f5f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: background-color 0.2s ease-in-out;
-
-        p {
-            font-size: 0.9rem;
-        }
-        &:hover {
-            background-color: skyblue;
-        }
-    }
-
-    .all, .onsite {
-        border-right: 1px solid #a1a1a1;
-    }
-}
 .search {
     display: flex;
     flex-direction: column;
@@ -232,11 +109,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.search-btn {
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     button {
         width: 20rem;
@@ -249,5 +121,4 @@ input[type=number] {
         align-items: center;
         cursor: pointer;
     }
-}
 </style>
