@@ -118,7 +118,7 @@
       </div>
       <div id="btn" class="px-1 py-2 flex flex-col justify-center items-center">
         <form-btn>Sign Up</form-btn>
-        <p class="p-4 text-sm text-zinc-500 cursor-pointer">Not a Student?</p>
+        <slot></slot>
       </div>
     </form>
   </div>
