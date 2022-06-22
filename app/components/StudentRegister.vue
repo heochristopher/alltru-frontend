@@ -4,12 +4,9 @@
     class="h-auto w-96 p-4 relative flex justify-center items-center"
   >
     <!-- for students -->
-    <form>
-      <h3 class="text-center text-2xl p-4">Students</h3>
-      <div
-        id="name"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+    <form class="space-x-2 space-y-4">
+      <h1 class="text-center text-2xl p-2">Students</h1>
+      <div id="name" class="flex flex-col justify-center items-center">
         <!-- <label for="name">Name</label> -->
         <div id="name-field" class="flex items-center justify-between">
           <div
@@ -39,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div id="age" class="px-1 py-2 flex flex-col justify-center items-center">
+      <div id="age" class="flex flex-col justify-center items-center">
         <!-- <label for="age">Date of Birth</label> -->
         <div id="date-field" class="flex items-center justify-between">
           <div id="month" class="flex justify-start items-center w-24 mr-1">
@@ -74,10 +71,7 @@
           </div>
         </div>
       </div>
-      <div
-        id="school"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+      <div id="school" class="flex flex-col justify-center items-center">
         <!-- <label for="school">School</label> -->
         <form-input
           id="school"
@@ -88,10 +82,7 @@
           required
         />
       </div>
-      <div
-        id="email"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+      <div id="email" class="flex flex-col justify-center items-center">
         <!-- <label for="email">Email</label> -->
         <form-input
           id="email"
@@ -102,10 +93,7 @@
           required
         />
       </div>
-      <div
-        id="pass"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+      <div id="pass" class="flex flex-col justify-center items-center">
         <!-- <label for="password">Password</label> -->
         <form-input
           id="password"
@@ -116,9 +104,8 @@
           required
         />
       </div>
-      <div id="btn" class="px-1 py-2 flex flex-col justify-center items-center">
+      <div id="btn" class="flex flex-col justify-center items-center">
         <form-btn>Sign Up</form-btn>
-        <slot></slot>
       </div>
     </form>
   </div>

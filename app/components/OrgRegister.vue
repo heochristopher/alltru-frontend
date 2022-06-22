@@ -4,9 +4,9 @@
     class="h-auto w-96 p-4 relative flex justify-center items-center"
   >
     <!-- for students -->
-    <form>
-      <h3 class="text-center text-2xl p-4">Organizations</h3>
-      <div id="org" class="px-1 py-2 flex flex-col justify-center items-center">
+    <form class="space-x-2 space-y-4">
+      <h1 class="text-center text-2xl p-2">Organizations</h1>
+      <div id="org" class="flex flex-col justify-center items-center">
         <!-- <label for="org">Organization</label> -->
         <form-input
           id="org"
@@ -17,10 +17,7 @@
           required
         />
       </div>
-      <div
-        id="name"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+      <div id="name" class="flex flex-col justify-center items-center">
         <!-- <label for="name">Name</label> -->
         <div id="name-field" class="flex items-center justify-between">
           <div
@@ -50,10 +47,7 @@
           </div>
         </div>
       </div>
-      <div
-        id="email"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+      <div id="email" class="flex flex-col justify-center items-center">
         <!-- <label for="email">Email</label> -->
         <form-input
           id="email"
@@ -64,10 +58,7 @@
           required
         />
       </div>
-      <div
-        id="pass"
-        class="px-1 py-2 flex flex-col justify-center items-center"
-      >
+      <div id="pass" class="flex flex-col justify-center items-center">
         <!-- <label for="password">Password</label> -->
         <form-input
           id="password"
@@ -78,9 +69,8 @@
           required
         />
       </div>
-      <div id="btn" class="px-1 py-2 flex flex-col justify-center items-center">
+      <div id="btn" class="flex flex-col justify-center items-center">
         <form-btn>Sign Up</form-btn>
-        <slot></slot>
       </div>
     </form>
   </div>
