@@ -1,6 +1,6 @@
 <template>
-    <div class="flex content-center item-start h-full mt-2">
-        <form class="flex flex-col mx-auto space-y-8" @submit.prevent="search" method="GET">
+    <div class="flex content-center item-start h-full mt-2 ">
+        <form class="flex flex-col mx-auto space-y-8 w-11/12" @submit.prevent="search" method="GET">
             <div class="type">
                 <label for="type">Opportunity Type</label>
                 <div class="flex content-center w-full border border-gray-400 rounded-sm justify-evenly divide-x h-11 text-center items-center">
@@ -40,16 +40,16 @@
                     </div>
                 </div>
             </div>
-            <div class="search">
-                <label for="zip">Search Zipcode</label>
-                <img class="pin" src="@/assets/icons/map-pin.svg" alt="pin">
-                <input class="searchbar" id="zip" type="number" placeholder="Anywhere" maxlength="5">
+            <div class="zipcode">
+                <label for="zip">Zipcode</label>
+                <div class="flex content-center w-full border border-gray-400 rounded-sm h-11 text-center items-center">
+                    <img class="mx-4" src="@/assets/icons/map-pin.svg" alt="pin">
+                    <input class="w-full h-full" id="zip" type="number" placeholder="Enter zipcode" max="5" v-model="zipcode">
+                </div>
             </div>
             <!-- <div class="tags">
             </div> -->
-            <div class=" m-1 flex justify-center items-center">
-                <button class="">Search</button>
-            </div>
+           <button class="w-full bg-blue-300 rounded-sm justify-center items-center h-12">Search Listings</button>
         </form>
     </div>
 </template>
@@ -60,6 +60,7 @@ export default {
         return {
             type: "",
             location: "",
+            zipcode: "",
         }
     },
     methods: {
@@ -72,33 +73,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    .searchbar {
-        margin: 0.5rem 0;
-        width: 20rem;
-        height: 3rem;
-        padding: 1rem 2.4rem;
-        background-color: #f5f4f4;
-        border: 1px solid #a1a1a1;
-        border-radius: 0.3rem;
-        font-family: 'Kumbh Sans', sans-serif;
-        font-size: 0.9rem;
-    }
-    .pin {
-        position: absolute;
-        margin: 0.5rem;
-    }
-}
-
-::placeholder {
-    font-size: 0.9rem;
-    font-family: 'Kumbh Sans', sans-serif;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -109,16 +83,4 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
-    button {
-        width: 20rem;
-        height: 3rem;
-        border-radius: 0.3rem;
-        background-color: skyblue;
-        border: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
 </style>
