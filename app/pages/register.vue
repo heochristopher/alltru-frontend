@@ -63,7 +63,8 @@ export default {
       this.org = true
     },
     swapOrg() {
-      ;(this.org = false), (this.student = true)
+      this.org = false
+      this.student = true
     },
   },
 }
