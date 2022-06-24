@@ -100,7 +100,7 @@ export default {
             this.$store.dispatch('ADD_FILTERS', query)
         }
     }
-  },
+  }
 </script>
 
 <style lang="scss" scoped>
