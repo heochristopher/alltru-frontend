@@ -1,6 +1,5 @@
 export const state = () => ({
-    user: null,
-    filters: null,
+    user: null
   })
   
   export const getter = {
@@ -12,9 +11,6 @@ export const state = () => ({
   export const mutations = {
     SET_USER_DATA(state, userData) {
         state.user = userData
-    },
-    SET_FILTERS(state, filters) {
-      state.filters = filters
     }
   }
   
@@ -26,9 +22,6 @@ export const state = () => ({
         } catch (error) {
             console.log(error)
         }
-      },
-    ADD_FILTERS({commit}, filters) {
-      commit('SET_FILTERS', filters)
-    }
+      }
   }
   

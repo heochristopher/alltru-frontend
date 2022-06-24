@@ -60,3 +60,22 @@ html {
   background-color: #fff;
   color: #151515;
 } */
+
+*:focus {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+::placeholder {
+  color: #242424;
+  /* opacity: 0.6; */
+}
