@@ -5,9 +5,9 @@
   >
     <div id="content" class="flex justify-center items-start">
       <div id="student" class="flex justify-center items-center">
-        <student-register v-show="student">
+        <student-register v-show="isStudent">
           <p
-            @click="swapStudent"
+            @click="student"
             class="p-4 text-sm text-zinc-500 cursor-pointer md:hidden"
           >
             Not a Student?
@@ -15,7 +15,7 @@
         >
         <div class="hidden md:block">
           <div
-            v-show="student"
+            v-show="isStudent"
             id="screen"
             class="w-96 h-96 p-6 ml-8 flex flex-col justify-center items-center space-y-5"
           >
@@ -24,14 +24,14 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
               aliquid tempore mollitia.
             </p>
-            <form-btn @e="swapStudent">Sign Up as Organization</form-btn>
+            <form-btn @e="student">Sign Up as Organization</form-btn>
           </div>
         </div>
       </div>
       <div id="org" class="flex justify-center items-center">
         <div class="hidden md:block">
           <div
-            v-show="org"
+            v-show="isOrg"
             id="screen"
             class="w-96 h-96 p-6 mr-8 flex flex-col justify-center items-center space-y-5"
           >
@@ -40,12 +40,12 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Repellendus inventore tempore deleniti.
             </p>
-            <form-btn @e="swapOrg">Sign Up as Student</form-btn>
+            <form-btn @e="org">Sign Up as Student</form-btn>
           </div>
         </div>
-        <org-register v-show="org">
+        <org-register v-show="isOrg">
           <p
-            @click="swapOrg"
+            @click="org"
             class="p-4 text-sm text-zinc-500 cursor-pointer md:hidden"
           >
             Not an Organization?
@@ -64,21 +64,22 @@ export default {
   name: 'register',
   data() {
     return {
-      student: true,
-      org: false,
+      isStudent: true,
+      isOrg: false,
     }
   },
-  created() {
-    ;(this.student = true), (this.org = false)
-  },
   methods: {
-    swapStudent() {
-      this.student = false
-      this.org = true
+    student() {
+      if (this.isStudent) {
+        this.isStudent = false
+        this.isOrg = true
+      }
     },
-    swapOrg() {
-      this.org = false
-      this.student = true
+    org() {
+      if (this.isOrg) {
+        this.isOrg = false
+        this.isStudent = true
+      }
     },
   },
 }
