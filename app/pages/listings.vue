@@ -23,7 +23,7 @@
       </div>
       <div
         v-else
-        class="w-11/12 h-screen flex flex-col justify-center items-center overflow-y-auto lg:w-2/3 lg:mr-4"
+        class="w-11/12 h-screen flex flex-col justify-start items-center overflow-y-auto lg:w-2/3 lg:mr-4"
       >
         <listing v-for="listing in query" :key="listing" :listing="listing" />
       </div>
