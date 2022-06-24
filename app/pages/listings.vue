@@ -1,9 +1,14 @@
 <template>
   <div id="home">
     <navbar />
-    <div id="content">
-      <search />
-      <div class="flex flex-col justify-center items-center m-4">
+    <div
+      id="content"
+      class="flex flex-col justify-start items-center space-y-8 mt-6"
+    >
+      <div id="filters" class="w-4/5 flex justify-center items-center">
+        <search />
+      </div>
+      <div class="w-11/12 flex flex-col justify-center items-center">
         <listing
           v-for="listing in listings"
           :key="listing"

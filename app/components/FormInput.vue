@@ -9,20 +9,3 @@ export default {
   name: 'FormInput',
 }
 </script>
-
-<style scoped>
-::placeholder {
-  color: #151515;
-  opacity: 0.6;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-</style>
