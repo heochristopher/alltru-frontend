@@ -20,7 +20,7 @@
             <Listing-type class="my-auto" :listing="listing" />
             <location class="my-auto" :listing="listing" />
           </div>
-          <p class="text-gray-500 text-sm mt-4" id="date">Posted x days ago</p>
+          <p class="text-gray-500 text-sm mt-4" id="date">Posted {{date}} days ago</p>
         </div>
       </div>
       <div
@@ -48,7 +48,13 @@ export default {
   props: {
     listing: Object,
   },
-  components: { ListingType },
+  computed: {
+    date() {
+      const past = new Date(this.listing.date).getTime()
+      const difference = Date.now() - past
+      return difference / (1000 * 3600 * 24)
+    }
+  }
 }
 </script>
 
