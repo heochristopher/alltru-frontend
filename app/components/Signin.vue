@@ -1,10 +1,10 @@
 <template>
   <div
     id="signin"
-    class="h-auto w-96 p-4 relative flex justify-center items-center"
+    class="h-auto w-96 p-4 relative flex flex-col justify-center items-center"
   >
-    <div id="error" v-if="error">{{ error }}</div>
     <form @submit.prevent="login" method="POST" class="space-x-2 space-y-5">
+      <alert />
       <h1 class="text-center text-2xl">Welcome back,</h1>
       <div id="email" class="w-80 flex flex-col justify-center items-center">
         <!-- <label for="email">Email</label> -->
@@ -64,7 +64,7 @@ export default {
         })
         this.$router.push('studentdash')
       } catch (error) {
-        this.error = error.response.data
+        this.$store.dispatch('GET_ALERT', error)
       }
     },
   },
