@@ -1,10 +1,14 @@
 <template>
-  <div class="home">
-    <navbar/>
-    <div class="content">
-      <search/>
-      <div class="flex flex-col">
-        <listing v-for="listing in listings" :key="listing" :listing="listing" />
+  <div id="home">
+    <navbar />
+    <div id="content">
+      <search />
+      <div class="flex flex-col justify-center items-center m-4">
+        <listing
+          v-for="listing in listings"
+          :key="listing"
+          :listing="listing"
+        />
       </div>
     </div>
   </div>
@@ -12,22 +16,21 @@
 
 <script>
 export default {
-   name: 'Listings',
-   data() {
+  name: 'Listings',
+  data() {
     return {
-      user: this.$store.state.user
+      user: this.$store.state.user,
     }
-   },
-   async asyncData({$axios}) {
+  },
+  async asyncData({ $axios }) {
     const listings = await $axios.$get('/queryListings')
-    return {listings}
-   }
+    return { listings }
+  },
 }
-
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/variables.scss";
+// @import "../assets/scss/variables.scss";
 // .content {
 //   display: flex;
 //   justify-content: center;

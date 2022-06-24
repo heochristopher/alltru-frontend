@@ -5,35 +5,49 @@
   >
     <div id="content" class="flex justify-center items-start">
       <div id="student" class="flex justify-center items-center">
-        <student-register v-show="student"> </student-register>
-        <div
-          v-show="student"
-          id="screen"
-          class="w-96 h-96 p-6 ml-8 flex flex-col justify-center items-center space-y-5"
+        <student-register v-show="student">
+          <p
+            @click="swapStudent"
+            class="p-4 text-sm text-zinc-500 cursor-pointer md:hidden"
+          >
+            Not a Student?
+          </p></student-register
         >
-          <h2 class="text-center text-2xl">Not a Student?</h2>
-          <p class="text-center text-md">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-            aliquid tempore mollitia.
-          </p>
-          <form-btn @e="swapStudent">Sign Up as Organization</form-btn>
+        <div class="hidden md:block">
+          <div
+            v-show="student"
+            id="screen"
+            class="w-96 h-96 p-6 ml-8 flex flex-col justify-center items-center space-y-5"
+          >
+            <h2 class="text-center text-2xl">Not a Student?</h2>
+            <p class="text-center text-md">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
+              aliquid tempore mollitia.
+            </p>
+            <form-btn @e="swapStudent">Sign Up as Organization</form-btn>
+          </div>
         </div>
       </div>
       <div id="org" class="flex justify-center items-center">
-        <div
-          v-show="org"
-          id="screen"
-          class="w-96 h-96 p-6 mr-8 flex flex-col justify-center items-center space-y-5"
-        >
-          <h2 class="text-center text-2xl">Not an Organization?</h2>
-          <p class="text-center text-md">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-            inventore tempore deleniti.
-          </p>
-          <form-btn @e="swapOrg">Sign Up as Student</form-btn>
+        <div class="hidden md:block">
+          <div
+            v-show="org"
+            id="screen"
+            class="w-96 h-96 p-6 mr-8 flex flex-col justify-center items-center space-y-5"
+          >
+            <h2 class="text-center text-2xl">Not an Organization?</h2>
+            <p class="text-center text-md">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus inventore tempore deleniti.
+            </p>
+            <form-btn @e="swapOrg">Sign Up as Student</form-btn>
+          </div>
         </div>
         <org-register v-show="org">
-          <p @click="swapOrg" class="p-4 text-sm text-zinc-500 cursor-pointer">
+          <p
+            @click="swapOrg"
+            class="p-4 text-sm text-zinc-500 cursor-pointer md:hidden"
+          >
             Not an Organization?
           </p>
         </org-register>

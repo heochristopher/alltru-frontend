@@ -10,7 +10,7 @@
         <!-- <label for="org">Organization</label> -->
         <form-input
           id="org"
-          type="org"
+          type="text"
           name="org"
           v-model="org"
           placeholder="Organization"
@@ -27,7 +27,7 @@
             <!-- <label v-show="firstName" for="first-name">First Name</label> -->
             <form-input
               id="name"
-              type="first-name"
+              type="text"
               name="first-name"
               v-model="firstName"
               placeholder="First Name"
@@ -38,7 +38,7 @@
             <!-- <label for="last-name">Last Name</label> -->
             <form-input
               id="name"
-              type="last-name"
+              type="text"
               name="last-name"
               v-model="lastName"
               placeholder="Last Name"
@@ -51,7 +51,7 @@
         <!-- <label for="email">Email</label> -->
         <form-input
           id="email"
-          type="email"
+          type="text"
           name="email"
           v-model="email"
           placeholder="Email"
@@ -62,7 +62,7 @@
         <!-- <label for="password">Password</label> -->
         <form-input
           id="password"
-          type="password"
+          type="text"
           name="password"
           v-model="password"
           placeholder="Password"
@@ -71,6 +71,7 @@
       </div>
       <div id="btn" class="flex flex-col justify-center items-center">
         <form-btn>Sign Up</form-btn>
+        <slot></slot>
       </div>
     </form>
   </div>

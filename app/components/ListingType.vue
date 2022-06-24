@@ -1,21 +1,28 @@
 <template>
-    <div class="">
-        <div v-if="listing.type === 'Volunteer'" class="uppercase  p-0.5 rounded bg-blue-500">
-            <p class="text-white text-xs">Volunteer</p>
-        </div>
-        <div v-else-if="listing.type === 'Internship'" class="uppercase p-0.5 rounded bg-violet-600">
-            <p class="text-white text-xs">Internship</p>
-        </div>
-        <div v-else class="uppercase p-0.5 rounded bg-green-700">
-            <p class="text-white text-xs my-auto">Job</p>
-        </div>
+  <div class="">
+    <div
+      v-if="listing.type === 'Volunteer'"
+      class="uppercase px-2 py-1 rounded-full bg-blue-400"
+    >
+      <p class="text-white text-xs">Volunteer</p>
     </div>
+    <div
+      v-else-if="listing.type === 'Internship'"
+      class="uppercase px-2 py-1 rounded-full bg-violet-400"
+    >
+      <p class="text-white text-xs">Internship</p>
+    </div>
+    <div v-else class="uppercase px-2 py-1 rounded-full bg-red-400">
+      <p class="text-white text-xs">Job</p>
+      <!-- if job then show hourly rate -->
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-        listing: Object
-    }
+  props: {
+    listing: Object,
+  },
 }
 </script>

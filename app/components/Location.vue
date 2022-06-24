@@ -1,23 +1,26 @@
 <template>
-    <div class="locationpref">
-        <!-- use v-show to toggle -->
-        <div v-if="listing.remote" class="uppercase coral p-0.5 rounded">
-            <p class="text-white text-xs">Remote</p>
-        </div>
-        <div v-else class="flex flex-row text-center space-x-3">
-            <div class="uppercase blue p-0.5 rounded my-auto">
-                <p class="text-white text-xs">On-Site</p>
-            </div>
-            <h6 class="my-auto">{{listing.location.borough}}</h6>
-        </div>
+  <div class="locationpref">
+    <!-- use v-show to toggle -->
+    <div
+      v-if="listing.remote"
+      class="uppercase px-2 py-1 rounded-full bg-orange-400"
+    >
+      <p class="text-white text-xs">Remote</p>
     </div>
+    <div v-else class="flex justify-center items-center space-x-2">
+      <div class="uppercase px-2 py-1 rounded-full bg-green-400">
+        <p class="text-white text-xs">On-Site</p>
+      </div>
+      <h6 class="uppercase text-xs">{{ listing.location.borough }}</h6>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-        listing: Object
-    }
+  props: {
+    listing: Object,
+  },
 }
 </script>
 
@@ -38,20 +41,19 @@ export default {
 // }
 
 .coral {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 
 .blue {
-    background-color: skyblue;
+  background-color: skyblue;
 }
 
 .location {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 .onsite-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 </style>

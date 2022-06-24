@@ -106,6 +106,7 @@
       </div>
       <div id="btn" class="flex flex-col justify-center items-center">
         <form-btn>Sign Up</form-btn>
+        <slot></slot>
       </div>
     </form>
   </div>
