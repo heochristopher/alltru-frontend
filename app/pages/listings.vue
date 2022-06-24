@@ -37,38 +37,18 @@ export default {
   async asyncData({ $axios }) {
     const listings = await $axios.$get('/queryListings')
     return {listings}
-    '$store.state.filters': async function() {
+    },
+  watch:{  '$store.state.filters': async function() {
+    try {
         const listings = await this.$axios.$get(`/filterListings/${this.$store.state.filters}`)
         this.query = listings
       } catch (error) {
         console.log(error)
       }
-    }
+  }
    }
+}
 </script>
 
 <style lang="scss" scoped>
-// @import "../assets/scss/variables.scss";
-// .content {
-//   display: flex;
-//   justify-content: center;
-//   align-items: start;
-// }
-
-// .filters {
-//   width: 30vw;
-//   min-height: 100vh;
-//   margin: 2rem 1rem;
-//   // background-color: skyblue;
-// }
-
-// .listings {
-//   width: 57vw;
-//   margin: 1rem;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: start;
-//   align-items: center;
-//   // background-color: lightcoral;
-// }
 </style>
