@@ -121,6 +121,9 @@ export default {
           query += `&${e}`
         }
       })
+      if(query === '') {
+        query = 'all'
+      }
       this.$store.dispatch('ADD_FILTERS', query)
     },
     toggleFilter() {
