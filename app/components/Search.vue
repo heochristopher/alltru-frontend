@@ -1,13 +1,27 @@
 <template>
-  <div id="filter" class="w-full h-full flex justify-center items-center">
+  <div
+    id="filter"
+    class="w-full h-full flex flex-col justify-center items-center space-y-4"
+  >
     <button
-      class="w-full bg-blue-300 rounded-sm justify-center items-center h-12"
-      v-if="!isOpen"
-      @click="isOpen = true"
+      class="w-full h-12 rounded-md flex justify-between items-center"
+      @click="toggleFilter"
     >
-      Filter Listings
+      <p class="text-lg">Filter</p>
+      <img
+        v-if="!isOpen"
+        class="mx-2"
+        src="@/assets/icons/chevron-down.svg"
+        alt="down"
+      />
+      <img
+        v-if="isOpen"
+        class="mx-2"
+        src="@/assets/icons/chevron-up.svg"
+        alt="up"
+      />
     </button>
-    <div class="flex content-center item-start h-full" v-if="isOpen">
+    <div class="flex content-center item-start h-full w-full" v-if="isOpen">
       <form
         class="flex flex-col mx-auto space-y-8 w-full"
         @submit.prevent="search"
@@ -17,104 +31,27 @@
           id="type"
           class="flex flex-col justify-center items-center space-y-2"
         >
-          <label for="type">Opportunity Type</label>
+          <label for="type" class="text-md">Opportunity Type</label>
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border cursor-pointer"
           >
-            <div
-              class="w-1/4 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="all"
-                :value="null"
-                v-model="type"
-              />
-              <label class="" for="all">All</label>
-            </div>
-            <div
-              class="w-1/4 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="volunteer"
-                value="Volunteer"
-                v-model="type"
-              />
-              <label class="" for="volunteer">Volunteer</label>
-            </div>
-            <div
-              class="w-1/4 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="internship"
-                value="Internship"
-                v-model="type"
-              />
-              <label class="" for="internship">Internship</label>
-            </div>
-            <div
-              class="w-1/4 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="job"
-                value="Job"
-                v-model="type"
-              />
-              <label class="" for="job">Job</label>
-            </div>
+            <search-toggle class="w-1/4">All</search-toggle>
+            <search-toggle class="w-1/4">Volunteer</search-toggle>
+            <search-toggle class="w-1/4">Internship</search-toggle>
+            <search-toggle class="w-1/4">Job</search-toggle>
           </div>
         </div>
         <div
           id="location"
           class="flex flex-col justify-center items-center space-y-2"
         >
-          <label for="location">Location Preferences</label>
+          <label for="location" class="text-md">Location Preferences</label>
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
           >
-            <div
-              class="w-1/3 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="all"
-                :value="null"
-                v-model="remote"
-              />
-              <label class="" for="all">All</label>
-            </div>
-            <div
-              class="w-1/3 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="on-site"
-                :value="false"
-                v-model="remote"
-              />
-              <label class="" for="on-site">On-Site</label>
-            </div>
-            <div
-              class="w-1/3 h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
-            >
-              <input
-                type="radio"
-                class="cursor-pointer opacity-0 absolute w-full h-full left-0"
-                id="remote"
-                :value="true"
-                v-model="remote"
-              />
-              <label class="" for="remote">Remote</label>
-            </div>
+            <search-toggle class="w-1/3">All</search-toggle>
+            <search-toggle class="w-1/3">On-Site</search-toggle>
+            <search-toggle class="w-1/3">Remote</search-toggle>
           </div>
         </div>
         <div
@@ -122,19 +59,8 @@
           id="zipcode"
           class="flex flex-col justify-center items-center space-y-2"
         >
-          <label for="zip">Zipcode</label>
-          <div
-            class="flex justify-start items-center w-full h-12 text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
-          >
-            <img class="mx-4" src="@/assets/icons/map-pin.svg" alt="pin" />
-            <input
-              class="w-full h-12 bg-zinc-100"
-              id="zip"
-              type="number"
-              placeholder="Enter zipcode"
-              v-model="zipcode"
-            />
-          </div>
+          <label for="zip" class="text-md">Search Zipcode</label>
+          <zip-search />
         </div>
         <!-- <div class="tags">
                 </div> -->
@@ -145,18 +71,20 @@
 </template>
 
 <script>
+import ZipSearch from './ZipSearch.vue'
 export default {
+  components: { ZipSearch },
   data() {
     return {
-      isOpen: false,
+      isOpen: true,
       type: null,
       remote: null,
       zipcode: null,
     }
   },
   methods: {
-    search: function () {
-      this.isOpen = false
+    search() {
+      // this.isOpen = false
       const inputs = [
         { type: this.type },
         { remote: this.remote },
@@ -184,6 +112,13 @@ export default {
         }
       })
       this.$store.dispatch('ADD_FILTERS', query)
+    },
+    toggleFilter() {
+      if (!this.isOpen) {
+        this.isOpen = true
+      } else {
+        this.isOpen = false
+      }
     },
   },
 }

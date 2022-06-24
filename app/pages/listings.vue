@@ -1,16 +1,13 @@
 <template>
-  <div class="home">
+  <div id="home">
     <navbar />
-    <div id="content">
-      <div
-        id="filters"
-        class="flex flex-col justify-start items-center space-y-8 mt-6"
-      >
+    <div id="content" class="flex flex-col justify-center items-center">
+      <div id="filters" class="w-4/5 flex justify-center items-center my-6">
         <search />
       </div>
       <div
         v-if="query === null"
-        class="flex flex-col justify-center items-center m-4"
+        class="w-11/12 flex flex-col justify-center items-center"
       >
         <listing
           v-for="listing in listings"
@@ -31,24 +28,26 @@ export default {
   data() {
     return {
       user: this.$store.state.user,
-      query: null
+      query: null,
     }
   },
   async asyncData({ $axios }) {
     const listings = await $axios.$get('/queryListings')
-    return {listings}
-    },
-  watch:{  '$store.state.filters': async function() {
-    try {
-        const listings = await this.$axios.$get(`/filterListings/${this.$store.state.filters}`)
+    return { listings }
+  },
+  watch: {
+    '$store.state.filters': async function () {
+      try {
+        const listings = await this.$axios.$get(
+          `/filterListings/${this.$store.state.filters}`
+        )
         this.query = listings
       } catch (error) {
         console.log(error)
       }
-  }
-   }
+    },
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
