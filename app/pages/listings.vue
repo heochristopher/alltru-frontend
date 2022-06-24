@@ -1,13 +1,19 @@
 <template>
   <div id="home">
     <navbar />
-    <div id="content" class="flex flex-col justify-center items-center">
-      <div id="filters" class="w-4/5 flex justify-center items-center my-6">
+    <div
+      id="content"
+      class="flex flex-col justify-center items-center mt-20 lg:flex-row lg:items-start"
+    >
+      <div
+        id="filters"
+        class="w-11/12 flex justify-center items-center my-6 lg:w-1/3 lg:mx-6 lg:my-4"
+      >
         <search />
       </div>
       <div
         v-if="query === null"
-        class="w-11/12 flex flex-col justify-center items-center"
+        class="w-11/12 flex flex-col justify-center items-center lg:w-2/3 lg:mr-4"
       >
         <listing
           v-for="listing in listings"
@@ -15,7 +21,10 @@
           :listing="listing"
         />
       </div>
-      <div v-else class="w-11/12 flex flex-col justify-center items-center">
+      <div
+        v-else
+        class="w-11/12 flex flex-col justify-center items-center lg:w-2/3 lg:mr-4"
+      >
         <listing v-for="listing in query" :key="listing" :listing="listing" />
       </div>
     </div>

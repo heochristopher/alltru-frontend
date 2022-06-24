@@ -1,12 +1,5 @@
 <template>
-    <div class="modal">
-
-    </div>
+  <div id="modal"></div>
 </template>
 
-<script>
-</script>
-
-<style lang="scss" scoped>
-    
-</style>
+<script></script>

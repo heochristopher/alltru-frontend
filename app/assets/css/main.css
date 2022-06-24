@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 h1,
 h2,
@@ -10,7 +10,8 @@ p,
 li,
 label,
 button,
-input {
+input,
+a {
   font-family: 'Kumbh Sans', sans-serif;
 }
 

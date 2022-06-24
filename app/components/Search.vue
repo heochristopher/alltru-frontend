@@ -3,27 +3,27 @@
     id="filter"
     class="w-full h-full flex flex-col justify-center items-center space-y-4"
   >
-    <button
-      class="w-full h-12 rounded-md flex justify-between items-center"
+    <div
+      class="w-full h-12 flex justify-between items-center cursor-pointer rounded-md shadow-sm"
       @click="toggleFilter"
     >
-      <p class="text-lg">Filter</p>
+      <p class="mx-4 text-lg">Filter</p>
       <img
         v-if="!isOpen"
-        class="mx-2"
+        class="mx-3"
         src="@/assets/icons/chevron-down.svg"
         alt="down"
       />
       <img
         v-if="isOpen"
-        class="mx-2"
+        class="mx-3"
         src="@/assets/icons/chevron-up.svg"
         alt="up"
       />
-    </button>
+    </div>
     <div class="flex content-center item-start h-full w-full" v-if="isOpen">
       <form
-        class="flex flex-col mx-auto space-y-8 w-full"
+        class="flex flex-col mx-auto space-y-6 w-full"
         @submit.prevent="search"
         method="GET"
       >
@@ -55,7 +55,6 @@
           </div>
         </div>
         <div
-          v-if="remote === false"
           id="zipcode"
           class="flex flex-col justify-center items-center space-y-2"
         >

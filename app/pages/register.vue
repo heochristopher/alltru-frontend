@@ -1,9 +1,7 @@
 <template>
-  <div
-    id="register"
-    class="w-full h-screen flex flex-col justify-center items-center relative"
-  >
-    <div id="content" class="flex justify-center items-start">
+  <div id="register" class="w-full h-screen">
+    <navbar />
+    <div id="content" class="w-full h-screen flex justify-center items-center">
       <div id="student" class="flex justify-center items-center">
         <student-register v-show="isStudent">
           <p
