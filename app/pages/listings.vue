@@ -3,8 +3,11 @@
     <navbar/>
     <div class="content">
       <search/>
-      <div class="flex flex-col">
+      <div v-if="query === null" class="flex flex-col">
         <listing v-for="listing in listings" :key="listing" :listing="listing" />
+      </div>
+      <div v-else class="flex flex-col">
+        <listing v-for="listing in query" :key="listing" :listing="listing" />
       </div>
     </div>
   </div>
@@ -15,12 +18,23 @@ export default {
    name: 'Listings',
    data() {
     return {
-      user: this.$store.state.user
+      user: this.$store.state.user,
+      query: null
     }
    },
    async asyncData({$axios}) {
     const listings = await $axios.$get('/queryListings')
     return {listings}
+   },
+   watch: {
+    '$store.state.filters': async function() {
+      try {
+        const listings = await this.$axios.$get(`/filterListings/${this.$store.state.filters}`)
+        this.query = listings
+      } catch (error) {
+        console.log(error)
+      }
+    }
    }
 }
 
