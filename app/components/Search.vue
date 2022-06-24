@@ -88,7 +88,6 @@ export default {
                     filters.push(query)
                 }
             }
-            console.log('asdf')
             let query = ''
             filters.forEach((e) => {
                 if(query === '') {
