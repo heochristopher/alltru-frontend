@@ -7,8 +7,9 @@
       type="radio"
       class="cursor-pointer opacity-0 absolute w-full h-full left-0"
       id="all"
-      :value="null"
-      v-model="type"
+      :checked="isChecked"
+      :value="value" 
+      @change="$emit('change', $event.target.value)"
     />
     <label class="" for=""><slot></slot></label>
   </div>
@@ -16,6 +17,18 @@
 
 <script>
 export default {
-  name: 'SearchToggle',
+  model: {
+    prop: 'modelValue',
+    event: 'change'
+  },
+  props: {
+    "modelValue": { default: "" },
+    "value": { default: null }
+  },
+  computed: {
+    isChecked() {
+      return this.modelValue == this.value
+    }
+  }
 }
 </script>

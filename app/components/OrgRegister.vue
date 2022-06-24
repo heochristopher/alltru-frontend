@@ -4,7 +4,7 @@
     class="h-auto w-96 p-4 relative flex justify-center items-center"
   >
     <!-- for students -->
-    <form class="space-x-2 space-y-4">
+    <form @submit.prevent="register" method="POST" class="space-x-2 space-y-4">
       <h1 class="text-center text-2xl p-2">Organizations</h1>
       <div id="org" class="flex flex-col justify-center items-center">
         <!-- <label for="org">Organization</label> -->
@@ -62,7 +62,7 @@
         <!-- <label for="password">Password</label> -->
         <form-input
           id="password"
-          type="text"
+          type="password"
           name="password"
           v-model="password"
           placeholder="Password"
@@ -78,11 +78,33 @@
 </template>
 
 <script>
-import FormBtn from './FormBtn.vue'
-import FormInput from './FormInput.vue'
 
 export default {
-  components: { FormInput, FormBtn },
   name: 'OrganizationSignup',
+  data() {
+    return {
+      org: null,
+      firstName: null,
+      lastName: null,
+      email: null,
+      password: null
+    }
+  },
+  methods: {
+    async register() {
+      try {
+        await this.$axios.$post('/orgRegister', {
+          org: this.org,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+        })
+        this.$router.push('studentdash')
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>

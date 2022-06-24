@@ -35,10 +35,10 @@
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border cursor-pointer"
           >
-            <search-toggle class="w-1/4">All</search-toggle>
-            <search-toggle class="w-1/4">Volunteer</search-toggle>
-            <search-toggle class="w-1/4">Internship</search-toggle>
-            <search-toggle class="w-1/4">Job</search-toggle>
+            <search-toggle v-model="type" :value="null" class="w-1/4">All</search-toggle>
+            <search-toggle v-model="type" value="Volunteer" class="w-1/4">Volunteer</search-toggle>
+            <search-toggle v-model="type" value="Internship" class="w-1/4">Internship</search-toggle>
+            <search-toggle v-model="type" value="Job" class="w-1/4">Job</search-toggle>
           </div>
         </div>
         <div
@@ -49,9 +49,9 @@
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
           >
-            <search-toggle class="w-1/3">All</search-toggle>
-            <search-toggle class="w-1/3">On-Site</search-toggle>
-            <search-toggle class="w-1/3">Remote</search-toggle>
+            <search-toggle v-model="remote" :value="null" class="w-1/3">All</search-toggle>
+            <search-toggle v-model="remote" :value="false" class="w-1/3">On-Site</search-toggle>
+            <search-toggle v-model="remote" :value="true" class="w-1/3">Remote</search-toggle>
           </div>
         </div>
         <div
