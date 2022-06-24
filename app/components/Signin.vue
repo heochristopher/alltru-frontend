@@ -21,7 +21,7 @@
         <!-- <label for="password">Password</label> -->
         <form-input
           id="password"
-          type="text"
+          type="password"
           name="password"
           v-model="password"
           placeholder="Password"
@@ -29,7 +29,7 @@
         />
       </div>
       <div id="btn" class="flex flex-col justify-center items-center">
-        <form-btn>Sign In</form-btn>
+        <form-btn>Login</form-btn>
         <div class="flex justify-center items-center">
           <p class="px-1 py-4 text-sm text-zinc-500">No Account?</p>
           <NuxtLink to="/register"
@@ -58,7 +58,7 @@ export default {
   methods: {
     login: async function () {
       try {
-        const res = await this.$axios.$post('/login', {
+        await this.$axios.$post('/login', {
           email: this.email,
           password: this.password,
         })

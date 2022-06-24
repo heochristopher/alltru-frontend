@@ -20,7 +20,7 @@
             <Listing-type class="my-auto" :listing="listing" />
             <location class="my-auto" :listing="listing" />
           </div>
-          <p class="text-gray-500 text-sm mt-4" id="date">Posted {{date}} days ago</p>
+          <p class="text-gray-500 text-sm mt-4" id="date">Posted {{date}}</p>
         </div>
       </div>
       <div
@@ -52,7 +52,13 @@ export default {
     date() {
       const past = new Date(this.listing.date).getTime()
       const difference = Date.now() - past
-      return difference / (1000 * 3600 * 24)
+      const date = Math.floor(difference / (1000 * 3600 * 24))
+      if(date === 1) {
+        return '1 day ago'
+      } else if( date === 0) {
+        return 'today'
+      }
+      return `${Math.floor(difference / (1000 * 3600 * 24))} days ago`
     }
   }
 }
