@@ -2,6 +2,7 @@
   <div
     id="toggle"
     class="h-full flex justify-center items-center relative ease-in duration-100 hover:bg-violet-200"
+    :class="{checked: isChecked}"
   >
     <input
       type="radio"
@@ -22,8 +23,8 @@ export default {
     event: 'change'
   },
   props: {
-    "modelValue": { default: "" },
-    "value": { default: null }
+    "modelValue": { default: null },
+    "value": { default: "" }
   },
   computed: {
     isChecked() {
@@ -32,3 +33,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.checked {
+  background-color: rgb(221, 214, 254);
+}
+
+</style>

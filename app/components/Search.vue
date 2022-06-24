@@ -35,31 +35,41 @@
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border cursor-pointer"
           >
-            <search-toggle v-model="type" :value="null" class="w-1/4">All</search-toggle>
+            <search-toggle v-model="type" value="null" class="w-1/4">All</search-toggle>
             <search-toggle v-model="type" value="Volunteer" class="w-1/4">Volunteer</search-toggle>
             <search-toggle v-model="type" value="Internship" class="w-1/4">Internship</search-toggle>
             <search-toggle v-model="type" value="Job" class="w-1/4">Job</search-toggle>
           </div>
         </div>
         <div
-          id="location"
+          id="remote"
           class="flex flex-col justify-center items-center space-y-2"
         >
-          <label for="location" class="text-md">Location Preferences</label>
+          <label for="remote" class="text-md">Location Preferences</label>
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
           >
-            <search-toggle v-model="remote" :value="null" class="w-1/3">All</search-toggle>
-            <search-toggle v-model="remote" :value="false" class="w-1/3">On-Site</search-toggle>
-            <search-toggle v-model="remote" :value="true" class="w-1/3">Remote</search-toggle>
+            <search-toggle v-model="remote" value="null" class="w-1/3">All</search-toggle>
+            <search-toggle v-model="remote" value="false" class="w-1/3">On-Site</search-toggle>
+            <search-toggle v-model="remote" value="true" class="w-1/3">Remote</search-toggle>
           </div>
         </div>
         <div
           id="zipcode"
           class="flex flex-col justify-center items-center space-y-2"
+          v-if="remote !== 'true'"
         >
           <label for="zip" class="text-md">Search Zipcode</label>
-          <zip-search />
+           <div id="search" class="flex justify-start items-center w-full h-12 text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border">
+    <img class="mx-4" src="@/assets/icons/map-pin.svg" alt="pin" />
+    <input
+      class="w-full h-12 bg-zinc-100"
+      id="zip"
+      type="number"
+      placeholder="Zipcode"
+      v-model="zipcode"
+    />
+  </div>
         </div>
         <!-- <div class="tags">
                 </div> -->
@@ -76,14 +86,15 @@ export default {
   data() {
     return {
       isOpen: true,
-      type: null,
-      remote: null,
-      zipcode: null,
+      type: "null",
+      remote: "null",
+      zipcode: "null",
     }
   },
   methods: {
     search() {
-      // this.isOpen = false
+      this.isOpen = false
+      if(this.remote) {this.zip === "null"}
       const inputs = [
         { type: this.type },
         { remote: this.remote },
@@ -98,7 +109,8 @@ export default {
         } else {
           query = `${entry[0][0]}=${entry[0][1]}`
         }
-        if (entry[0][1] !== null) {
+
+        if (!(entry[0][1] === 'null' || entry[0][1] === "")) {
           filters.push(query)
         }
       }
