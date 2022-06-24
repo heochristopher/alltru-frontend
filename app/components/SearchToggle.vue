@@ -8,7 +8,7 @@
       class="cursor-pointer opacity-0 absolute w-full h-full left-0"
       id="all"
       :checked="isChecked"
-      :value="value" 
+      :value="value"
       @change="$emit('change', $event.target.value)"
     />
     <label class="" for=""><slot></slot></label>
@@ -19,16 +19,16 @@
 export default {
   model: {
     prop: 'modelValue',
-    event: 'change'
+    event: 'change',
   },
   props: {
-    "modelValue": { default: "" },
-    "value": { default: null }
+    modelValue: { default: '' },
+    value: { default: null },
   },
   computed: {
     isChecked() {
       return this.modelValue == this.value
-    }
-  }
+    },
+  },
 }
 </script>
