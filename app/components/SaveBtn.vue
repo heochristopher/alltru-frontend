@@ -4,20 +4,8 @@
         <button
           class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
           @click="save"
-          v-if="!isSaved"
         >
-          Save
-        </button>
-        <button
-          class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
-          v-if="isSaved"
-        >
-          Saved
-        </button>
-        <button
-          class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
-        >
-          Apply
+          {{message}}
         </button>
     </div>
     <div id="options" v-if="!user">
@@ -28,13 +16,6 @@
             Save
             </button>
         </nuxt-link>
-        <nuxt-link to="/login">
-            <button
-            class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
-            >
-            Apply
-            </button>
-        </nuxt-link>
     </div>
 </div>
 </template>
@@ -43,7 +24,8 @@
 export default {
     data() {
         return {
-            user: this.$store.state.user
+            user: this.$store.state.user,
+            saved: this.isSaved
         }
     },
     props: {
@@ -53,16 +35,31 @@ export default {
     methods: {
         async save() {
             try {
-                const res = await this.$axios.$post(`/saveListing/${this.id}`)
-                this.$store.dispatch('GET_ALERT', {
-                    data: res,
-                    status: 200
-                })
+                if(this.saved) {
+                    const res = await this.$axios.$request({url: `/unsaveListing/${this.id}`, method: 'delete'})
+                    this.$store.dispatch('GET_ALERT', {
+                        data: res,
+                        status: 200
+                    })
+                    this.saved = false
+                } else {
+                    const res = await this.$axios.$post(`/saveListing/${this.id}`)
+                    this.$store.dispatch('GET_ALERT', {
+                        data: res,
+                        status: 200
+                    })
+                    this.saved = true
+                }
             } catch (error) {
                 this.$store.dispatch('GET_ALERT', error)
             }
         }
     },
+    computed: {
+        message() {
+            return this.saved ? "Saved" : "Save"
+        }
+    }
 }
 </script>
 

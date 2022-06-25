@@ -2,7 +2,7 @@
   <div id="register" class="w-full h-screen">
     <div class="absolute w-full h-20 flex justify-center items-center">
       <NuxtLink to="/listings"
-        ><h1 class="text-3xl font-medium">Alltru</h1></NuxtLink
+        ><h1 class="text-3xl font-medium truncate">Alltru</h1></NuxtLink
       >
     </div>
     <div id="content" class="w-full h-screen flex justify-center items-center">

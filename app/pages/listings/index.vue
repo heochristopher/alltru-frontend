@@ -1,6 +1,7 @@
 <template>
   <div id="home">
     <navbar />
+    <alert/>
     <div
       id="content"
       class="w-full h-full flex flex-col justify-center items-center mt-20 lg:overflow-hidden lg:flex-row lg:items-start"
