@@ -1,20 +1,20 @@
 <template>
   <div id="home">
     <navbar />
-    <alert/>
+    <alert />
     <div
       id="content"
-      class="w-full h-full flex flex-col justify-center items-center mt-20 lg:overflow-hidden lg:flex-row lg:items-start"
+      class="w-full h-full flex flex-col justify-center items-center mt-20 lg:flex-row lg:items-start lg:space-x-10"
     >
       <div
         id="filters"
-        class="w-11/12 flex justify-center items-center my-6 sm:w-4/5 md:w-3/4 lg:w-1/3 lg:mx-10 lg:my-4"
+        class="w-11/12 max-w-lg flex justify-center items-center my-6 lg:w-1/3 lg:max-w-md lg:ml-4"
       >
         <search />
       </div>
       <div
         v-if="query === null"
-        class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
+        class="w-11/12 max-w-3xl h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3"
       >
         <listing
           v-for="listing in listings"
@@ -28,8 +28,11 @@
         id="filters"
         class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
       >
-        <listing v-for="listing in query" :key="listing.position" :listing="listing" 
-        :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
+        <listing
+          v-for="listing in query"
+          :key="listing.position"
+          :listing="listing"
+          :isSaved="!user ? null : user.savedListings.includes(listing._id)"
         />
       </div>
     </div>
@@ -51,7 +54,7 @@ export default {
       return { listings, user }
     }
     const user = null
-    return {listings, user}
+    return { listings, user }
   },
   watch: {
     '$store.state.filters': async function () {

@@ -3,7 +3,7 @@
     <navbar />
     <div
       id="content"
-      class="bg-white w-11/12 h-auto mt-24 mb-8 pb-6 px-8 flex flex-col justify-start items-center space-y-4 shadow-md sm:w-5/6 md:w-4/5 lg:w-3/4 xl:w-2/3"
+      class="bg-white w-11/12 max-w-4xl h-auto mt-24 mb-8 pb-6 px-8 flex flex-col justify-start items-center space-y-4 shadow-md"
     >
       <div
         id="back"
@@ -22,22 +22,20 @@
       </div>
       <div
         id="info"
-        class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200 sm:px-3"
+        class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200"
       >
         <div
           id="profile"
           class="w-full flex flex-col justify-start items-start space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-4"
         >
-          <div id="avatar" class="h-36 w-36 sm:h-28 sm:w-28">
+          <div id="avatar" class="h-40 w-40 sm:h-28 sm:w-28 md:h-32 md:w-32">
             <img :src="listing.org.avatar" alt="logo" class="object-cover" />
           </div>
           <div id="title" class="h-auto overflow-hidden">
-            <h3 class="text-xl truncate lg:text-2xl">
+            <h3 class="text-lg sm:text-xl">
               {{ listing.org.affiliation }}
             </h3>
-            <h2
-              class="text-2xl font-medium truncate pb-1 sm:text-3xl lg:text-4xl"
-            >
+            <h2 class="text-3xl font-medium pb-2 sm:text-4xl">
               {{ listing.position }}
             </h2>
             <div class="flex flex-row justify-start items-center space-x-2">
@@ -52,7 +50,7 @@
         >
           <div
             id="details"
-            class="content-center grid grid-cols-2 grid-rows-2 gap-x-6 gap-y-4 sm:flex sm:justify-center sm:items-center sm:space-x-8 md:space-x-12 lg:space-x-14"
+            class="content-center grid grid-cols-2 grid-rows-2 gap-x-6 gap-y-4 sm:flex sm:justify-center sm:items-center sm:space-x-8 md:space-x-12"
           >
             <div id="payment">
               <p class="uppercase text-xs font-semibold">Payment</p>
@@ -89,7 +87,7 @@
         id="description"
         class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2"
       >
-        <h5 class="text-xl font-medium">Description</h5>
+        <h5 class="text-xl font-semibold">Description</h5>
         <p class="text-md">{{ listing.description }}</p>
       </div>
       <div
@@ -97,9 +95,10 @@
         class="w-full h-auto flex flex-col justify-center items-center space-y-1 pt-4 border-t border-solid border-zinc-200"
       >
         <div class="w-full flex flex-col justify-start items-start space-y-1">
-          <h5 class="text-xl font-medium">Apply</h5>
+          <h5 class="text-xl font-semibold">Apply</h5>
           <p class="text-md pb-2">
-            Your information and resume will be sent to the organization.
+            Your information and resume will automatically be sent to the
+            organization when you apply.
           </p>
           <textarea
             class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"

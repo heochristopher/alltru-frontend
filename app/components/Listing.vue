@@ -7,9 +7,9 @@
       <nuxt-link
         :to="`/listings/${listing._id}`"
         id="info"
-        class="w-4/5 h-full flex justify-start items-start space-x-4"
+        class="w-4/5 h-full flex justify-start items-start space-x-4 sm:pl-6 sm:py-3 sm:items-center"
       >
-        <div id="pic" class="w-16 h-16">
+        <div id="pic" class="w-auto h-20 aspect-square overflow-hidden sm:h-28">
           <img class="object-cover" :src="listing.org.avatar" alt="" />
         </div>
         <div id="container" class="flex flex-col justify-center items-start">
@@ -25,9 +25,11 @@
         </div>
       </nuxt-link>
       <!-- <listing-options :id="listing._id" :isSaved="isSaved"/> -->
-      <div id="options" class="w-1/5 h-full flex flex-col justify-center items-center space-y-4 my-auto sm:w-1/3 sm:flex-row sm:space-y-0 sm:space-x-4">
-        <save-btn :id="listing._id" :isSaved="isSaved"/>
-        <apply-btn/>
+      <div
+        id="options"
+        class="w-1/5 h-full flex justify-end items-end my-auto sm:w-1/3"
+      >
+        <save-btn :id="listing._id" :isSaved="isSaved" />
       </div>
     </div>
   </div>
@@ -37,7 +39,7 @@
 export default {
   props: {
     listing: Object,
-    isSaved: Boolean
+    isSaved: Boolean,
   },
   computed: {
     date() {
