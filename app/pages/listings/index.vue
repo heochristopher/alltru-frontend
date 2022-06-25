@@ -8,7 +8,7 @@
     >
       <div
         id="filters"
-        class="w-11/12 flex justify-center items-center my-6 lg:w-1/3 lg:mx-10 lg:my-4"
+        class="w-11/12 flex justify-center items-center my-6 sm:w-4/5 md:w-3/4 lg:w-1/3 lg:mx-10 lg:my-4"
       >
         <search />
       </div>
@@ -20,7 +20,7 @@
           v-for="listing in listings"
           :key="listing.position"
           :listing="listing"
-          :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
+          :isSaved="!user ? null : user.savedListings.includes(listing._id)"
         />
       </div>
       <div
@@ -46,9 +46,9 @@ export default {
   },
   async asyncData({ $axios, store }) {
     const listings = await $axios.$get('/queryListings')
-    if(store.state.user) {
+    if (store.state.user) {
       const user = await $axios.$get('/sendUser')
-      return {listings, user}
+      return { listings, user }
     }
     const user = null
     return {listings, user}
@@ -64,7 +64,7 @@ export default {
         console.log(error)
       }
     },
-  }
+  },
 }
 </script>
 
