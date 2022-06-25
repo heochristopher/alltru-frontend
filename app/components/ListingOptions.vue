@@ -70,8 +70,7 @@ export default {
         this.$store.dispatch('GET_ALERT', error)
       }
     },
-  },
-}
+  }
 </script>
 
 <style></style>
