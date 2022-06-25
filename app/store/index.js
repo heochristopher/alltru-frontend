@@ -1,7 +1,7 @@
 export const state = () => ({
   user: null,
   filters: null,
-  alert: null
+  alert: null,
 })
 
 export const getter = {
@@ -20,7 +20,7 @@ export const mutations = {
   SET_ALERT(state, alert) {
     if(!alert.response) {return state.alert = alert}
     state.alert = alert.response
-  }
+  },
 }
 
 export const actions = {
@@ -37,5 +37,5 @@ export const actions = {
   },
   GET_ALERT({commit}, alert) {
     commit('SET_ALERT', alert)
-  }
+  },
 }

@@ -4,7 +4,7 @@
     class="h-auto w-96 p-4 relative flex justify-center items-center"
   >
     <!-- for students -->
-    <form class="space-x-2 space-y-4">
+    <form @submit.prevent="register" method="POST" class="space-x-2 space-y-4">
       <h1 class="text-center text-2xl p-2">Students</h1>
       <div id="name" class="flex flex-col justify-center items-center">
         <!-- <label for="name">Name</label> -->
@@ -44,7 +44,7 @@
               id="age"
               type="number"
               name="dob-month"
-              v-model="age"
+              v-model="month"
               placeholder="Month"
               required
             />
@@ -54,7 +54,7 @@
               id="age"
               type="number"
               name="dob-day"
-              v-model="age"
+              v-model="day"
               placeholder="Day"
               required
             />
@@ -64,7 +64,7 @@
               id="age"
               type="number"
               name="dob-year"
-              v-model="age"
+              v-model="year"
               placeholder="Year"
               required
             />
@@ -97,7 +97,7 @@
         <!-- <label for="password">Password</label> -->
         <form-input
           id="password"
-          type="text"
+          type="password"
           name="password"
           v-model="password"
           placeholder="Password"
@@ -113,7 +113,40 @@
 </template>
 
 <script>
+import { bindExpression } from '@babel/types'
+
 export default {
   name: 'StudentSignup',
+  data() {
+    return {
+      firstName: null,
+      lastName: null,
+      month: null,
+      day: null,
+      year: null,
+      school: null,
+      email: null,
+      password: null
+    }
+  },
+  methods: {
+    async register() {
+      const birthday = new Date(`${this.year}-${this.month}-${this.day}`)
+      try {
+        await this.$axios.$post('/studentRegister', {
+          affiliation: this.school,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+          birthday: birthday,
+        })
+        this.$router.push('studentdash')
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>

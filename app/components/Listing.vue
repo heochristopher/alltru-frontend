@@ -4,9 +4,9 @@
     class="w-full h-auto overflow-visible flex justify-center item-center rounded-lg shadow-md m-2"
   >
     <div id="content" class="w-full h-full flex justify-center items-start p-4">
-      <div
+      <nuxt-link :to="`/listings/${listing._id}`"
         id="info"
-        class="w-4/5 h-full flex justify-start items-start space-x-4"
+        class="w-4/5 h-full flex justify-start items-start space-x-4" 
       >
         <div id="pic" class="w-16 h-16">
           <img class="object-cover" :src="listing.org.avatar" alt="" />
@@ -22,7 +22,7 @@
           </div>
           <p class="text-gray-500 text-sm mt-4" id="date">Posted {{ date }}</p>
         </div>
-      </div>
+      </nuxt-link>
       <div
         id="options"
         class="w-1/5 h-full flex flex-col justify-center items-center space-y-4 my-auto sm:w-1/3 sm:flex-row sm:space-y-0 sm:space-x-4"
@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import ListingType from './ListingType.vue'
 export default {
   props: {
     listing: Object,
