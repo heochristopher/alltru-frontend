@@ -13,11 +13,9 @@
 <script>
 export default {
     name: "User",
-    data() {
-        return {
-            user: this.$store.state.user
-        }
-    }
+    props: {
+        user: Object
+    },
 }
 </script>
 
