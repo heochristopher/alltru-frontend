@@ -1,6 +1,10 @@
 <template>
   <div id="login" class="w-full h-screen">
-    <navbar />
+    <div class="absolute w-full h-20 flex justify-center items-center">
+      <NuxtLink to="/listings"
+        ><h1 class="text-3xl font-medium">Alltru</h1></NuxtLink
+      >
+    </div>
     <div id="content" class="w-full h-screen flex justify-center items-center">
       <signin />
     </div>

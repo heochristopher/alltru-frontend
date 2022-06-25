@@ -5,14 +5,6 @@
       <div id="links" class="flex justify-center items-center mr-10 space-x-8">
         <NuxtLink to="/register" class="text-md">For Students</NuxtLink>
         <NuxtLink to="/register" class="text-md">For Organizations</NuxtLink>
-
-        <!-- <NuxtLink to="/register"
-          ><div
-            class="w-20 h-10 rounded-md border border-solid border-zinc-900 flex justify-center items-center"
-          >
-            <p class="text-md">Sign Up</p>
-          </div>
-        </NuxtLink> -->
         <NuxtLink to="/login"
           ><div
             class="w-20 h-10 rounded-md bg-zinc-900 flex justify-center items-center"

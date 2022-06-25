@@ -3,17 +3,17 @@
     <navbar />
     <div
       id="content"
-      class="flex flex-col justify-center items-center mt-20 lg:flex-row lg:items-start"
+      class="w-full h-full flex flex-col justify-center items-center mt-20 overflow-hidden lg:flex-row lg:items-start"
     >
       <div
         id="filters"
-        class="w-11/12 flex justify-center items-center my-6 lg:w-1/3 lg:ml-12 lg:mr-8 lg:my-4"
+        class="w-11/12 flex justify-center items-center my-6 lg:w-1/3 lg:mx-10 lg:my-4"
       >
         <search />
       </div>
       <div
         v-if="query === null"
-        class="w-11/12 h-screen flex flex-col justify-start items-center overflow-y-auto lg:w-2/3 lg:mr-10"
+        class="w-11/12 h-screen flex flex-col justify-start items-center overflow-y-auto box-content lg:w-2/3 lg:mr-6"
       >
         <listing
           v-for="listing in listings"
@@ -23,7 +23,8 @@
       </div>
       <div
         v-else
-        class="w-11/12 h-screen flex flex-col justify-start items-center overflow-y-auto lg:w-2/3 lg:mr-4"
+        id="filters"
+        class="w-11/12 h-screen flex flex-col justify-center items-center overflow-y-auto lg:w-2/3 lg:mr-6"
       >
         <listing v-for="listing in query" :key="listing" :listing="listing" />
       </div>
@@ -59,4 +60,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#filters {
+  -webkit-appearance: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+</style>

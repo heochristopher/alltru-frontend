@@ -28,8 +28,9 @@
           required
         />
       </div>
-      <div id="btn" class="flex flex-col justify-center items-center">
+      <div id="btn" class="flex flex-col justify-center items-center space-y-3">
         <form-btn>Login</form-btn>
+
         <div class="flex justify-center items-center">
           <p class="px-1 py-4 text-sm text-zinc-500">No Account?</p>
           <NuxtLink to="/register"
