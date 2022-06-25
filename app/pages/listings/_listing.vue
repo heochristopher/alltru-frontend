@@ -101,15 +101,15 @@
           <p class="text-md pb-2">
             Your information and resume will be sent to the organization.
           </p>
+          <textarea
+            class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"
+            id="notes"
+            name="notes"
+            v-model="notes"
+            placeholder="Please include any additional information you would like to provide."
+            required
+          />
         </div>
-        <textarea
-          class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"
-          id="notes"
-          name="notes"
-          v-model="notes"
-          placeholder="Please include any additional information you would like to provide."
-          required
-        />
         <div
           id="btn"
           class="w-5/6 pt-3 flex flex-col justify-center items-center sm:w-1/2 lg:w-5/12"
