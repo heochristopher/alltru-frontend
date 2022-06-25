@@ -3,7 +3,7 @@
     <navbar />
     <div
       id="content"
-      class="w-full h-full flex flex-col justify-center items-center mt-20 overflow-hidden lg:flex-row lg:items-start"
+      class="w-full h-full flex flex-col justify-center items-center mt-20 lg:overflow-hidden lg:flex-row lg:items-start"
     >
       <div
         id="filters"
@@ -13,7 +13,7 @@
       </div>
       <div
         v-if="query === null"
-        class="w-11/12 h-screen flex flex-col justify-start items-center overflow-y-auto box-content lg:w-2/3 lg:mr-6"
+        class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
       >
         <listing
           v-for="listing in listings"
@@ -25,7 +25,7 @@
       <div
         v-else
         id="filters"
-        class="w-11/12 h-screen flex flex-col justify-center items-center overflow-y-auto lg:w-2/3 lg:mr-6"
+        class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
       >
         <listing v-for="listing in query" :key="listing" :listing="listing" 
         :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
