@@ -1,14 +1,6 @@
 <template>
 <div class="w-1/5 h-full flex flex-col justify-center items-center space-y-4 my-auto sm:w-1/3 sm:flex-row sm:space-y-0 sm:space-x-4">
-    <div id="options" v-if="user.role === 'Student'">
-        <button
-          class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
-          @click="save"
-        >
-          {{message}}
-        </button>
-    </div>
-    <div id="options" v-if="!user">
+    <div id="options" v-if="user === null">
         <nuxt-link to="/login">
             <button
             class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
@@ -16,6 +8,14 @@
             Save
             </button>
         </nuxt-link>
+    </div>
+    <div id="options" v-else-if="user.role === 'Student'">
+        <button
+          class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
+          @click="save"
+        >
+          {{message}}
+        </button>
     </div>
 </div>
 </template>

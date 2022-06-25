@@ -18,7 +18,7 @@
       >
         <listing
           v-for="listing in listings"
-          :key="listing"
+          :key="listing.position"
           :listing="listing"
           :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
         />
@@ -28,7 +28,7 @@
         id="filters"
         class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
       >
-        <listing v-for="listing in query" :key="listing" :listing="listing" 
+        <listing v-for="listing in query" :key="listing.position" :listing="listing" 
         :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
         />
       </div>
@@ -50,7 +50,8 @@ export default {
       const user = await $axios.$get('/sendUser')
       return {listings, user}
     }
-    return {listings}
+    const user = null
+    return {listings, user}
   },
   watch: {
     '$store.state.filters': async function () {

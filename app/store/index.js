@@ -32,6 +32,14 @@ export const actions = {
           console.log(error)
       }
     },
+  async GET_USER({commit}) {
+    try {
+      const res = await this.$axios.$get('/validateToken')
+      commit('SET_USER_DATA', res)
+  } catch (error) {
+      console.log(error)
+  }
+  },
   ADD_FILTERS({commit}, filters) {
     commit('SET_FILTERS', filters)
   },

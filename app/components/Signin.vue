@@ -63,7 +63,11 @@ export default {
           email: this.email,
           password: this.password,
         })
-        this.$router.push('studentdash')
+        await this.$store.dispatch('GET_USER')
+        if(this.$store.state.user.role === 'Student') {
+          return this.$router.push('dashboard/student')
+        }
+        this.$router.push('dashboard/organization')
       } catch (error) {
         this.$store.dispatch('GET_ALERT', error)
       }
