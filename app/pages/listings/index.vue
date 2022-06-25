@@ -7,7 +7,7 @@
     >
       <div
         id="filters"
-        class="w-11/12 flex justify-center items-center my-6 lg:w-1/3 lg:mx-10 lg:my-4"
+        class="w-11/12 flex justify-center items-center my-6 sm:w-4/5 md:w-3/4 lg:w-1/3 lg:mx-10 lg:my-4"
       >
         <search />
       </div>
@@ -19,7 +19,7 @@
           v-for="listing in listings"
           :key="listing"
           :listing="listing"
-          :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
+          :isSaved="!user ? null : user.savedListings.includes(listing._id)"
         />
       </div>
       <div
@@ -27,8 +27,11 @@
         id="filters"
         class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
       >
-        <listing v-for="listing in query" :key="listing" :listing="listing" 
-        :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
+        <listing
+          v-for="listing in query"
+          :key="listing"
+          :listing="listing"
+          :isSaved="!user ? null : user.savedListings.includes(listing._id)"
         />
       </div>
     </div>
@@ -45,11 +48,11 @@ export default {
   },
   async asyncData({ $axios, store }) {
     const listings = await $axios.$get('/queryListings')
-    if(store.state.user) {
+    if (store.state.user) {
       const user = await $axios.$get('/sendUser')
-      return {listings, user}
+      return { listings, user }
     }
-    return {listings}
+    return { listings }
   },
   watch: {
     '$store.state.filters': async function () {
@@ -62,7 +65,7 @@ export default {
         console.log(error)
       }
     },
-  }
+  },
 }
 </script>
 
