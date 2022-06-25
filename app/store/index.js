@@ -1,6 +1,7 @@
 export const state = () => ({
   user: null,
   filters: null,
+  alert: null,
 })
 
 export const getter = {
@@ -15,7 +16,11 @@ export const mutations = {
   },
   SET_FILTERS(state, filters) {
     state.filters = filters
-  }
+  },
+  SET_ALERT(state, alert) {
+    if(!alert.response) {return state.alert = alert}
+    state.alert = alert.response
+  },
 }
 
 export const actions = {
@@ -29,5 +34,8 @@ export const actions = {
     },
   ADD_FILTERS({commit}, filters) {
     commit('SET_FILTERS', filters)
-  }
+  },
+  GET_ALERT({commit}, alert) {
+    commit('SET_ALERT', alert)
+  },
 }

@@ -94,7 +94,7 @@ export default {
     async register() {
       try {
         await this.$axios.$post('/orgRegister', {
-          org: this.org,
+          affiliation: this.org,
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
