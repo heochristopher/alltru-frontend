@@ -3,18 +3,19 @@
     <div id="options" v-if="user === null">
         <nuxt-link to="/login">
             <button
-            class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
+            class=""
             >
-            Save
+            <path src="@/assets/icons/bookmark.svg" alt="bookmark icon"></path>
             </button>
         </nuxt-link>
     </div>
     <div id="options" v-else-if="user.role === 'Student'">
         <button
-          class="w-16 h-8 rounded-md bg-zinc-200 text-zinc-600 ease-in duration-100 hover:bg-zinc-300 sm:w-20"
+          class=""
           @click="save"
         >
-          {{message}}
+            <!-- <img src="@/assets/icons/bookmark.svg" alt="bookmark icon" :class="{saved: this.saved}"> -->
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="{saved: this.saved}"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
         </button>
     </div>
 </div>
@@ -63,6 +64,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.saved {
+    fill: #000
+}
 
 </style>
