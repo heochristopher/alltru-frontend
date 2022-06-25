@@ -107,6 +107,16 @@
       <div id="btn" class="flex flex-col justify-center items-center">
         <form-btn>Sign Up</form-btn>
         <slot></slot>
+        <div class="flex justify-center items-center">
+          <p class="px-1 py-4 text-sm text-zinc-500">Have an Account?</p>
+          <NuxtLink to="/login"
+            ><p
+              class="px-1 py-4 text-sm text-zinc-700 ease-in duration-100 hover:text-zinc-500"
+            >
+              Login
+            </p></NuxtLink
+          >
+        </div>
       </div>
     </form>
   </div>

@@ -56,6 +56,16 @@ html {
   overflow-x: hidden;
 }
 
+#filters {
+  -webkit-appearance: none;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+#filters::-webkit-scrollbar { 
+  display: none; 
+}
+
 /* body,
 html {
   background-color: #fff;

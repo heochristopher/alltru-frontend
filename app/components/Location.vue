@@ -11,7 +11,7 @@
       <div class="uppercase px-2 py-1 rounded-full bg-green-400">
         <p class="text-white text-xs">On-Site</p>
       </div>
-      <h6 class="uppercase text-xs">{{ listing.location.borough }}</h6>
+      <h6 class="text-sm">{{ listing.location.borough }}, NY</h6>
     </div>
   </div>
 </template>
