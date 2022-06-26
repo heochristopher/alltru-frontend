@@ -2,7 +2,7 @@
   <div id="nav">
     <div class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-50">
       <div id="content" class="w-full h-full flex justify-between items-center">
-        <h1 class="text-3xl ml-10 font-medium truncate">
+        <h1 class="text-3xl ml-10 font-medium truncate z-50">
           <NuxtLink to="/listings">Alltru</NuxtLink>
         </h1>
         <div
@@ -30,7 +30,7 @@
         <div
           @click="toggleBurger"
           id="burger"
-          class="flex justify-center items-center mr-10 cursor-pointer sm:hidden"
+          class="flex justify-center items-center mr-10 cursor-pointer sm:hidden z-50"
         >
           <img v-if="!burger" src="@/assets/icons/menu.svg" alt="menu" />
           <img v-if="burger" src="@/assets/icons/close.svg" alt="close" />
@@ -40,21 +40,21 @@
     <div
       v-if="burger"
       id="menu-content"
-      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-start z-40 space-y-6 pt-24 pb-6"
+      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-40 space-y-4 pt-24 pb-6"
     >
       <NuxtLink
         to="/register"
-        class="ml-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+        class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
         >For Students</NuxtLink
       >
       <NuxtLink
         to="/register"
-        class="ml-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+        class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
         >For Organizations</NuxtLink
       >
       <NuxtLink
         to="/login"
-        class="ml-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+        class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
         >Login</NuxtLink
       >
     </div>
