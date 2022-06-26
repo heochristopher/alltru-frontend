@@ -27,7 +27,6 @@
       <!-- <listing-options :id="listing._id" :isSaved="isSaved"/> -->
       <div id="options" class="w-1/5 h-full flex flex-col justify-center items-center space-y-4 my-auto sm:w-1/3 sm:flex-row sm:space-y-0 sm:space-x-4">
         <save-btn :id="listing._id" :isSaved="isSaved"/>
-        <apply-btn/>
       </div>
     </div>
   </div>
