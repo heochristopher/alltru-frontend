@@ -40,7 +40,7 @@
     <div
       v-if="burger"
       id="menu-content"
-      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-40 space-y-4 pt-24 pb-6"
+      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-40 space-y-4 pt-24 pb-6 sm:hidden"
     >
       <NuxtLink
         to="/register"

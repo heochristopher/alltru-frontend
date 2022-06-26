@@ -1,7 +1,7 @@
 <template>
   <div
     id="filter"
-    class="w-full max-w-xl h-full flex flex-col justify-center items-center space-y-4"
+    class="w-full h-full flex flex-col justify-center items-center space-y-4"
   >
     <div
       class="w-full h-12 flex justify-between items-center cursor-pointer shadow-sm"
