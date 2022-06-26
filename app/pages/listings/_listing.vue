@@ -97,7 +97,7 @@
         <div class="w-full flex flex-col justify-start items-start space-y-1">
           <h5 class="text-xl font-semibold">Apply</h5>
           <p class="text-md pb-2">
-            Your information and resume will automatically be sent to the
+            Your information and resume will be sent automatically to the
             organization when you apply.
           </p>
           <textarea
