@@ -8,13 +8,13 @@
     >
       <div
         id="filters"
-        class="w-11/12 max-w-lg flex justify-center items-center my-6 lg:w-1/3 lg:max-w-md lg:ml-4"
+        class="w-5/6 max-w-lg flex justify-center items-center my-6 lg:w-1/3 lg:max-w-md lg:ml-4"
       >
         <search />
       </div>
       <div
         v-if="query === null"
-        class="w-11/12 max-w-3xl h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3"
+        class="w-11/12 max-w-3xl h-full flex flex-col justify-start items-center pb-6 lg:h-screen lg:overflow-y-auto lg:w-2/3"
       >
         <listing
           v-for="listing in listings"
@@ -26,7 +26,7 @@
       <div
         v-else
         id="filters"
-        class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:mr-6"
+        class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3"
       >
         <listing
           v-for="listing in query"
@@ -36,6 +36,7 @@
         />
       </div>
     </div>
+    <page-footer/>
   </div>
 </template>
 
