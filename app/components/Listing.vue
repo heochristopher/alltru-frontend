@@ -7,9 +7,9 @@
       <nuxt-link
         :to="`/listings/${listing._id}`"
         id="info"
-        class="w-4/5 h-full flex justify-start items-start space-x-4"
+        class="w-4/5 h-full flex justify-start items-start space-x-4 sm:pl-6 sm:py-3 sm:items-center"
       >
-        <div id="pic" class="w-16 h-16">
+        <div id="pic" class="w-auto h-20 aspect-square overflow-hidden sm:h-28">
           <img class="object-cover" :src="listing.org.avatar" alt="" />
         </div>
         <div id="container" class="flex flex-col justify-center items-start">
@@ -36,7 +36,7 @@
 export default {
   props: {
     listing: Object,
-    isSaved: Boolean
+    isSaved: Boolean,
   },
   computed: {
     date() {
