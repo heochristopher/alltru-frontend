@@ -1,11 +1,12 @@
 <template>
   <div class="">
+    <navbar/>
     <user :user="org"/>
     <alert/>
     <div id="listings" class="">
         <listing
           v-for="listing in listings"
-          :key="listing"
+          :key="listing.position"
           :listing="listing"
           :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
         />

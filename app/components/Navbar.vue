@@ -8,6 +8,7 @@
         <div
           id="links"
           class="hidden justify-center items-center mr-10 space-x-8 sm:flex"
+          v-if="!user"
         >
           <NuxtLink
             to="/register"
@@ -27,10 +28,14 @@
             </div>
           </NuxtLink>
         </div>
+        <div class="" v-else>
+          <nav-profile class="mr-8"/>
+        </div>
         <div
           @click="toggleBurger"
           id="burger"
           class="flex justify-center items-center mr-10 cursor-pointer sm:hidden z-50"
+          v-if="!user"
         >
           <img v-if="!burger" src="@/assets/icons/menu.svg" alt="menu" />
           <img v-if="burger" src="@/assets/icons/close.svg" alt="close" />
@@ -67,6 +72,7 @@ export default {
   data() {
     return {
       burger: false,
+      user: this.$store.state.user
     }
   },
   created() {

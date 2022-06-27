@@ -64,10 +64,7 @@ export default {
           password: this.password,
         })
         await this.$store.dispatch('GET_USER')
-        if(this.$store.state.user.role === 'Student') {
-          return this.$router.push('dashboard/student')
-        }
-        this.$router.push('dashboard/organization')
+        this.$router.push('dashboard')
       } catch (error) {
         this.$store.dispatch('GET_ALERT', error)
       }

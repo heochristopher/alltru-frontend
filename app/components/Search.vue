@@ -35,17 +35,17 @@
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border cursor-pointer"
           >
-            <search-toggle v-model="type" value="null" class="w-1/4"
-              >All</search-toggle
+            <toggle v-model="type" value="null" class="w-1/4"
+              >All</toggle
             >
-            <search-toggle v-model="type" value="Volunteer" class="w-1/4"
-              >Volunteer</search-toggle
+            <toggle v-model="type" value="Volunteer" class="w-1/4"
+              >Volunteer</toggle
             >
-            <search-toggle v-model="type" value="Internship" class="w-1/4"
-              >Internship</search-toggle
+            <toggle v-model="type" value="Internship" class="w-1/4"
+              >Internship</toggle
             >
-            <search-toggle v-model="type" value="Job" class="w-1/4"
-              >Job</search-toggle
+            <toggle v-model="type" value="Job" class="w-1/4"
+              >Job</toggle
             >
           </div>
         </div>
@@ -57,14 +57,14 @@
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
           >
-            <search-toggle v-model="remote" value="null" class="w-1/3"
-              >All</search-toggle
+            <toggle v-model="remote" value="null" class="w-1/3"
+              >All</toggle
             >
-            <search-toggle v-model="remote" value="false" class="w-1/3"
-              >On-Site</search-toggle
+            <toggle v-model="remote" value="false" class="w-1/3"
+              >On-Site</toggle
             >
-            <search-toggle v-model="remote" value="true" class="w-1/3"
-              >Remote</search-toggle
+            <toggle v-model="remote" value="true" class="w-1/3"
+              >Remote</toggle
             >
           </div>
         </div>

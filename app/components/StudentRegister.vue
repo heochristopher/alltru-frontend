@@ -123,7 +123,6 @@
 </template>
 
 <script>
-import { bindExpression } from '@babel/types'
 
 export default {
   name: 'StudentSignup',

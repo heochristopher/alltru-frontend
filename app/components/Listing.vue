@@ -44,7 +44,7 @@ export default {
       const difference = Date.now() - past
       const date = Math.floor(difference / (1000 * 3600 * 24))
       if (date === 1) {
-        return '1 day ago'
+        return 'yesterday'
       } else if (date === 0) {
         return 'today'
       }

@@ -21,6 +21,9 @@ export const mutations = {
     if(!alert.response) {return state.alert = alert}
     state.alert = alert.response
   },
+  DELETE_USER(state) {
+    state.user = null
+  }
 }
 
 export const actions = {
@@ -39,6 +42,9 @@ export const actions = {
   } catch (error) {
       console.log(error)
   }
+  },
+  LOGOUT({commit}) {
+    commit('DELETE_USER')
   },
   ADD_FILTERS({commit}, filters) {
     commit('SET_FILTERS', filters)

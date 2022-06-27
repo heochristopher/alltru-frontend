@@ -10,23 +10,23 @@
         required
         />
         <div class="" id="type">
-            <search-toggle
+            <toggle
             v-model="type" value="Volunteer"
-            >Volunteer</search-toggle>
-            <search-toggle
+            >Volunteer</toggle>
+            <toggle
             v-model="type" value="Internship"
-            >Internship</search-toggle>
-            <search-toggle
+            >Internship</toggle>
+            <toggle
             v-model="type" value="Job"
-            >Job</search-toggle>
+            >Job</toggle>
         </div>
         <div class="" id="remote">
-            <search-toggle
+            <toggle
             v-model="remote" value="true"
-            >Remote</search-toggle>
-            <search-toggle
+            >Remote</toggle>
+            <toggle
             v-model="remote" value="false"
-            >On-Site</search-toggle>
+            >On-Site</toggle>
         </div>
         <form-input
         id="borough"

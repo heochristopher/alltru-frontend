@@ -90,30 +90,35 @@
         <h5 class="text-xl font-semibold">Description</h5>
         <p class="text-md">{{ listing.description }}</p>
       </div>
-      <div
-        id="apply"
-        class="w-full h-auto flex flex-col justify-center items-center space-y-1 pt-4 border-t border-solid border-zinc-200"
-      >
-        <div class="w-full flex flex-col justify-start items-start space-y-1">
-          <h5 class="text-xl font-semibold">Apply</h5>
-          <p class="text-md pb-2">
-            Your information and resume will be sent automatically to the
-            organization when you apply.
-          </p>
-          <textarea
-            class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"
-            id="notes"
-            name="notes"
-            v-model="notes"
-            placeholder="Please include any additional information you would like to provide."
-            required
-          />
-        </div>
-        <div
-          id="btn"
-          class="w-5/6 pt-3 flex flex-col justify-center items-center sm:w-1/2 lg:w-5/12"
+      <div class="w-full h-auto flex flex-col justify-center items-center space-y-1 pt-4 border-t border-solid border-zinc-200">
+        <form
+          v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied"
+          method="POST"
+          @submit.prevent="apply(listing._id)"
+          id="apply"
+          class=""
         >
-          <form-btn>Apply</form-btn>
+          <div class="w-full flex flex-col justify-start items-start space-y-1">
+            <h5 class="text-xl font-semibold">Apply</h5>
+            <p class="text-md pb-2">
+              Your information and resume will be sent automatically to the
+              organization when you apply.
+            </p>
+            <textarea
+              class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"
+              id="notes"
+              name="notes"
+              v-model="notes"
+              placeholder="Please include any additional information you would like to provide."
+              required
+            />
+          </div>
+          <form-btn  class="w-full pt-3 flex flex-col justify-center items-center sm:w-1/2 lg:w-5/12">Apply</form-btn>
+        </form>
+        <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
+          <h5 class="text-xl font-semibold">Applied</h5>
+          <h6 class="text-md">Your Application:</h6>
+          <p class="text-md font-light">{{applied.note}}</p>
         </div>
       </div>
     </div>
@@ -122,11 +127,37 @@
 
 <script>
 export default {
-  async asyncData({ $axios, params }) {
+  data() {
+    return {
+      notes: null,
+    }
+  },
+  async asyncData({ $axios, params, store }) {
     const id = params.listing
     const listing = await $axios.$get(`/findListing/${id}`)
-    return { listing }
+    let applied = null
+    let user = null
+    if(store.state.user) {
+      user = await $axios.$get('/sendUser')
+      if(user.role === 'Student') {
+        applied = user.appliedListings.find(e => e._id === listing._id)
+        console.log(applied)
+        return {listing, user, applied}
+      }
+    }
+    return { listing, user, applied }
   },
+  methods: {
+    async apply(id) {
+      try {
+        const res = await this.$axios.$post(`/apply/${id}`, {note: this.notes})
+        this.$nuxt.refresh()
+        this.$store.dispatch('GET_ALERT', res)
+      } catch (error) {
+        this.$store.dispatch('GET_ALERT', error)
+      }
+    }
+  }
 }
 </script>
 
