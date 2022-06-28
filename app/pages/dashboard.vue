@@ -22,9 +22,7 @@ export default {
         const user = await $axios.$get('/sendUser')
         if(user.role === 'Student') {
             const saved = await $axios.$get('/sendSaved')
-            console.log(saved)
             const applied = await $axios.$get('/sendApplied')
-            console.log(applied)
             return {user, saved, applied}
         } else {
             const listings = await $axios.$get('/sendListings')
