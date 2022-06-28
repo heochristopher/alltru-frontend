@@ -86,20 +86,20 @@
       <!-- <div id="tags"></div> -->
       <div
         id="description"
-        class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2"
+        class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2 "
       >
         <h5 class="text-xl font-semibold">Description</h5>
         <p class="text-md">{{ listing.description }}</p>
       </div>
-      <div class="w-full h-auto flex flex-col justify-center items-center space-y-1 pt-4 border-t border-solid border-zinc-200">
+      <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200 ">
         <form
           v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied"
           method="POST"
           @submit.prevent="apply(listing._id)"
           id="apply"
-          class=""
+          class="w-full flex flex-col justify-center items-center space-y-4"
         >
-          <div class="w-full flex flex-col justify-start items-start space-y-1">
+          <div class="w-full flex flex-col justify-center items-start space-y-1">
             <h5 class="text-xl font-semibold">Apply</h5>
             <p class="text-md pb-2">
               Your information and resume will be sent automatically to the
@@ -114,7 +114,7 @@
               required
             />
           </div>
-          <form-btn  class="w-full pt-3 flex flex-col justify-center items-center sm:w-1/2 lg:w-5/12">Apply</form-btn>
+          <form-btn class="w-full flex flex-col justify-center items-center sm:w-1/2">Apply</form-btn>
         </form>
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>

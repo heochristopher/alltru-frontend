@@ -29,7 +29,7 @@
           </NuxtLink>
         </div>
         <div class="" v-else>
-          <nav-profile class="mr-8"/>
+          <nav-profile class="mr-10"/>
         </div>
         <div
           @click="toggleBurger"

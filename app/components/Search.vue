@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     search() {
-      this.isOpen = false
+      // this.isOpen = false
       if (this.remote) {
         this.zip === 'null'
       }

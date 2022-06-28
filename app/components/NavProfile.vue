@@ -1,5 +1,5 @@
 <template>
-    <div class="w-auto h-16 aspect-square overflow-hidden rounded-full">
+    <div class="w-auto h-12 aspect-square overflow-hidden rounded-full">
         <img @click="clicked = !clicked" :src="user.avatar" class="object-cover" alt="">
         <div
             v-if="clicked"
