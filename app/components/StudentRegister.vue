@@ -19,7 +19,7 @@
               type="text"
               name="first-name"
               v-model="firstName"
-              placeholder="First Name"
+              placeholder="First name"
               required
             />
           </div>
@@ -30,7 +30,7 @@
               type="text"
               name="last-name"
               v-model="lastName"
-              placeholder="Last Name"
+              placeholder="Last name"
               required
             />
           </div>
@@ -38,18 +38,21 @@
       </div>
       <div id="age" class="flex flex-col justify-center items-center">
         <!-- <label for="age">Date of Birth</label> -->
-        <div id="date-field" class="flex items-center justify-between">
+        <div id="date-field" class="flex items-end justify-between -mt-1.5">
           <div id="month" class="flex justify-start items-center w-24 mr-1">
-            <form-input
-              id="age"
-              type="number"
-              name="dob-month"
-              v-model="month"
-              placeholder="Month"
-              required
-            />
+            <div class="">
+              <label class="text-sm" for="dob-month">Birthday</label>
+              <form-input
+                id="age"
+                type="number"
+                name="dob-month"
+                v-model="month"
+                placeholder="Month"
+                required
+              />
+            </div>
           </div>
-          <div id="day" class="flex justify-start items-center w-24 mx-2">
+          <div id="day" class="flex justify-start w-24 mx-2">
             <form-input
               id="age"
               type="number"
@@ -59,7 +62,7 @@
               required
             />
           </div>
-          <div id="year" class="flex justify-start items-center w-28 ml-1">
+          <div id="year" class="flex justify-start w-28 ml-1">
             <form-input
               id="age"
               type="number"

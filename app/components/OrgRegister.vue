@@ -13,7 +13,7 @@
           type="text"
           name="org"
           v-model="org"
-          placeholder="Organization"
+          placeholder="Your organization"
           required
         />
       </div>
@@ -30,7 +30,7 @@
               type="text"
               name="first-name"
               v-model="firstName"
-              placeholder="First Name"
+              placeholder="First name"
               required
             />
           </div>
@@ -41,7 +41,7 @@
               type="text"
               name="last-name"
               v-model="lastName"
-              placeholder="Last Name"
+              placeholder="Last name"
               required
             />
           </div>
