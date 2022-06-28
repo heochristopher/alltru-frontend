@@ -29,13 +29,13 @@
           id="profile"
           class="w-full flex flex-col justify-start items-start space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-4"
         >
-          <div id="avatar" class="h-40 w-40 sm:h-28 sm:w-28 md:h-32 md:w-32">
+          <nuxt-link :to="`/organizations/${listing.org._id}`" id="avatar" class="h-40 w-40 sm:h-28 sm:w-28 md:h-32 md:w-32">
             <img :src="listing.org.avatar" alt="logo" class="object-cover" />
-          </div>
+          </nuxt-link>
           <div id="title" class="h-auto overflow-hidden">
-            <h3 class="text-lg sm:text-xl">
+            <nuxt-link :to="`/organizations/${listing.org._id}`" class="text-lg sm:text-xl">
               {{ listing.org.affiliation }}
-            </h3>
+            </nuxt-link>
             <h2 class="text-3xl font-medium pb-2 sm:text-4xl">
               {{ listing.position }}
             </h2>
