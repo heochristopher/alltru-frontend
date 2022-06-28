@@ -8,6 +8,7 @@
             :github="user.contact.github"
             :linkedin="user.contact.linkedIn"
             />
+            <biography :bio="user.biography"/>
             <div id="listings" class="mx-4">
                 <h2 class="text-2xl font-semibold">My Listings</h2>
                 <listing

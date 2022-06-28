@@ -2,6 +2,7 @@ export const state = () => ({
   user: null,
   filters: null,
   alert: null,
+  modal: false
 })
 
 export const getter = {
@@ -23,6 +24,9 @@ export const mutations = {
   },
   DELETE_USER(state) {
     state.user = null
+  },
+  SET_MODAL(state) {
+    state.modal = !state.modal
   }
 }
 
@@ -52,4 +56,7 @@ export const actions = {
   GET_ALERT({commit}, alert) {
     commit('SET_ALERT', alert)
   },
+  CHANGE_MODAL({commit}) {
+    commit('SET_MODAL')
+  }
 }

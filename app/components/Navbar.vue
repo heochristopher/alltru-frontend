@@ -1,6 +1,6 @@
 <template>
-  <div id="nav">
-    <div class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-50">
+  <div>
+    <div class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-50"  :class="{'bg-gray-500': this.$store.state.modal}">
       <div id="content" class="w-full h-full flex justify-between items-center">
         <h1 class="text-3xl ml-10 font-medium truncate z-50">
           <NuxtLink to="/listings">Alltru</NuxtLink>

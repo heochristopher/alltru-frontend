@@ -9,14 +9,15 @@
         id="back"
         class="w-full h-12 flex justify-end items-center z-20 border-b border-solid border-zinc-200"
       >
-        <NuxtLink to="/listings">
+        <NuxtLink :to="route !== '/dashboard' ? route.fullPath : '/dashboard'">
           <div class="flex justify-center items-center space-x-0.5 mr-3">
             <img
               class=""
               src="../../assets/icons/chevron-left.svg"
               alt="left"
             />
-            <p class="text-sm font-medium">Back to Listings</p>
+            <p v-if="route !== '/dashboard'" class="text-sm font-medium">Back to {{route.name}}</p>
+            <p v-else class="text-sm font-medium">Back to dashboard</p>
           </div>
         </NuxtLink>
       </div>
@@ -132,8 +133,10 @@ export default {
       notes: null,
     }
   },
-  async asyncData({ $axios, params, store }) {
+  async asyncData({ $axios, params, store, from }) {
     const id = params.listing
+    let route = '/dashboard'
+    if(from) {route = from}
     const listing = await $axios.$get(`/findListing/${id}`)
     let applied = null
     let user = null
@@ -141,11 +144,10 @@ export default {
       user = await $axios.$get('/sendUser')
       if(user.role === 'Student') {
         applied = user.appliedListings.find(e => e._id === listing._id)
-        console.log(applied)
-        return {listing, user, applied}
+        return {listing, user, applied, route}
       }
     }
-    return { listing, user, applied }
+    return { listing, user, applied, route }
   },
   methods: {
     async apply(id) {

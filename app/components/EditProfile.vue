@@ -1,11 +1,11 @@
 <template>
     <div class="">
-        <button class="fixed right-2 rounded-full p-2 hover:bg-gray-300 ease-in duration-75" @click="formOpen = !formOpen">
+        <button class="fixed right-2 rounded-full p-2 hover:bg-gray-300 ease-in duration-75" @click="toggleModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
             </svg>
         </button>
-        <form method="POST" @submit="editProfile" id="" class="" v-if="formOpen">
+        <form method="POST" @submit="editProfile" id="" class="fixed inset-0 mt-40 mx-8 bg-white z-10 h-96" v-if="this.$store.state.modal">
             <form-input
              id="affiliation"
              type="text"
@@ -25,9 +25,9 @@
             <h3>Add socials</h3>
             <div id="" class="flex flex-row h-16 w-1/3 mx-6 mt-4 space-x-6 items-center">
                 <div id="linkedin">
-                    <button class="h-full aspect-square" @click="linkedinOpen = true">
+                    <div class="h-full aspect-square" @click="linkedinOpen = true">
                         <img src="@/assets/icons/inmark.png" alt=""/>
-                    </button>
+                    </div>
                     <form-input v-if="linkedinOpen"
                     id="linkedIn"
                     type="text"
@@ -37,9 +37,9 @@
                     />
                 </div>
                 <div id="github">
-                    <button class="h-full aspect-square" @click="githubOpen = true">
+                    <div class="h-full aspect-square" @click="githubOpen = true">
                         <img src="@/assets/icons/github.png" alt=""/>
-                    </button>
+                    </div>
                     <form-input v-if="githubOpen"
                     id="github"
                     type="text"
@@ -50,6 +50,7 @@
                 </div>
             </div>
           </div>
+          <form-btn>Confirm changes</form-btn>
         </form>
     </div>
 </template>
@@ -67,6 +68,11 @@ export default {
             github: null,
             biography: null,
             birthday: null,
+        }
+    },
+    methods: {
+        toggleModal() {
+            this.$store.dispatch('CHANGE_MODAL')
         }
     },
     computed: {
