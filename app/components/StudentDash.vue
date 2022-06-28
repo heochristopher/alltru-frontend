@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'bg-gray-500': this.$store.state.modal}"  id="">
+    <div id="student">
         <edit-profile class="mt-24 -mb-24"/>
         <div id="" v-on="this.$store.state.modal ? {click: toggleModal} : {}">
             <navbar/>
