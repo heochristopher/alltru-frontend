@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 #filters {
   -webkit-appearance: none;
   -ms-overflow-style: none;
