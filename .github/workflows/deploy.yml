@@ -16,12 +16,12 @@ jobs:
       - name: Copy repo
         uses: garygrossgarten/github-action-scp@v0.7.3
           with:
-          local: app
-          remote: ~/app/alltru
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          privateKey: ${{secrets.SSH_KEY}}
-          passphrase: ${{secrets.SSH_PASSPHRASE}}
+            local: app
+            remote: ~/app/alltru
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            privateKey: ${{secrets.SSH_KEY}}
+            passphrase: ${{secrets.SSH_PASSPHRASE}}
 
       - name: Create .env
         uses: appleboy/ssh-action@v0.1.4
