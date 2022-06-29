@@ -62,10 +62,6 @@ export default {
     },
   },
 
-  styleResources: {
-    scss: ['~assets/scss/mixins.scss', '~assets/scss/variables.scss'],
-  },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {
