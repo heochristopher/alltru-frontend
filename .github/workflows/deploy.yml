@@ -17,13 +17,13 @@ jobs:
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
           local: app
-          remote: ~/app/alltru
+          remote: app/alltru
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           privateKey: ${{secrets.SSH_KEY}}
           passphrase: ${{secrets.SSH_PASSPHRASE}}
 
-      - name: Create .env
+      - name: Run app
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{secrets.SSH_HOST}}
