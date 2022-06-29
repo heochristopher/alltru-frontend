@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-50"  :class="{'bg-gray-500': this.$store.state.modal}">
+    <div class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-40">
       <div id="content" class="w-full h-full flex justify-between items-center">
         <h1 class="text-3xl ml-10 font-medium truncate z-50">
           <NuxtLink to="/listings">Alltru</NuxtLink>
@@ -34,7 +34,7 @@
         <div
           @click="toggleBurger"
           id="burger"
-          class="flex justify-center items-center mr-10 cursor-pointer sm:hidden z-50"
+          class="flex justify-center items-center mr-10 cursor-pointer sm:hidden z-40"
           v-if="!user"
         >
           <img v-if="!burger" src="@/assets/icons/menu.svg" alt="menu" />
@@ -45,7 +45,7 @@
     <div
       v-if="burger"
       id="menu-content"
-      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-40 space-y-4 pt-24 pb-6 sm:hidden"
+      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-30 space-y-4 pt-24 pb-6 sm:hidden"
     >
       <NuxtLink
         to="/register"
