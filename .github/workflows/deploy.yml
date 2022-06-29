@@ -13,15 +13,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Copy via ssh
-        uses: garygrossgarten/github-action-scp@v0.7.3
+      - name: Copy repository
+      - uses: actions/checkout@v2.4.2@main
+        uses: appleboy/scp-action@v0.0.1@main
         with:
-          local: app
-          remote: app/alltru
           host: ${{ secrets.SSH_HOST }}
-          privateKey: ${{secrets.SSH_KEY}}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{secrets.SSH_KEY}}
           passphrase: ${{secrets.SSH_PASSPHRASE}}
-          username: ${{secrets.SSH_USERNAME}}
+          source: "app"
+          target: "app/alltru"
 
       - name: Run app
         uses: appleboy/ssh-action@v0.1.4
