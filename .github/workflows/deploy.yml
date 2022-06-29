@@ -23,12 +23,15 @@ jobs:
           privateKey: ${{secrets.SSH_KEY}}
           passphrase: ${{secrets.SSH_PASSPHRASE}}
 
-      # - name: Create .env
-      #   uses: appleboy/ssh-action@v0.1.4
-      #   with:
-      #     host: ${{secrets.SSH_HOST}}
-      #     key: ${{secrets.SSH_KEY}}
-      #     passphrase: ${{secrets.SSH_PASSPHRASE}}
-      #     username: ${{secrets.SSH_USERNAME}}
+      - name: Create .env
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          passphrase: ${{secrets.SSH_PASSPHRASE}}
+          username: ${{secrets.SSH_USERNAME}}
 
-      #     script: |
+          script: |
+            cd app/alltru
+            npm run build
+            pm2 start
