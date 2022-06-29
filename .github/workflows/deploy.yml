@@ -8,16 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: env
-      - name: Copy repository
-        uses: garygrossgarten/github-action-scp@v0.7.3
-        with:
-          local: app
-          remote: app/alltru
-          host: ${{ secrets.SSH_HOST }}
-          privateKey: ${{secrets.SSH_KEY}}
-          passphrase: ${{secrets.SSH_PASSPHRASE}}
-          username: ${{secrets.SSH_USERNAME}}
+      # - name: Copy repository
+      #   uses: garygrossgarten/github-action-scp@v0.7.3
+      #   with:
+      #     local: app
+      #     remote: app/alltru
+      #     host: ${{ secrets.SSH_HOST }}
+      #     privateKey: ${{secrets.SSH_KEY}}
+      #     passphrase: ${{secrets.SSH_PASSPHRASE}}
+      #     username: ${{secrets.SSH_USERNAME}}
 
       - name: Run app
         uses: appleboy/ssh-action@v0.1.4
