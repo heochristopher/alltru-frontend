@@ -5,20 +5,9 @@
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
             </svg>
         </button>
-        <form method="POST" @submit="editProfile" id="" class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.modal"> 
+        <form method="PATCH" @submit.prevent="editProfile" id="" class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.modal"> 
         <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 z-40" @click="toggleModal"></div>
         <div id="content" class="w-5/6 h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
-            <div class="w-full space-y-2">
-                <label for="affiliation">School</label>
-                <form-input
-                id="affiliation"
-                type="text"
-                name="affiliation"
-                v-model="affiliation"
-                :placeholder="affiliationText"
-                :value="user.affiliation"
-                />
-            </div>
             <div class="w-full space-y-2">
                 <label for="biography">Biography</label>
                 <textarea
@@ -31,12 +20,12 @@
             </div>
           <div id="socials" class="w-full space-y-2">
             <label for="socials">Add Platforms</label>
-            <div class="w-full flex justify-start items-start space-x-6">
-                <div id="linkedin">
-                    <div class="h-16 w-16 aspect-square ml-2" @click="linkedinOpen = true">
+            <div class="w-full flex flex-col justify-start items-start space-y-2">
+                <div id="linkedin" class="flex flex-row space-x-4">
+                    <div class="h-16 w-16 aspect-square">
                         <img src="@/assets/icons/inmark.png" alt="" class="object-cover"/>
                     </div>
-                    <form-input v-if="linkedinOpen"
+                    <form-input
                     id="linkedIn"
                     type="text"
                     name="linkedIn"
@@ -44,11 +33,11 @@
                     placeholder="Have a LinkedIn account?"
                     />
                 </div>
-                <div id="github">
-                    <div class="h-16 w-16 aspect-square" @click="githubOpen = true">
+                <div id="github" class="flex flex-row space-x-4">
+                    <div class="h-16 w-16 aspect-square">
                         <img src="@/assets/icons/github.png" alt="" class="object-cover"/>
                     </div>
-                    <form-input v-if="githubOpen"
+                    <form-input
                     id="github"
                     type="text"
                     name="github"
@@ -59,7 +48,7 @@
             </div>
           </div>
           <div class="flex justify-center items-center w-2/3">
-<form-btn>Confirm Changes</form-btn>
+            <form-btn >Confirm Changes</form-btn>
           </div>
         </div>
         </form>
@@ -72,9 +61,6 @@ export default {
         return {
             user: this.$store.state.user,
             formOpen: false,
-            linkedinOpen: false,
-            githubOpen: false,
-            affiliation: null,
             linkedIn: null,
             github: null,
             biography: null,
@@ -84,12 +70,33 @@ export default {
     methods: {
         toggleModal() {
             this.$store.dispatch('CHANGE_MODAL')
+        },
+        async editProfile() {
+            try {
+                if(this.linkedIn) {
+                    if(!this.linkedIn.includes('https://')) {
+                        this.linkedIn = 'https://' + this.linkedIn
+                    }
+                }
+                if(this.github) {
+                    if(!this.github.includes('https://')) {
+                        this.github = 'https://' + this.github
+                    }
+                }
+                const res = await this.$axios.patch('/editProfile', {
+                    biography: this.biography,
+                    linkedIn: this.linkedIn,
+                    github: this.github
+                })
+                this.$router.app.refresh()
+                this.$store.dispatch('CHANGE_MODAL')
+                this.$store.dispatch('GET_ALERT', res)
+            } catch (error) {
+                console.log(error)
+            }
         }
     },
     computed: {
-        affiliationText() {
-            return this.$store.state.user.role === 'Student' ? 'School' : 'Organization'
-        },
         bioText() {
             return this.$store.state.user.role === 'Student' ? 'What would you like organizations to know about you?' : 'What would you like students to know about you?'
         }

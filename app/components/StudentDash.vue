@@ -21,7 +21,7 @@
                         <h3 class="text-xl">Applied Listings</h3>
                         <listing
                         v-for="listing in applied"
-                        :key="listing.position"
+                        :key="listing._id"
                         :listing="listing"
                         :isSaved="user.savedListings.includes(listing._id)"
                         />
@@ -30,7 +30,7 @@
                         <h3 class="text-xl">Saved Listings</h3>
                         <listing
                         v-for="listing in saved"
-                        :key="listing.position"
+                        :key="listing._id"
                         :listing="listing"
                         :isSaved="user.savedListings.includes(listing._id)"
                         />

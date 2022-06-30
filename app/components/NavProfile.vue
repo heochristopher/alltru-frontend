@@ -4,7 +4,7 @@
         <div
             v-if="clicked"
             id="menu-content"
-            class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-40 space-y-4 pt-24 pb-6 sm:hidden"
+            class="fixed top-0 right-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end space-y-4 -z-20 pt-24 pb-6 sm:w-1/3"
             >
             <NuxtLink
                 to="/dashboard"
@@ -35,7 +35,7 @@ export default {
                 const res = await this.$axios.$post('/logout')
                 console.log(res)
                 this.$store.dispatch('LOGOUT')
-                this.$router.push('listings')
+                this.$router.push('/')
             } catch (error) {
                 console.log(error)
             }

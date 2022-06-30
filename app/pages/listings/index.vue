@@ -18,7 +18,7 @@
       >
         <listing
           v-for="listing in listings"
-          :key="listing.position"
+          :key="listing._id"
           :listing="listing"
           :isSaved="!user ? null : ( user.role === 'Student' ? user.savedListings.includes(listing._id) : null)"
         />
@@ -30,7 +30,7 @@
       >
         <listing
           v-for="listing in query"
-          :key="listing.position"
+          :key="listing._id"
           :listing="listing"
           :isSaved="!user ? null : ( user.role === 'Student' ? user.savedListings.includes(listing._id) : null)"
         />

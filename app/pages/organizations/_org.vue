@@ -9,7 +9,7 @@
         <h2 class="text-lg font-semibold">{{`${org.affiliation}'s posted listings`}}</h2>
           <listing
             v-for="listing in listings"
-            :key="listing.position"
+            :key="listing._id"
             :listing="listing"
             :isSaved="(!user) ? null : user.savedListings.includes(listing._id)"
           />

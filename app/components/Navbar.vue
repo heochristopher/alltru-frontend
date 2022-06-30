@@ -28,8 +28,23 @@
             </div>
           </NuxtLink>
         </div>
-        <div class="" v-else>
-          <nav-profile class="mr-10"/>
+          <div class="flex flex-row" v-else>
+            <div
+            id="links"
+            class="hidden justify-center items-center mr-10 space-x-8 sm:flex"
+          >
+            <NuxtLink
+              to="/listings"
+              class="text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+              >Listings</NuxtLink
+            >
+            <NuxtLink
+              to="/dashboard"
+              class="text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+              >Your Profile</NuxtLink
+            >
+          </div>
+            <nav-profile class="mr-10"/>
         </div>
         <div
           @click="toggleBurger"
