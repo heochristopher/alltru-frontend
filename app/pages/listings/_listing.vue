@@ -121,8 +121,19 @@
           <h6 class="text-md">Your Application:</h6>
           <p class="text-md font-light">{{applied.note}}</p>
         </div>
+        <div class="" v-else-if="user.role === 'Organization' && listing.org._id === user._id">
+          <h5 class="text-xl font-semibold">Applicants</h5>
+          <div id="applicants" class="flex flex-col space-y-4 -mx-4 mt-2">
+            <applicant
+            v-for="applicant in applicants"
+            :key="applicant._id"
+            :user="applicant"
+            />
+          </div>
+        </div>
       </div>
     </div>
+    <alert/>
   </div>
 </template>
 
@@ -140,14 +151,18 @@ export default {
     const listing = await $axios.$get(`/findListing/${id}`)
     let applied = null
     let user = null
+    let applicants = null
     if(store.state.user) {
       user = await $axios.$get('/sendUser')
       if(user.role === 'Student') {
         applied = user.appliedListings.find(e => e._id === listing._id)
-        return {listing, user, applied, route}
+        return {listing, user, applied, route, applicants}
+      } else if (user.role === 'Organization') {
+        applicants = await $axios.$get(`/queryApplicants/${listing._id}`)
+        return {listing, user, applied, route, applicants}
       }
     }
-    return { listing, user, applied, route }
+    return { listing, user, applied, route, applicants }
   },
   methods: {
     async apply(id) {

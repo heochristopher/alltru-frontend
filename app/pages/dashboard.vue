@@ -9,6 +9,7 @@
     :user="user"
     :listings="listings"
     />
+    <alert/>
   </div>
 </template>
 

@@ -8,6 +8,7 @@
     <div id="content" class="w-full h-screen flex justify-center items-center">
       <signin />
     </div>
+    <alert/>
   </div>
 </template>
 

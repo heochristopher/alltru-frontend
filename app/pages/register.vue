@@ -61,6 +61,7 @@
         </org-register>
       </div>
     </div>
+    <alert/>
   </div>
 </template>
 

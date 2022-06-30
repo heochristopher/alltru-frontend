@@ -43,6 +43,13 @@
               class="text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
               >Your Profile</NuxtLink
             >
+            <NuxtLink to="/create-listing" v-if="user.role === 'Organization'"
+            ><div
+              class="px-3 py-2 rounded-md bg-zinc-900 flex justify-center items-center ease-in duration-100 hover:bg-zinc-800"
+            >
+              <p class="text-md text-white">Create Listing</p>
+            </div>
+          </NuxtLink>
           </div>
             <nav-profile class="mr-10"/>
         </div>

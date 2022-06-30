@@ -1,32 +1,32 @@
-name: deploy
+# name: deploy
 
-on:
-  push:
-    branches: [main]
+# on:
+#   push:
+#     branches: [main]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Copy repository
-        uses: garygrossgarten/github-action-scp@v0.7.3
-        with:
-          local: app
-          remote: app/alltru
-          host: ${{ secrets.SSH_HOST }}
-          privateKey: ${{secrets.SSH_KEY}}
-          passphrase: ${{secrets.SSH_PASSPHRASE}}
-          username: ${{secrets.SSH_USERNAME}}
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Copy repository
+#         uses: garygrossgarten/github-action-scp@v0.7.3
+#         with:
+#           local: app
+#           remote: app/alltru
+#           host: ${{ secrets.SSH_HOST }}
+#           privateKey: ${{secrets.SSH_KEY}}
+#           passphrase: ${{secrets.SSH_PASSPHRASE}}
+#           username: ${{secrets.SSH_USERNAME}}
 
-      - name: Run app
-        uses: appleboy/ssh-action@v0.1.4
-        with:
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_KEY}}
-          passphrase: ${{secrets.SSH_PASSPHRASE}}
-          username: ${{secrets.SSH_USERNAME}}
+#       - name: Run app
+#         uses: appleboy/ssh-action@v0.1.4
+#         with:
+#           host: ${{secrets.SSH_HOST}}
+#           key: ${{secrets.SSH_KEY}}
+#           passphrase: ${{secrets.SSH_PASSPHRASE}}
+#           username: ${{secrets.SSH_USERNAME}}
 
-          script: |
-            cd app/alltru
-            npm run build
-            pm2 start
+#           script: |
+#             cd app/alltru
+#             npm run build
+#             pm2 start

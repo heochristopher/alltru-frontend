@@ -36,6 +36,7 @@
         />
       </div>
     </div>
+    <alert/>
     <!-- <page-footer/> -->
   </div>
 </template>

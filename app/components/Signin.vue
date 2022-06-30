@@ -4,7 +4,6 @@
     class="h-auto w-96 p-4 relative flex flex-col justify-center items-center"
   >
     <form @submit.prevent="login" method="POST" class="space-x-2 space-y-5">
-      <alert />
       <h1 class="text-center text-2xl">Welcome back,</h1>
       <div id="email" class="w-80 flex flex-col justify-center items-center">
         <!-- <label for="email">Email</label> -->

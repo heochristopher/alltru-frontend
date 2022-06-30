@@ -11,6 +11,12 @@
                 class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
                 >Your Profile</NuxtLink
             >
+            <NuxtLink
+                v-if="user.role === 'Organization'"
+                to="/create-listing"
+                class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+                >Create Listing</NuxtLink
+            >
             <button
                 @click="logout"
                 to="/"
