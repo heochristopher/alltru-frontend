@@ -3,7 +3,7 @@
     <div
       id="error"
       v-if="alert.status >= 400"
-      class="px-2 py-1 w-1/2 fixed bottom-8 right-8 z-30 bg-red-100 border border-solid border-red-600 rounded-md flex justify-center items-center"
+      class="px-2 py-1 w-2/3 h-10 fixed bottom-8 right-8 z-30 bg-red-100 border border-solid border-red-600 rounded-md flex justify-center items-center"
     >
       <div id="data">
         <h4 id="message" class="text-sm text-red-600 text-center">
@@ -14,7 +14,7 @@
     <div
       id="success"
       v-if="alert.status < 400"
-      class="px-2 py-1 w-1/2 fixed bottom-8 right-8 z-30 bg-green-100 border border-solid border-green-600 rounded-md flex justify-center items-center"
+      class="px-2 py-1 w-2/3 h-10 fixed bottom-8 right-8 z-30 bg-green-100 border border-solid border-green-600 rounded-md flex justify-center items-center"
     >
       <div id="data">
         <h4 id="message" class="text-sm text-green-600 text-center">

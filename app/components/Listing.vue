@@ -13,7 +13,7 @@
           <img class="object-cover" :src="listing.org.avatar" alt="" />
         </div>
         <div id="container" class="flex flex-col justify-center items-start">
-          <h4 class="text-md">{{ listing.org.affiliation }}</h4>
+          <h4 class="text-base text-zinc-600">{{ listing.org.affiliation }}</h4>
           <h3 class="text-xl mb-2 font-medium">{{ listing.position }}</h3>
           <div
             class="flex flex-col justify-center items-start space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0"
@@ -21,7 +21,7 @@
             <listing-type class="my-auto" :listing="listing" />
             <location class="my-auto" :listing="listing" />
           </div>
-          <p class="text-gray-500 text-sm mt-4" id="date">Posted {{ date }}</p>
+          <p class="text-zinc-500 text-sm mt-4" id="date">Posted {{ date }}</p>
         </div>
       </nuxt-link>
       <!-- <listing-options :id="listing._id" :isSaved="isSaved"/> -->

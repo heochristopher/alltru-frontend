@@ -11,6 +11,7 @@
       <button class="" @click="save">
         <!-- <img src="@/assets/icons/bookmark.svg" alt="bookmark icon" :class="{saved: this.saved}"> -->
         <svg
+          class="hover:fill-black"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
