@@ -1,12 +1,15 @@
 <template>
     <div class="">
-        <button class="absolute right-2 rounded-full p-3 hover:bg-zinc-200 ease-in duration-100" @click="toggleModal">
+        <button class="rounded-full m-2 p-2 hover:bg-zinc-200 ease-in duration-100 z-40 sm:p-3" @click="toggleModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
             </svg>
         </button>
         <form method="PATCH" @submit.prevent="editProfile" id="" class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.modal"> 
         <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 z-40" @click="toggleModal"></div>
+        <div id="close" class="absolute top-3 right-3 z-50 cursor-pointer" @click="toggleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </div>
         <div id="content" class="w-5/6 h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
             <div class="w-full space-y-2">
                 <label for="biography">Biography</label>

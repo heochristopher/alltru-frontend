@@ -1,5 +1,5 @@
 <template>
-  <div id="">
+  <div id="dashboard">
     <student-dash v-if="user.role === 'Student'"
     :user="user"
     :saved="saved"
@@ -9,6 +9,15 @@
     :user="user"
     :listings="listings"
     />
+    <!-- <student-dash
+    :user="user"
+    :saved="saved"
+    :applied="applied"
+    />
+    <org-dash
+    :user="user"
+    :listings="listings"
+    /> -->
     <alert/>
   </div>
 </template>
