@@ -12,7 +12,7 @@
         </div>
         <div id="content" class="w-5/6 h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
             <div class="w-full space-y-2">
-                <label for="biography">Biography</label>
+                <label class="text-lg font-medium" for="biography">Biography</label>
                 <textarea
                 class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border text-sm"
                 id="biography"
@@ -22,7 +22,7 @@
                 />
             </div>
           <div id="socials" class="w-full space-y-2">
-            <label for="socials">Add Platforms</label>
+            <label class="text-lg font-medium" for="socials">Add Platforms</label>
             <div class="w-full flex flex-col justify-start items-start space-y-2">
                 <div id="linkedin" class="flex flex-row space-x-4">
                     <div class="h-16 w-16 aspect-square">
