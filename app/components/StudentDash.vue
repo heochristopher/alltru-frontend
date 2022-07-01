@@ -52,6 +52,14 @@
                         </div>
                     </div>
                 </div>
+                <div id="logout" class="w-11/12 max-w-4xl h-auto flex justify-center items-center rounded-lg shadow-md p-2 sm:p-4">
+                    <button
+                        @click="logout"
+                        class="w-full max-w-sm h-12 text-base bg-red-100 flex justify-center items-center rounded-md ease-in duration-150 text-red-600 hover:bg-red-200 hover:text-red-700"
+                    >
+                        Logout
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -67,6 +75,16 @@ export default {
     methods: {
         toggleModal() {
             this.$store.dispatch('CHANGE_MODAL')
+        },
+        async logout() {
+            try {
+                const res = await this.$axios.$post('/logout')
+                console.log(res)
+                this.$store.dispatch('LOGOUT')
+                this.$router.push('/')
+            } catch (error) {
+                console.log(error)
+            }
         }
     },
     props: {

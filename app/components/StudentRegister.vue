@@ -38,10 +38,10 @@
       </div>
       <div id="age" class="flex flex-col justify-center items-center">
         <!-- <label for="age">Date of Birth</label> -->
-        <div id="date-field" class="flex items-end justify-between -mt-1.5">
+        <div id="date-field" class="flex items-end justify-between">
           <div id="month" class="flex justify-start items-center w-24 mr-1">
             <div class="">
-              <label class="text-sm" for="dob-month">Birthday</label>
+              <!-- <label class="text-sm" for="dob-month">Birthday</label> -->
               <form-input
                 id="age"
                 type="number"

@@ -38,7 +38,7 @@ export default {
             const listings = await $axios.$get('/sendListings')
             return {user, listings}
         }
-    }
+    },
 }
 </script>
 
