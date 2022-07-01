@@ -55,15 +55,15 @@
           >
             <div id="payment">
               <p class="uppercase text-xs font-semibold">Payment</p>
-              <h5 class="ml-1 text-lg">Stipend</h5>
+              <h5 class="ml-1 text-lg text-zinc-600">Stipend</h5>
             </div>
             <div id="wage">
               <p class="uppercase text-xs font-semibold">Stipend / Wage</p>
-              <h5 class="ml-1 text-lg">$2000</h5>
+              <h5 class="ml-1 text-lg text-zinc-600">$2000</h5>
             </div>
             <div id="commitment">
               <p class="uppercase text-xs font-semibold">Hours per Week</p>
-              <h5 class="ml-1 text-lg">25hrs/week</h5>
+              <h5 class="ml-1 text-lg text-zinc-600">25hrs/week</h5>
             </div>
           </div>
           <!-- <div
@@ -71,14 +71,14 @@
             class="w-full flex flex-col justify-center items-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 sm:justify-start sm:items-start"
           >
             <button
-              class="w-11/12 h-12 bg-zinc-100 text-md flex justify-center items-center rounded-md ease-in duration-150 hover:bg-zinc-200 sm:w-52 md:w-56 lg:w-64"
+              class="w-11/12 h-12 bg-zinc-100 text-base flex justify-center items-center rounded-md ease-in duration-150 hover:bg-zinc-200 sm:w-52 md:w-56 lg:w-64"
             >
               Save
             </button>
             <button
-              class="w-11/12 h-12 bg-zinc-100 text-md flex justify-center items-center rounded-md ease-in duration-150 hover:bg-zinc-200 sm:w-52 md:w-56 lg:w-64"
+              class="w-11/12 h-12 bg-zinc-100 text-base flex justify-center items-center rounded-md ease-in duration-150 hover:bg-zinc-200 sm:w-52 md:w-56 lg:w-64"
             >
-              <a href="#apply" class="text-md text-black">Apply</a>
+              <a href="#apply" class="text-base text-black">Apply</a>
             </button>
           </div> -->
         </div>
@@ -89,7 +89,7 @@
         class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2 "
       >
         <h5 class="text-xl font-semibold">Description</h5>
-        <p class="text-md">{{ listing.description }}</p>
+        <p class="text-base text-zinc-600">{{ listing.description }}</p>
       </div>
       <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200 ">
         <form
@@ -101,7 +101,7 @@
         >
           <div class="w-full flex flex-col justify-center items-start space-y-1">
             <h5 class="text-xl font-semibold">Apply</h5>
-            <p class="text-md pb-2">
+            <p class="text-zinc-600 text-base pb-2">
               Your information and resume will be sent automatically to the
               organization when you apply.
             </p>
@@ -118,8 +118,8 @@
         </form>
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>
-          <h6 class="text-md">Your Application:</h6>
-          <p class="text-md font-light">{{applied.note}}</p>
+          <h6 class="text-base font-medium">Your Application:</h6>
+          <p class="text-sm text-zinc-500">{{applied.note}}</p>
         </div>
         <div class="" v-else-if="user.role === 'Organization' && listing.org._id === user._id">
           <h5 class="text-xl font-semibold">Applicants</h5>

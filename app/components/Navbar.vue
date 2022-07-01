@@ -12,19 +12,19 @@
         >
           <NuxtLink
             to="/register"
-            class="text-md text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+            class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800"
             >For Students</NuxtLink
           >
           <NuxtLink
             to="/register"
-            class="text-md text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+            class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800"
             >For Organizations</NuxtLink
           >
           <NuxtLink to="/login"
             ><div
               class="w-20 h-10 rounded-md bg-zinc-900 flex justify-center items-center ease-in duration-100 hover:bg-zinc-800"
             >
-              <p class="text-md text-white">Login</p>
+              <p class="text-base text-white">Login</p>
             </div>
           </NuxtLink>
         </div>
@@ -41,17 +41,17 @@
             <NuxtLink
               to="/dashboard"
               class="text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
-              >Your Profile</NuxtLink
+              >Dashboard</NuxtLink
             >
             <NuxtLink to="/create-listing" v-if="user.role === 'Organization'"
             ><div
               class="px-3 py-2 rounded-md bg-zinc-900 flex justify-center items-center ease-in duration-100 hover:bg-zinc-800"
             >
-              <p class="text-md text-white">Create Listing</p>
+              <p class="text-base text-white">Create Listing</p>
             </div>
           </NuxtLink>
           </div>
-            <nav-profile class="mr-10"/>
+            <nav-profile class="mr-10 cursor-pointer"/>
         </div>
         <div
           @click="toggleBurger"
@@ -67,7 +67,7 @@
     <div
       v-if="burger"
       id="menu-content"
-      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end z-30 space-y-4 pt-24 pb-6 sm:hidden"
+      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end -z-20 space-y-4 pt-24 pb-6 sm:hidden"
     >
       <NuxtLink
         to="/register"

@@ -31,7 +31,7 @@
           id="type"
           class="flex flex-col justify-center items-center space-y-2"
         >
-          <label for="type" class="text-md">Opportunity Type</label>
+          <label for="type" class="text-base">Opportunity Type</label>
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border cursor-pointer"
           >
@@ -53,7 +53,7 @@
           id="remote"
           class="flex flex-col justify-center items-center space-y-2"
         >
-          <label for="remote" class="text-md">Location Preferences</label>
+          <label for="remote" class="text-base">Location Preferences</label>
           <div
             class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
           >
@@ -73,7 +73,7 @@
           class="flex flex-col justify-center items-center space-y-2"
           v-if="remote !== 'true'"
         >
-          <label for="zip" class="text-md">Search Zipcode</label>
+          <label for="zip" class="text-base">Search Zipcode</label>
           <div
             id="search"
             class="flex justify-start items-center w-full h-12 text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"

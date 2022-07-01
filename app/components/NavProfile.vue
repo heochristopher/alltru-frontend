@@ -4,12 +4,12 @@
         <div
             v-if="clicked"
             id="menu-content"
-            class="fixed top-0 right-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end space-y-4 -z-20 pt-24 pb-6 sm:w-1/3"
+            class="fixed top-0 right-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end space-y-4 -z-20 pt-24 pb-6 sm:hidden"
             >
             <NuxtLink
                 to="/dashboard"
                 class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
-                >Your Profile</NuxtLink
+                >Dashboard</NuxtLink
             >
             <NuxtLink
                 v-if="user.role === 'Organization'"

@@ -1,30 +1,48 @@
 <template>
-    <div id="">
-        <edit-profile class="mt-24 -mb-24"/>
+    <div id="org">
         <div id="" v-on="this.$store.state.modal ? {click: toggleModal} : {}">
             <navbar/>
-            <div class="mt-24">
-                <user :user="user"/>
-                <contact-info 
-                :mail="user.email"
-                :github="user.contact.github"
-                :linkedin="user.contact.linkedIn"
-                />
-                <biography :bio="user.biography"/>
-                <div id="toggles" class="flex h-12 justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border w-5/6 my-2 mx-4">
-                        <toggle v-model="selected" value="listings" class="w-1/2">Listings</toggle>
-                        <toggle v-model="selected" value="notifications" class="w-1/2">Notifications</toggle>
+            <div class="w-full h-auto mt-28 flex flex-col justify-center items-center space-y-6 pb-8">
+                <div id="user-info" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
+                    <div class="flex flex-col justify-start items-start space-y-4">
+                        <user :user="user" class="w-5/6"/>
+                        
+                        <div id="bio" class="w-5/6 mx-4">
+                            <h2 class="font-semibold text-lg sm:text-lg">About</h2>
+                            <p class="text-zinc-600 text-sm sm:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, tempore.</p>
+                        </div>
+                        <contact-info 
+                        :mail="user.email"
+                        :github="user.contact.github"
+                        :linkedin="user.contact.linkedIn"
+                        />
+                    </div>
+                    <div class="absolute right-6 sm:relative sm:right-0">
+                        <edit-profile/>
+                    </div>
                 </div>
-                <div id="listings" class="mx-4" v-if="selected === 'listings'">
-                    <h2 class="text-2xl font-semibold">My Listings</h2>
-                    <listing
-                    v-for="listing in listings"
-                    :key="listing._id"
-                    :listing="listing"
-                    :isSaved="null"
-                    />
+                <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
+                    <div class="w-full flex justify-center items-center">
+                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base bg-zinc-100 rounded-md border-zinc-300 border-solid border mt-2">
+                            <toggle v-model="selected" value="applied" class="w-1/2">Listings</toggle>
+                            <toggle v-model="selected" value="saved" class="w-1/2">Notifications</toggle>
+                        </div>
+                    </div>
+                    <div class="w-full mt-4" v-if="selected === 'listings'">
+                    <h3 class="text-xl font-semibold">My Listings</h3>
+                    <div class="w-full flex flex-col justify-center items-center">
+                        <listing
+                        v-for="listing in listings"
+                        :key="listing._id"
+                        :listing="listing"
+                        :isSaved="null" 
+                        />
+                    </div>
                 </div>
-                <div id="notifications" class="m-4" v-if="selected === 'notifications'">Coming Soon...</div>
+                <div id="notifications" class="w-full m-4" v-if="selected === 'notifications'">
+                    <p class="text-base text-zinc-500">Coming Soon...</p>
+                </div>
+                </div>
             </div>
         </div>
     </div>
