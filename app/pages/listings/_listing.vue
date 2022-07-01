@@ -121,7 +121,7 @@
           <h6 class="text-md">Your Application:</h6>
           <p class="text-md font-light">{{applied.note}}</p>
         </div>
-        <div class="" v-else-if="user.role === 'Organization' && listing.org._id === user._id">
+        <div class="" v-else-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id">
           <h5 class="text-xl font-semibold">Applicants</h5>
           <div id="applicants" class="flex flex-col space-y-4 -mx-4 mt-2">
             <applicant
