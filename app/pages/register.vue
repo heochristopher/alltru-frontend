@@ -22,9 +22,9 @@
           <div
             v-show="isStudent"
             id="screen"
-            class="w-96 h-96 p-6 ml-8 flex flex-col justify-center items-center space-y-5"
+            class="w-96 h-96 p-6 ml-8 flex flex-col justify-center items-center space-y-4"
           >
-            <h2 class="text-center text-2xl">Not a Student?</h2>
+            <h2 class="text-center text-xl font-medium">Not a Student?</h2>
             <p class="text-center text-base">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
               aliquid tempore mollitia.
@@ -38,9 +38,9 @@
           <div
             v-show="isOrg"
             id="screen"
-            class="w-96 h-96 p-6 mr-8 flex flex-col justify-center items-center space-y-5"
+            class="w-96 h-96 p-6 mr-8 flex flex-col justify-center items-center space-y-4"
           >
-            <h2 class="text-center text-2xl">Not an Organization?</h2>
+            <h2 class="text-center text-xl font-medium">Not an Organization?</h2>
             <p class="text-center text-base">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Repellendus inventore tempore deleniti.

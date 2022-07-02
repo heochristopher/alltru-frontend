@@ -106,7 +106,7 @@
               organization when you apply.
             </p>
             <textarea
-              class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"
+              class="w-full h-36 px-3 py-2 bg-zinc-50 rounded-md border-zinc-300 border-solid border text-base "
               id="notes"
               name="notes"
               v-model="notes"

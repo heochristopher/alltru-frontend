@@ -3,38 +3,38 @@
     id="signin"
     class="h-auto w-96 p-4 relative flex flex-col justify-center items-center"
   >
-    <form @submit.prevent="login" method="POST" class="space-x-2 space-y-5">
-      <h1 class="text-center text-2xl">Welcome back,</h1>
-      <div id="email" class="w-80 flex flex-col justify-center items-center">
+    <form @submit.prevent="login" method="POST" class="space-y-4">
+      <h1 class="text-center text-2xl font-medium">Welcome back,</h1>
+      <div id="email" class="w-80 flex flex-col justify-center items-center mt-2">
         <!-- <label for="email">Email</label> -->
         <form-input
-          id="email"
           type="text"
           name="email"
           v-model="email"
-          placeholder="Email"
           required
-        />
+        >
+          Email
+        </form-input>
       </div>
-      <div id="pass" class="w-80 flex flex-col justify-center items-center">
+      <div id="pass" class="w-80 flex flex-col justify-center items-center mt-2">
         <!-- <label for="password">Password</label> -->
         <form-input
-          id="password"
           type="password"
           name="password"
           v-model="password"
-          placeholder="Password"
           required
-        />
+        >
+          Password
+        </form-input>
       </div>
-      <div id="btn" class="flex flex-col justify-center items-center space-y-3">
+      <div id="btn" class="mt-6 flex flex-col justify-center items-center space-y-2">
         <form-btn>Login</form-btn>
 
         <div class="flex justify-center items-center">
-          <p class="px-1 py-4 text-sm text-zinc-500">No Account?</p>
+          <p class="px-1 py-2 text-sm text-zinc-400">No Account?</p>
           <NuxtLink to="/register"
             ><p
-              class="px-1 py-4 text-sm text-zinc-700 ease-in duration-100 hover:text-zinc-500"
+              class="px-1 py-2 text-sm text-zinc-500 ease-in duration-100 hover:text-zinc-400"
             >
               Register
             </p></NuxtLink

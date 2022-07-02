@@ -73,23 +73,24 @@
           class="flex flex-col justify-center items-center space-y-2"
           v-if="remote !== 'true'"
         >
-          <label for="zip" class="text-base">Search Zipcode</label>
           <div
             id="search"
-            class="flex justify-start items-center w-full h-12 text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
+            class="flex justify-start items-center w-full"
           >
             <img
-              class="mx-4 overflow-hidden"
+              class="mr-2.5 overflow-hidden"
               src="@/assets/icons/map-pin.svg"
               alt="pin"
             />
-            <input
-              class="w-full h-full bg-zinc-100"
-              id="zip"
+            <form-input
+              class="mb-2"
               type="number"
-              placeholder="Zipcode"
+              name="zipcode"
               v-model="zipcode"
-            />
+              required
+            >
+              Search Zipcode
+            </form-input>
           </div>
         </div>
         <!-- <div class="tags">

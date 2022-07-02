@@ -29,24 +29,26 @@
                         <img src="@/assets/icons/inmark.png" alt="" class="object-cover"/>
                     </div>
                     <form-input
-                    id="linkedIn"
                     type="text"
                     name="linkedIn"
                     v-model="linkedIn"
-                    placeholder="Have a LinkedIn account?"
-                    />
+                    required
+                    >
+                        Have a LinkedIn account?
+                    </form-input>
                 </div>
                 <div id="github" class="flex flex-row space-x-4">
                     <div class="h-16 w-16 aspect-square">
                         <img src="@/assets/icons/github.png" alt="" class="object-cover"/>
                     </div>
                     <form-input
-                    id="github"
                     type="text"
                     name="github"
                     v-model="github"
-                    placeholder="Have a GitHub account?"
-                    />
+                    required
+                    >
+                        Have a Github account?
+                    </form-input>
                 </div>
             </div>
           </div>
