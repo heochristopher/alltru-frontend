@@ -49,7 +49,7 @@
           id="general"
           class="w-full flex flex-col justify-start items-start space-y-4"
         >
-          <div
+          <!-- <div
             id="details"
             class="content-center grid grid-cols-2 grid-rows-2 gap-x-6 gap-y-4 sm:flex sm:justify-center sm:items-center sm:space-x-8 md:space-x-12"
           >
@@ -65,7 +65,7 @@
               <p class="uppercase text-xs font-semibold">Hours per Week</p>
               <h5 class="ml-1 text-lg text-zinc-600">25hrs/week</h5>
             </div>
-          </div>
+          </div> -->
           <!-- <div
             id="options"
             class="w-full flex flex-col justify-center items-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 sm:justify-start sm:items-start"

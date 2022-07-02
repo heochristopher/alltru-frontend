@@ -109,7 +109,7 @@ export default {
           email: this.email,
           password: this.password,
         })
-        this.$router.push('studentdash')
+        this.$router.push('/dashboard')
       } catch (error) {
         console.log(error)
       }

@@ -5,11 +5,11 @@
             <div class="w-full h-auto mt-28 flex flex-col justify-center items-center space-y-6 pb-8">
                 <div id="user-info" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
                     <div class="flex flex-col justify-start items-start space-y-4">
-                        <user :user="user" class="w-5/6"/>
+                        <user :user="user" class=""/>
                         
                         <div id="bio" class="w-5/6 mx-4">
                             <h2 class="font-semibold text-lg sm:text-lg">About</h2>
-                            <p class="text-zinc-600 text-sm sm:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, tempore.</p>
+                            <p class="text-zinc-600 text-sm sm:text-base">{{user.biography}}</p>
                         </div>
                         <contact-info 
                         :mail="user.email"

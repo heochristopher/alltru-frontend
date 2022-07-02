@@ -153,7 +153,7 @@ export default {
           password: this.password,
           birthday: birthday,
         })
-        this.$router.push('studentdash')
+        this.$router.push('/dashboard')
 
       } catch (error) {
         console.log(error)
