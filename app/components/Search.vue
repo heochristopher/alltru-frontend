@@ -77,18 +77,20 @@
             id="search"
             class="flex justify-start items-center w-full"
           >
-            <img
-              class="mr-2.5 overflow-hidden"
-              src="@/assets/icons/map-pin.svg"
-              alt="pin"
-            />
+            <!-- <div class="">
+              <img
+                class="mr-2.5 overflow-hidden"
+                src="@/assets/icons/map-pin.svg"
+                alt="pin"
+              />
+            </div> -->
             <form-input
-              class="mb-2"
               type="number"
               name="zipcode"
               v-model="zipcode"
               required
             >
+
               Search Zipcode
             </form-input>
           </div>
