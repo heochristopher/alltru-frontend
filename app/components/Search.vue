@@ -4,24 +4,24 @@
     class="w-full h-full flex flex-col justify-center items-center space-y-4"
   >
     <div
-      class="w-full h-12 flex justify-between items-center cursor-pointer shadow-sm"
+      class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm"
       @click="toggleFilter"
     >
-      <p class="mx-4 text-lg">Filter</p>
+      <p class="mx-1 text-base">Filter</p>
       <img
         v-if="!isOpen"
-        class="mx-3"
+        class="mx-1"
         src="@/assets/icons/chevron-down.svg"
         alt="down"
       />
       <img
         v-if="isOpen"
-        class="mx-3"
+        class="mx-1"
         src="@/assets/icons/chevron-up.svg"
         alt="up"
       />
     </div>
-    <div class="flex content-center item-start h-full w-full" v-if="isOpen">
+    <div class="flex justify-center item-start h-full w-full" v-if="isOpen">
       <form
         class="flex flex-col mx-auto space-y-6 w-full"
         @submit.prevent="search"
@@ -29,11 +29,11 @@
       >
         <div
           id="type"
-          class="flex flex-col justify-center items-center space-y-2"
+          class="flex flex-col justify-center items-start space-y-2"
         >
-          <label for="type" class="text-base">Opportunity Type</label>
+          <label for="type" class="text-sm">Opportunity Type</label>
           <div
-            class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border cursor-pointer"
+            class="flex h-10 w-full justify-evenly divide-x items-center text-sm bg-zinc-50 rounded-md border-zinc-300 border-solid border cursor-pointer"
           >
             <toggle v-model="type" value="null" class="w-1/4"
               >All</toggle
@@ -51,11 +51,11 @@
         </div>
         <div
           id="remote"
-          class="flex flex-col justify-center items-center space-y-2"
+          class="flex flex-col justify-center items-start space-y-2"
         >
-          <label for="remote" class="text-base">Location Preferences</label>
+          <label for="remote" class="text-sm">Location Preferences</label>
           <div
-            class="flex h-12 w-full justify-evenly divide-x items-center text-sm bg-zinc-100 rounded-md border-zinc-300 border-solid border"
+            class="flex h-10 w-full justify-evenly divide-x items-center text-sm bg-zinc-50 rounded-md border-zinc-300 border-solid border"
           >
             <toggle v-model="remote" value="null" class="w-1/3"
               >All</toggle

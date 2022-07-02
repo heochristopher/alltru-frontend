@@ -12,7 +12,7 @@
       :value="value"
       @change="$emit('change', $event.target.value)"
     />
-    <label class="" for=""><slot></slot></label>
+    <label class="text-sm" for=""><slot></slot></label>
   </div>
 </template>
 

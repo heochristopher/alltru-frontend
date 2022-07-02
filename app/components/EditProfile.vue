@@ -6,15 +6,15 @@
             </svg>
         </button>
         <form method="PATCH" @submit.prevent="editProfile" id="" class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.modal"> 
-        <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 z-40" @click="toggleModal"></div>
-        <div id="close" class="absolute top-3 right-3 z-50 cursor-pointer" @click="toggleModal">
+        <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleModal"></div>
+        <div id="close" class="absolute top-3 right-3 -z-20 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </div>
-        <div id="content" class="w-5/6 h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
+        <div id="content" class="w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
             <div class="w-full space-y-2">
                 <label class="text-lg font-medium" for="biography">Biography</label>
                 <textarea
-                class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border text-sm"
+                class="w-full h-36 px-3 py-2 bg-zinc-50 rounded-md border-zinc-200 border-solid border-2 text-sm focus:border-violet-400"
                 id="biography"
                 name="biography"
                 v-model="biography"
