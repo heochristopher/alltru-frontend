@@ -92,10 +92,8 @@
         <p class="text-base text-zinc-600">{{ listing.description }}</p>
       </div>
       <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200 ">
-        <form
+        <div
           v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied"
-          method="POST"
-          @submit.prevent="apply(listing._id)"
           id="apply"
           class="w-full flex flex-col justify-center items-center space-y-4"
         >
@@ -105,17 +103,9 @@
               Your information and resume will be sent automatically to the
               organization when you apply.
             </p>
-            <textarea
-              class="w-full h-36 px-3 py-2 bg-zinc-100 rounded-md border-zinc-300 border-solid border"
-              id="notes"
-              name="notes"
-              v-model="notes"
-              placeholder="Please include any additional information you would like to provide."
-              required
-            />
           </div>
           <form-btn class="w-full flex flex-col justify-center items-center sm:w-1/2">Apply</form-btn>
-        </form>
+        </div>
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>
           <h6 class="text-base font-medium">Your Application:</h6>
