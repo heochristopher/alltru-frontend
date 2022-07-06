@@ -20,6 +20,7 @@
                         <edit-profile/>
                     </div>
                 </div>
+                <iframe :src="`http://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0"></iframe>
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <h2 class="text-2xl font-semibold">My Listings</h2>
                     <div class="w-full flex justify-center items-center">

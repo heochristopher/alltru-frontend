@@ -147,8 +147,10 @@ export default {
       if(user.role === 'Student') {
         applied = user.appliedListings.find(e => e._id === listing._id)
         return {listing, user, applied, route, applicants}
-      } else if (user.role === 'Organization') {
+      } else if (user._id === listing.org._id) {
         applicants = await $axios.$get(`/queryApplicants/${listing._id}`)
+        return {listing, user, applied, route, applicants}
+      } else if(user._id !== listing.org._id) {
         return {listing, user, applied, route, applicants}
       }
     }
