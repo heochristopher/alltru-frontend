@@ -7,7 +7,6 @@
                     <div class="flex flex-col justify-start items-start space-y-4">
                         <user :user="user" class="w-5/6 sm:w-full"/>
                         <div v-if="user.biography" id="bio" class="w-5/6 mx-4">
-                            <h2 class="font-semibold text-lg sm:text-lg">About</h2>
                             <p class="text-zinc-600 text-sm sm:text-base">{{user.biography}}</p>
                         </div>
                         <contact-info 
@@ -20,7 +19,7 @@
                         <edit-profile/>
                     </div>
                 </div>
-                <iframe :src="`http://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0"></iframe>
+                    <resume :resume="user.resume"/>
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <h2 class="text-2xl font-semibold">My Listings</h2>
                     <div class="w-full flex justify-center items-center">
@@ -74,7 +73,7 @@ export default {
     },
     methods: {
         toggleModal() {
-            this.$store.dispatch('CHANGE_MODAL')
+            this.$store.dispatch('CHANGE_EDIT_MODAL')
         },
         async logout() {
             try {
