@@ -54,7 +54,7 @@
             <nav-profile class="mr-10 cursor-pointer"/>
         </div>
         <div
-          @click="toggleBurger"
+          @click="burger = !burger"
           id="burger"
           class="flex justify-center items-center mr-10 cursor-pointer sm:hidden z-40"
           v-if="!user"
@@ -67,11 +67,12 @@
     <div
       v-if="burger"
       id="menu-content"
-      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end -z-20 space-y-4 pt-24 pb-6 sm:hidden"
+      class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end  space-y-4 pt-24 pb-6 sm:hidden"
     >
       <NuxtLink
         to="/register"
         class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+        @click="console.log('asdf')"
         >For Students</NuxtLink
       >
       <NuxtLink
@@ -101,13 +102,6 @@ export default {
     this.burger = false
   },
   methods: {
-    toggleBurger() {
-      if (!this.burger) {
-        this.burger = true
-      } else {
-        this.burger = false
-      }
-    },
   },
 }
 </script>
