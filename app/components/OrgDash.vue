@@ -23,8 +23,8 @@
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <div class="w-full flex justify-center items-center">
                         <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base bg-zinc-100 rounded-md border-zinc-300 border-solid border mt-2">
-                            <toggle v-model="selected" value="applied" class="w-1/2">Listings</toggle>
-                            <toggle v-model="selected" value="saved" class="w-1/2">Notifications</toggle>
+                            <toggle v-model="selected" value="listings" class="w-1/2">Listings</toggle>
+                            <toggle v-model="selected" value="notifications" class="w-1/2">Notifications</toggle>
                         </div>
                     </div>
                     <div class="w-full mt-4" v-if="selected === 'listings'">

@@ -19,7 +19,24 @@
                         <edit-profile/>
                     </div>
                 </div>
-                    <resume :resume="user.resume"/>
+                    <div id="resume" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
+                        <h2 class="text-2xl font-semibold">Resume</h2>
+                        <div v-if="user.resume">
+                            <button class="bg-grey p-2" @click="toggleResume">View Resume</button>
+                            <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
+                                <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
+                                <div id="content" class="w-5/6 max-w-3xl h-3/5 p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
+                                    <div class="w-full h-full">
+                                        <iframe :src="`http://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="h-full"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="" v-else>
+                            <label for="resume-input">Upload Resume</label>
+                            <input id="resume-input" type="file" enctype="multipart/form-data" accept="application/pdf" class="hidden" @change="setImage">
+                        </div>
+                    </div>
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <h2 class="text-2xl font-semibold">My Listings</h2>
                     <div class="w-full flex justify-center items-center">
@@ -61,6 +78,7 @@
                 </div>
             </div>
         </div>
+        <alert/>
     </div>
 </template>
 
@@ -75,12 +93,28 @@ export default {
         toggleModal() {
             this.$store.dispatch('CHANGE_EDIT_MODAL')
         },
+        toggleResume() {
+            this.$store.dispatch('CHANGE_RESUME_MODAL')
+        },
+        async setImage(e) {
+            const resume = e.target.files[0]
+            const formData = new FormData()
+            formData.append('image', resume)
+            try {
+                const res = await this.$axios.patch('/uploadResume', formData)
+                this.$nuxt.refresh()
+                this.$store.dispatch('GET_ALERT', res)
+            } catch (error) {
+                this.$store.dispatch('GET_ALERT', error)
+            }
+
+        },
         async logout() {
             try {
                 const res = await this.$axios.$post('/logout')
-                console.log(res)
                 this.$store.dispatch('LOGOUT')
                 this.$router.push('/')
+                this.$store.dispatch('GET_ALERT', res)
             } catch (error) {
                 console.log(error)
             }
