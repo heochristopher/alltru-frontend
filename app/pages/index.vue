@@ -10,7 +10,7 @@
             <h2 id="subheading" class="text-xl">Connect with organizations for opportunities to launch your career 🚀</h2>
             <div id="search" class="mt-6 flex justify-center items-center ">
                 <nuxt-link to="/listings" id="search" >
-                    <button class="rounded-md bg-zinc-900 w-52 h-12 text-white text-lg ease-in duration-150 hover:bg-zinc-800">
+                    <button class="rounded-md bg-zinc-900 w-52 h-12 text-white text-md ease-in duration-150 hover:bg-zinc-800">
                          Start Searching
                     </button>
                 </nuxt-link>
