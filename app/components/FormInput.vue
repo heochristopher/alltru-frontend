@@ -1,12 +1,12 @@
 <template>
-  <div class="relative z-0 w-full group">
+  <div class="relative z-0 w-full group overflow-visible">
         <!-- <input
     @input="updateValue($event.target.value)"
     class="block w-full h-12 p-3 bg-zinc-100 rounded-md border-zinc-300 border-solid border text-sm"
     :value="value"
   /> -->
     <input 
-      @input="updateValue($event.target.value)" id="floating_first_name" class="block py-2.5 px-2 mt-2.5 w-full text-sm text-zinc-900 bg-transparent rounded-md border-2 border-solid border-zinc-200 appearance-none  focus:outline-none focus:ring-0 focus:border-sky-500 peer" placeholder=" " 
+      @input="updateValue($event.target.value)" id="floating_first_name" class="block py-2.5 px-2 mt-2.5 w-full text-sm text-zinc-900 bg-transparent rounded-md border border-solid border-zinc-200 appearance-none  focus:outline-none focus:ring-0 focus:border-sky-500 peer" placeholder=" " 
       :name="name"
       :type="type"
       :value="value"

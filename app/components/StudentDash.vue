@@ -23,7 +23,7 @@
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <h2 class="text-2xl font-semibold">My Listings</h2>
                     <div class="w-full flex justify-center items-center">
-                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base bg-zinc-100 rounded-md border-zinc-300 border-solid border mt-3">
+                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base rounded-md border-zinc-200 border-solid border mt-3">
                             <toggle v-model="selected" value="applied" class="w-1/2">Applied</toggle>
                             <toggle v-model="selected" value="saved" class="w-1/2">Saved</toggle>
                         </div>
@@ -54,7 +54,7 @@
                 <div id="logout" class="w-11/12 max-w-4xl h-auto flex justify-center items-center rounded-lg shadow-md p-2 sm:p-4">
                     <button
                         @click="logout"
-                        class="w-full max-w-sm h-12 text-base bg-red-100 flex justify-center items-center rounded-md ease-in duration-150 text-red-600 hover:bg-red-200 hover:text-red-700"
+                        class="w-full max-w-sm h-12 text-base font-medium bg-white flex justify-center items-center rounded-md ease-in duration-150 text-red-500"
                     >
                         Logout
                     </button>

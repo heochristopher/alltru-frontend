@@ -33,7 +33,7 @@
         >
           <label for="type" class="text-sm">Opportunity Type</label>
           <div
-            class="flex h-10 w-full justify-evenly divide-x items-center text-sm bg-zinc-50 rounded-md border-zinc-300 border-solid border cursor-pointer"
+            class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border cursor-pointer"
           >
             <toggle v-model="type" value="null" class="w-1/4"
               >All</toggle
@@ -55,7 +55,7 @@
         >
           <label for="remote" class="text-sm">Location Preferences</label>
           <div
-            class="flex h-10 w-full justify-evenly divide-x items-center text-sm bg-zinc-50 rounded-md border-zinc-300 border-solid border"
+            class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border"
           >
             <toggle v-model="remote" value="null" class="w-1/3"
               >All</toggle

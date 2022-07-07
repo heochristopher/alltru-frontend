@@ -18,7 +18,7 @@
                 <div class="w-full space-y-2">
                     <label class="text-lg font-medium" for="biography">Biography</label>
                     <textarea
-                    class="w-full h-36 px-3 py-2 bg-zinc-50 rounded-md border-zinc-200 border-solid border-2 text-sm focus:border-violet-400"
+                    class="w-full h-36 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-sky-500"
                     id="biography"
                     name="biography"
                     v-model="biography"
