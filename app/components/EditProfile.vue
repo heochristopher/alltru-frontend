@@ -99,10 +99,9 @@ export default {
                     }
                 }
                 if(this.avatar) {
-                    console.log(typeof this.avatar)
-                    await this.$axios.patch('/profilePic', {
-                        image: this.avatar
-                    })
+                    const formData = new FormData()
+                    formData.append('image', this.avatar)
+                    await this.$axios.patch('/profilePic', formData)
                 }
                 const res = await this.$axios.patch('/editProfile', {
                     biography: this.biography,
