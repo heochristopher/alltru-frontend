@@ -1,7 +1,7 @@
 <template>
   <div
     id="toggle"
-    class="h-full flex justify-center items-center relative ease-in duration-100 hover:bg-purple-100"
+    class="h-full flex justify-center items-center relative ease-in duration-100 hover:bg-purple-200"
     :class="{checked: isChecked}"
   >
     <input

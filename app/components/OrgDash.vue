@@ -22,15 +22,16 @@
                 </div>
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <div class="w-full flex justify-center items-center">
-                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base rounded-md border-zinc-200 border-solid border mt-2">
+                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base rounded-md border-zinc-200 text-zinc-400 border-solid border mt-2">
                             <toggle v-model="selected" value="listings" class="w-1/2">Listings</toggle>
                             <toggle v-model="selected" value="notifications" class="w-1/2">Notifications</toggle>
                         </div>
                     </div>
                     <div class="w-full mt-4" v-if="selected === 'listings'">
                     <h3 class="text-xl font-semibold">My Listings</h3>
-                    <div class="w-full flex flex-col justify-center items-center">
+                    <div class=" w-full flex flex-col justify-center items-center">
                         <listing
+                        class="max-w-3xl"
                         v-for="listing in listings"
                         :key="listing._id"
                         :listing="listing"

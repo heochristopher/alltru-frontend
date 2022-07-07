@@ -7,7 +7,7 @@
         </h1>
         <div
           id="links"
-          class="hidden justify-center items-center mr-10 space-x-8 sm:flex"
+          class="hidden justify-center items-center mr-10 space-x-10 sm:flex"
           v-if="!user"
         >
           <NuxtLink
@@ -31,25 +31,31 @@
           <div class="flex flex-row" v-else>
             <div
             id="links"
-            class="hidden justify-center items-center mr-10 space-x-8 sm:flex"
+            class="hidden justify-center items-center mr-10 space-x-10 sm:flex"
           >
             <NuxtLink
               to="/listings"
-              class="text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+              class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800"
               >Listings</NuxtLink
             >
             <NuxtLink
+              to="/create-listing" v-if="user.role === 'Organization'"
+              class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+              >Create Listing</NuxtLink
+            >
+            <NuxtLink
               to="/dashboard"
-              class="text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800"
+              class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800"
               >Dashboard</NuxtLink
             >
-            <NuxtLink to="/create-listing" v-if="user.role === 'Organization'"
+    
+            <!-- <NuxtLink to="/create-listing" v-if="user.role === 'Organization'"
             ><div
               class="px-3 py-2 rounded-md bg-zinc-900 flex justify-center items-center ease-in duration-100 hover:bg-zinc-800"
             >
               <p class="text-base text-white">Create Listing</p>
             </div>
-          </NuxtLink>
+          </NuxtLink> -->
           </div>
             <nav-profile class="mr-10 cursor-pointer"/>
         </div>

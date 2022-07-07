@@ -13,7 +13,7 @@
           <img class="object-cover" :src="listing.org.avatar" alt="" />
         </div>
         <div id="container" class="flex flex-col justify-center items-start">
-          <h4 class="text-base text-zinc-600">{{ listing.org.affiliation }}</h4>
+          <h4 class="text-base text-zinc-500">{{ listing.org.affiliation }}</h4>
           <h3 class="text-xl mb-2 font-medium">{{ listing.position }}</h3>
           <div
             class="flex flex-col justify-center items-start space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0"

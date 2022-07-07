@@ -14,7 +14,7 @@
                 <div class="w-full space-y-2 flex flex-col">
                     <div class="flex flex-col justify-center items-center">
                         <img :src="user.avatar" class="w-20 h-auto aspect-square rounded-full" alt="">
-                        <label for="file" class="text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                        <label for="file" class="text-sm text-zinc-400 font-medium pt-1 cursor-pointer">
                             Upload Profile Picture
                             <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
                         </label>
@@ -33,7 +33,7 @@
             <div id="socials" class="w-full space-y-2">
                 <label class="text-lg font-medium" for="socials">Add Platforms</label>
                 <div class="w-full flex flex-col justify-start items-start space-y-2">
-                    <div id="linkedin" class="flex flex-row space-x-4">
+                    <div id="linkedin" class="w-1/2 flex flex-row space-x-4">
                         <div class="h-16 w-16 aspect-square">
                             <img src="@/assets/icons/inmark.png" alt="" class="object-cover"/>
                         </div>
@@ -46,7 +46,7 @@
                             Have a LinkedIn account?
                         </form-input>
                     </div>
-                    <div id="github" class="flex flex-row space-x-4">
+                    <div id="github" class="w-1/2 flex flex-row space-x-4">
                         <div class="h-16 w-16 aspect-square">
                             <img src="@/assets/icons/github.png" alt="" class="object-cover"/>
                         </div>

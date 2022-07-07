@@ -26,7 +26,7 @@
       <div
         v-else
         id="filters"
-        class="w-11/12 h-full flex flex-col justify-start items-center lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:pr-4"
+        class="w-11/12 max-w-3xl h-full flex flex-col justify-start items-center pb-6 lg:h-screen lg:overflow-y-auto lg:w-2/3 lg:pr-4"
       >
         <listing
           v-for="listing in query"

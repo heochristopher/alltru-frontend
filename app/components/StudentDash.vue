@@ -19,16 +19,15 @@
                         <edit-profile/>
                     </div>
                 </div>
-                    <div id="resume" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
-                        <h2 class="text-2xl font-semibold">Resume</h2>
+                    <div id="resume" class="py-4 w-11/12 max-w-4xl h-auto flex justify-between items-center rounded-lg shadow-md sm:p-4">
+                        <h2 class="text-2xl font-semibold mx-4">Resume</h2>
                         <div v-if="user.resume">
-                            <button class="bg-grey p-2" @click="toggleResume">View Resume</button>
+                            <button class="bg-grey mx-4" @click="toggleResume">View Resume</button>
                             <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
                                 <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
-                                <div id="content" class="w-5/6 max-w-3xl h-3/5 p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
-                                    <div class="w-full h-full">
-                                        <iframe :src="`http://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="h-full"></iframe>
-                                    </div>
+                                <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
+                                    <iframe :src="`http://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -40,15 +39,16 @@
                 <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
                     <h2 class="text-2xl font-semibold">My Listings</h2>
                     <div class="w-full flex justify-center items-center">
-                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base rounded-md border-zinc-200 border-solid border mt-3">
+                        <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base text-zinc-400 rounded-md border-zinc-200 border-solid border mt-3">
                             <toggle v-model="selected" value="applied" class="w-1/2">Applied</toggle>
                             <toggle v-model="selected" value="saved" class="w-1/2">Saved</toggle>
                         </div>
                     </div>
                     <div v-if="selected === 'applied'" id="applied" class="w-full mt-4">
                         <h3 class="text-lg font-medium text-zinc-600">Applied Listings</h3>
-                        <div class="w-full flex flex-col justify-center items-center">
+                        <div class=" w-full flex flex-col justify-center items-center">
                             <listing
+                            class="max-w-3xl"
                             v-for="listing in applied"
                             :key="listing._id"
                             :listing="listing"
@@ -60,6 +60,7 @@
                         <h3 class="text-lg font-medium text-zinc-600">Saved Listings</h3>
                         <div class="w-full flex flex-col justify-center items-center">
                         <listing
+                        class="max-w-3xl"
                         v-for="listing in saved"
                         :key="listing._id"
                         :listing="listing"

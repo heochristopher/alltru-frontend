@@ -33,7 +33,7 @@
             <img :src="listing.org.avatar" alt="logo" class="object-cover" />
           </nuxt-link>
           <div id="title" class="h-auto overflow-hidden">
-            <nuxt-link :to="`/organizations/${listing.org._id}`" class="text-lg sm:text-xl">
+            <nuxt-link :to="`/organizations/${listing.org._id}`" class="text-lg text-zinc-500 sm:text-xl">
               {{ listing.org.affiliation }}
             </nuxt-link>
             <h2 class="text-3xl font-medium pb-2 sm:text-4xl">
