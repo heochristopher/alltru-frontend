@@ -37,7 +37,8 @@ export default {
 <style scoped>
 
 .checked {
-  background-color: rgb(221, 214, 254);
+  background-color: rgb(167, 139, 250);
+  color: rgb(255, 255, 255);
 }
 
 </style>

@@ -16,10 +16,10 @@
             </form-input>
       </div>
       <div id="name" class="flex flex-col justify-center items-center mt-2">
-        <div id="name-field" class="flex items-center justify-between">
+        <div id="name-field" class="flex items-center justify-evenly">
           <div
             id="first-name"
-            class="flex justify-start items-center w-40 mr-1"
+            class="flex justify-start items-center w-1/2 mr-1"
           >
             <form-input
               type="text"
@@ -30,7 +30,7 @@
               First Name
             </form-input>
           </div>
-          <div id="last-name" class="flex justify-start items-center w-40 ml-2">
+          <div id="last-name" class="flex justify-start items-center w-1/2 ml-2">
             <!-- <label for="last-name">Last Name</label> -->
             <form-input
               type="text"
@@ -113,3 +113,20 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #151515;
+  box-shadow: 0 0 0px 1000px rgba(255,255,255,0) inset;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+</style>

@@ -12,13 +12,18 @@
             </div> -->
             <div id="content" class="w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
                 <div class="w-full space-y-2 flex flex-col">
-                    <label class="text-lg font-medium" for="avatar">Profile Picture</label>
-                    <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" class="w-20 h-auto aspect-square rounded-full" @change="setImage">
+                    <div class="flex flex-col justify-center items-center">
+                        <img :src="user.avatar" class="w-20 h-auto aspect-square rounded-full" alt="">
+                        <label for="file" class="text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                            Upload Profile Picture
+                            <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
+                        </label>
+                    </div>
                 </div>
                 <div class="w-full space-y-2">
                     <label class="text-lg font-medium" for="biography">Biography</label>
                     <textarea
-                    class="w-full h-36 px-3 py-2 bg-zinc-50 rounded-md border-zinc-200 border-solid border-2 text-sm focus:border-violet-400"
+                    class="w-full h-36 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-violet-500"
                     id="biography"
                     name="biography"
                     v-model="biography"
