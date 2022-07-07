@@ -1,6 +1,6 @@
 <template>
     <div id="org">
-        <div id="" v-on="this.$store.state.modal ? {click: toggleModal} : {}">
+        <div id="" v-on="this.$store.state.editModal ? {click: toggleModal} : {}">
             <navbar/>
             <div class="w-full h-auto mt-28 flex flex-col justify-center items-center space-y-6 pb-8">
                 <div id="user-info" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
@@ -8,7 +8,6 @@
                         <user :user="user" class=""/>
                         
                         <div id="bio" class="w-5/6 mx-4">
-                            <h2 class="font-semibold text-lg sm:text-lg">About</h2>
                             <p class="text-zinc-600 text-sm sm:text-base">{{user.biography}}</p>
                         </div>
                         <contact-info 
@@ -65,7 +64,7 @@ export default {
     },
     methods: {
         toggleModal() {
-            this.$store.dispatch('CHANGE_MODAL')
+            this.$store.dispatch('CHANGE_EDIT_MODAL')
         },
         async logout() {
             try {

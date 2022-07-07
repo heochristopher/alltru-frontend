@@ -2,7 +2,8 @@ export const state = () => ({
   user: null,
   filters: null,
   alert: null,
-  modal: false
+  editModal: false,
+  resumeModal: false
 })
 
 export const getter = {
@@ -25,9 +26,12 @@ export const mutations = {
   DELETE_USER(state) {
     state.user = null
   },
-  SET_MODAL(state) {
-    state.modal = !state.modal
-  }
+  SET_EDIT_MODAL(state) {
+    state.editModal = !state.editModal
+  },
+  SET_RESUME_MODAL(state) {
+    state.resumeModal = !state.resumeModal
+  },
 }
 
 export const actions = {
@@ -56,7 +60,10 @@ export const actions = {
   GET_ALERT({commit}, alert) {
     commit('SET_ALERT', alert)
   },
-  CHANGE_MODAL({commit}) {
-    commit('SET_MODAL')
+  CHANGE_EDIT_MODAL({commit}) {
+    commit('SET_EDIT_MODAL')
+  },
+  CHANGE_RESUME_MODAL({commit}) {
+    commit('SET_RESUME_MODAL')
   }
 }
