@@ -1,7 +1,7 @@
 <template>
   <div
     id="toggle"
-    class="h-full flex justify-center items-center relative ease-in duration-100 hover:bg-sky-100"
+    class="h-full flex justify-center items-center relative ease-in duration-100 hover:bg-purple-100"
     :class="{checked: isChecked}"
   >
     <input
@@ -37,7 +37,7 @@ export default {
 <style scoped>
 
 .checked {
-  background-color: rgb(56, 189, 248);
+  background-color: rgb(167, 139, 250);
   color: rgb(255, 255, 255);
 }
 
