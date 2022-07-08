@@ -71,7 +71,7 @@
                 <div id="logout" class="w-11/12 max-w-4xl h-auto flex justify-center items-center rounded-lg shadow-md p-2 sm:p-4">
                     <button
                         @click="logout"
-                        class="w-full max-w-sm h-12 text-base font-medium bg-white flex justify-center items-center rounded-md ease-in duration-150 text-red-500"
+                        class="w-full max-w-sm h-12 text-base font-medium bg-white flex justify-center items-center rounded-md ease-in duration-150 text-red-500  hover:text-red-600"
                     >
                         Logout
                     </button>

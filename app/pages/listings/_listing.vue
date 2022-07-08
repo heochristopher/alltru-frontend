@@ -23,8 +23,9 @@
       </div>
       <div
         id="info"
-        class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200"
+        class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200 relative"
       >
+      <h3 v-if="listing.status === 'Closed'" id="closed" class="absolute top-0 right-0 text-lg px-2 py-1 rounded-full bg-red-500 text-white">CLOSED</h3>
         <div
           id="profile"
           class="w-full flex flex-col justify-start items-start space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-4"
@@ -104,15 +105,16 @@
               organization when you apply.
             </p>
           </div>
-          <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-400" @click="apply(listing._id)">Apply</button>
+          <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" @click="apply(listing._id)">Apply</button>
         </div>
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>
-          <p class="text-zinc-600 text-base pb-2">Check your email if </p>
+          <p class="text-zinc-600 text-base pb-2">Check your email for updates from this organization!</p>
         </div>
         <div class="w-full" v-else-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id">
+        
           <h5 class="text-xl font-semibold">Applicants</h5>
-          <div id="applicants" class="flex flex-col space-y-4 -mx-4 mt-2 w-full">
+          <div id="applicants" class="flex flex-col space-y-4 mt-2 w-full">
             <applicant
             v-for="applicant in applicants"
             :key="applicant._id"
@@ -121,6 +123,14 @@
           </div>
         </div>
       </div>
+          <div v-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id && listing.status !== 'Closed'" id="logout" class="border-t border-solid border-zinc-200 w-full flex justify-center ">
+                    <button
+                        @click="closeListing(listing._id)"
+                        class=" max-w-sm h-12 text-base font-mediu ease-in duration-150 text-red-500 hover:text-red-600"
+                    >
+                        Close Listing
+                    </button>
+          </div>
     </div>
     <alert/>
   </div>
@@ -159,7 +169,18 @@ export default {
     async apply(id) {
       try {
         const res = await this.$axios.$post(`/apply/${id}`)
-        console.log(res)
+        this.$nuxt.refresh()
+        this.$store.dispatch('GET_ALERT', res)
+      } catch (error) {
+        this.$store.dispatch('GET_ALERT', error)
+      }
+    },
+    async closeListing(id) {
+      try {
+        console.log(';asdf')
+        const res = await this.$axios.patch('/closeListing', {
+          id: id
+        })
         this.$nuxt.refresh()
         this.$store.dispatch('GET_ALERT', res)
       } catch (error) {
