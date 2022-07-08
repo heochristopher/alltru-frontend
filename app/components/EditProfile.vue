@@ -11,15 +11,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div> -->
             <div id="content" class="w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
-                <div class="w-full space-y-2 flex flex-col">
                     <div class="flex flex-col justify-center items-center">
-                        <img :src="user.avatar" class="w-20 h-auto aspect-square rounded-full" alt="">
-                        <label for="file" class="text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                        <label for="file" class=" flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                            <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-auto aspect-square rounded-full" alt="">
                             Upload Profile Picture
                             <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
                         </label>
                     </div>
-                </div>
                 <div class="w-full space-y-2">
                     <label class="text-lg font-medium" for="biography">Biography</label>
                     <textarea
@@ -80,6 +78,7 @@ export default {
             biography: null,
             birthday: null,
             avatar: null,
+            avatarPreview: null,
             resume: null
         }
     },
@@ -88,8 +87,14 @@ export default {
             this.$store.dispatch('CHANGE_EDIT_MODAL')
         },
         setImage(e) {
-            const image = e.target.files[0]
-            this.avatar = image
+            const reader = new FileReader()
+             reader.onload = (e) => {
+                this.avatarPreview = e.target.result
+             }
+             reader.readAsDataURL(e.target.files[0])
+            const formData = new FormData()
+            formData.append('image', e.target.files[0])
+            this.avatar = formData
         },
         async editProfile() {
             try {
@@ -104,9 +109,7 @@ export default {
                     }
                 }
                 if(this.avatar) {
-                    const formData = new FormData()
-                    formData.append('image', this.avatar)
-                    await this.$axios.patch('/profilePic', formData)
+                    await this.$axios.patch('/profilePic', this.avatar)
                 }
                 const res = await this.$axios.patch('/editProfile', {
                     biography: this.biography,

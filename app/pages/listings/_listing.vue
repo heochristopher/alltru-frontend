@@ -104,12 +104,11 @@
               organization when you apply.
             </p>
           </div>
-          <form-btn class="w-full flex flex-col justify-center items-center sm:w-1/2">Apply</form-btn>
+          <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-400" @click="apply(listing._id)">Apply</button>
         </div>
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>
-          <h6 class="text-base font-medium">Your Application:</h6>
-          <p class="text-sm text-zinc-500">{{applied.note}}</p>
+          <p class="text-zinc-600 text-base pb-2">Check your email if </p>
         </div>
         <div class="w-full" v-else-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id">
           <h5 class="text-xl font-semibold">Applicants</h5>
@@ -145,7 +144,7 @@ export default {
     if(store.state.user) {
       user = await $axios.$get('/sendUser')
       if(user.role === 'Student') {
-        applied = user.appliedListings.find(e => e._id === listing._id)
+        applied = user.appliedListings.find(e => e === listing._id)
         return {listing, user, applied, route, applicants}
       } else if (user._id === listing.org._id) {
         applicants = await $axios.$get(`/queryApplicants/${listing._id}`)
@@ -159,7 +158,8 @@ export default {
   methods: {
     async apply(id) {
       try {
-        const res = await this.$axios.$post(`/apply/${id}`, {note: this.notes})
+        const res = await this.$axios.$post(`/apply/${id}`)
+        console.log(res)
         this.$nuxt.refresh()
         this.$store.dispatch('GET_ALERT', res)
       } catch (error) {
