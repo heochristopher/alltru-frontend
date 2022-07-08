@@ -31,7 +31,7 @@
             <div id="socials" class="w-full space-y-2">
                 <label class="text-lg font-medium" for="socials">Add Platforms</label>
                 <div class="w-full flex flex-col justify-start items-start space-y-2">
-                    <div id="linkedin" class="flex flex-row space-x-4">
+                    <div id="linkedin" class="w-1/2 flex flex-row space-x-4">
                         <div class="h-16 w-16 aspect-square">
                             <img src="@/assets/icons/inmark.png" alt="" class="object-cover"/>
                         </div>
@@ -44,7 +44,7 @@
                             Have a LinkedIn account?
                         </form-input>
                     </div>
-                    <div id="github" class="flex flex-row space-x-4">
+                    <div id="github" class="w-1/2 flex flex-row space-x-4">
                         <div class="h-16 w-16 aspect-square">
                             <img src="@/assets/icons/github.png" alt="" class="object-cover"/>
                         </div>

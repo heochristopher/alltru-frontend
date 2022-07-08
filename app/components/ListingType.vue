@@ -2,13 +2,13 @@
   <div class="">
     <div
       v-if="listing.type === 'Volunteer'"
-      class="uppercase px-2 py-1 rounded-full bg-blue-400"
+      class="uppercase px-2 py-1 rounded-full bg-green-400"
     >
       <p class="text-white text-xs">Volunteer</p>
     </div>
     <div
       v-else-if="listing.type === 'Internship'"
-      class="uppercase px-2 py-1 rounded-full bg-violet-400"
+      class="uppercase px-2 py-1 rounded-full bg-purple-400"
     >
       <p class="text-white text-xs">Internship</p>
     </div>
