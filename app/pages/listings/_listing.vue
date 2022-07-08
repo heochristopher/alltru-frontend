@@ -1,35 +1,19 @@
 <template>
   <div id="listing-page" class="h-full w-full flex justify-center items-center">
     <navbar />
-    <div
-      id="content"
-      class="bg-white w-11/12 max-w-4xl h-auto mt-24 mb-8 pb-6 px-8 flex flex-col justify-start items-center space-y-4 shadow-md"
-    >
-      <div
-        id="back"
-        class="w-full h-12 flex justify-end items-center z-20 border-b border-solid border-zinc-200"
-      >
+    <div id="content" class="bg-white w-11/12 max-w-4xl h-auto mt-24 mb-8 pb-6 px-8 flex flex-col justify-start items-center space-y-4 shadow-md">
+      <div id="back" class="w-full h-12 flex justify-end items-center z-20 border-b border-solid border-zinc-200">
         <NuxtLink :to="route !== '/dashboard' ? route.fullPath : '/dashboard'">
           <div class="flex justify-center items-center space-x-0.5 mr-3">
-            <img
-              class=""
-              src="../../assets/icons/chevron-left.svg"
-              alt="left"
-            />
-            <p v-if="route !== '/dashboard'" class="text-sm font-medium">Back to {{route.name}}</p>
+            <img class="" src="../../assets/icons/chevron-left.svg" alt="left" />
+            <p v-if="route !== '/dashboard'" class="text-sm font-medium">Back to {{ route.name }}</p>
             <p v-else class="text-sm font-medium">Back to dashboard</p>
           </div>
         </NuxtLink>
       </div>
-      <div
-        id="info"
-        class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200 relative"
-      >
-      <h3 v-if="listing.status === 'Closed'" id="closed" class="absolute top-0 right-0 text-lg px-2 py-1 rounded-full bg-red-500 text-white">CLOSED</h3>
-        <div
-          id="profile"
-          class="w-full flex flex-col justify-start items-start space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-4"
-        >
+      <div id="info" class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200 relative">
+        <h3 v-if="listing.status === 'Closed'" id="closed" class="absolute top-0 right-0 text-lg px-2 py-1 rounded-full bg-red-500 text-white">CLOSED</h3>
+        <div id="profile" class="w-full flex flex-col justify-start items-start space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-4">
           <nuxt-link :to="`/organizations/${listing.org._id}`" id="avatar" class="h-40 w-40 sm:h-28 sm:w-28 md:h-32 md:w-32">
             <img :src="listing.org.avatar" alt="logo" class="object-cover" />
           </nuxt-link>
@@ -46,10 +30,7 @@
             </div>
           </div>
         </div>
-        <div
-          id="general"
-          class="w-full flex flex-col justify-start items-start space-y-4"
-        >
+        <div id="general" class="w-full flex flex-col justify-start items-start space-y-4">
           <!-- <div
             id="details"
             class="content-center grid grid-cols-2 grid-rows-2 gap-x-6 gap-y-4 sm:flex sm:justify-center sm:items-center sm:space-x-8 md:space-x-12"
@@ -85,54 +66,38 @@
         </div>
       </div>
       <!-- <div id="tags"></div> -->
-      <div
-        id="description"
-        class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2 "
-      >
+      <div id="description" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2">
         <h5 class="text-xl font-semibold">Description</h5>
         <p class="text-base text-zinc-600">{{ listing.description }}</p>
       </div>
-      <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200 ">
-        <div
-          v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied"
-          id="apply"
-          class="w-full flex flex-col justify-center items-center space-y-4"
-        >
+      <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200">
+        <div v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status !== 'Closed'" id="apply" class="w-full flex flex-col justify-center items-center space-y-4">
           <div class="w-full flex flex-col justify-center items-start space-y-1">
             <h5 class="text-xl font-semibold">Apply</h5>
-            <p class="text-zinc-600 text-base pb-2">
-              Your information and resume will be sent automatically to the
-              organization when you apply.
-            </p>
+            <p class="text-zinc-600 text-base pb-2">Your information and resume will be sent automatically to the organization when you apply.</p>
           </div>
           <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" @click="apply(listing._id)">Apply</button>
+        </div>
+        <div v-else-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status === 'Closed'" class="" id="">
+          <h5 id="closed" class="text-xl font-semibold">This listing is closed</h5>
+          <p class="text-zinc-600 text-base pb-2">Email the organization if you have any questions!</p>
         </div>
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>
           <p class="text-zinc-600 text-base pb-2">Check your email for updates from this organization!</p>
         </div>
         <div class="w-full" v-else-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id">
-        
           <h5 class="text-xl font-semibold">Applicants</h5>
           <div id="applicants" class="flex flex-col space-y-4 mt-2 w-full">
-            <applicant
-            v-for="applicant in applicants"
-            :key="applicant._id"
-            :user="applicant"
-            />
+            <applicant v-for="applicant in applicants" :key="applicant._id" :user="applicant" />
           </div>
         </div>
       </div>
-          <div v-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id && listing.status !== 'Closed'" id="logout" class="border-t border-solid border-zinc-200 w-full flex justify-center ">
-                    <button
-                        @click="closeListing(listing._id)"
-                        class=" max-w-sm h-12 text-base font-mediu ease-in duration-150 text-red-500 hover:text-red-600"
-                    >
-                        Close Listing
-                    </button>
-          </div>
+      <div v-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id && listing.status !== 'Closed'" id="logout" class="border-t border-solid border-zinc-200 w-full flex justify-center">
+        <button @click="closeListing(listing._id)" class="max-w-sm h-12 text-base font-mediu ease-in duration-150 text-red-500 hover:text-red-600">Close Listing</button>
+      </div>
     </div>
-    <alert/>
+    <alert />
   </div>
 </template>
 
@@ -146,21 +111,23 @@ export default {
   async asyncData({ $axios, params, store, from }) {
     const id = params.listing
     let route = '/dashboard'
-    if(from) {route = from}
+    if (from) {
+      route = from
+    }
     const listing = await $axios.$get(`/findListing/${id}`)
     let applied = null
     let user = null
     let applicants = null
-    if(store.state.user) {
+    if (store.state.user) {
       user = await $axios.$get('/sendUser')
-      if(user.role === 'Student') {
-        applied = user.appliedListings.find(e => e === listing._id)
-        return {listing, user, applied, route, applicants}
+      if (user.role === 'Student') {
+        applied = user.appliedListings.find((e) => e === listing._id)
+        return { listing, user, applied, route, applicants }
       } else if (user._id === listing.org._id) {
         applicants = await $axios.$get(`/queryApplicants/${listing._id}`)
-        return {listing, user, applied, route, applicants}
-      } else if(user._id !== listing.org._id) {
-        return {listing, user, applied, route, applicants}
+        return { listing, user, applied, route, applicants }
+      } else if (user._id !== listing.org._id) {
+        return { listing, user, applied, route, applicants }
       }
     }
     return { listing, user, applied, route, applicants }
@@ -177,17 +144,16 @@ export default {
     },
     async closeListing(id) {
       try {
-        console.log(';asdf')
         const res = await this.$axios.patch('/closeListing', {
-          id: id
+          id: id,
         })
         this.$nuxt.refresh()
         this.$store.dispatch('GET_ALERT', res)
       } catch (error) {
         this.$store.dispatch('GET_ALERT', error)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

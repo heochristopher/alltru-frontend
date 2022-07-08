@@ -117,7 +117,8 @@ export default {
                 this.$router.push('/')
                 this.$store.dispatch('GET_ALERT', res)
             } catch (error) {
-                console.log(error)
+        this.$store.dispatch('GET_ALERT', error)
+
             }
         }
     },
