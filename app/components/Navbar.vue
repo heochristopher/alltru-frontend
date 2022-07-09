@@ -7,7 +7,7 @@
         </h1>
         <div id="links" class="hidden justify-center items-center mr-10 space-x-10 sm:flex" v-if="!user">
           <button @click="route('Student')" class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Students</button>
-          <button @click="route('Org')" class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Organizations</button>
+          <button @click="route('Org')" class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Recruiters</button>
           <NuxtLink to="/login"
             ><div class="w-20 h-10 rounded-md bg-zinc-900 flex justify-center items-center ease-in duration-100 hover:bg-zinc-800">
               <p class="text-base text-white">Login</p>
@@ -37,8 +37,8 @@
       </div>
     </div>
     <div v-if="burger" id="menu-content" class="fixed top-0 left-0 w-full h-auto bg-white shadow-md flex flex-col justify-center items-end space-y-4 pt-24 pb-6 sm:hidden">
-      <NuxtLink to="/register" class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Students</NuxtLink>
-      <NuxtLink to="/register" class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Organizations</NuxtLink>
+      <button @click="route('Student')" class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Students</button>
+      <button @click="route('Org')" class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Recruiters</button>
       <NuxtLink to="/login" class="mr-10 text-lg text-zinc-900 ease-in duration-100 hover:text-zinc-800">Login</NuxtLink>
     </div>
   </div>

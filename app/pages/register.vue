@@ -8,21 +8,21 @@
         <student-register v-show="isStudent">
           <div @click="org" class="w-full flex flex-col justify-center items-center mt-3 space-y-3 md:hidden">
             <p class="uppercase text-xs">Or</p>
-            <form-btn class="bg-zinc-100 flex hover:bg-zinc-200"> Register as Organization </form-btn>
+            <form-btn class="bg-zinc-100 flex text-black hover:bg-zinc-200"> Register as Recruiter </form-btn>
           </div>
         </student-register>
         <div class="hidden md:block">
           <div v-show="isStudent" id="screen" class="w-96 h-96 p-6 ml-8 flex flex-col justify-center items-center space-y-4">
             <h2 class="text-center text-xl font-medium">Not a Student?</h2>
             <p class="text-center text-base">Join our platform as an organization to recruit countless eager students</p>
-            <form-btn @e="org">Register as Organization</form-btn>
+            <form-btn @e="org">Register as Recruiter</form-btn>
           </div>
         </div>
       </div>
       <div id="org" class="flex justify-center items-center">
         <div class="hidden md:block">
           <div v-show="isOrg" id="screen" class="w-96 h-96 p-6 mr-8 flex flex-col justify-center items-center space-y-4">
-            <h2 class="text-center text-xl font-medium">Not an Organization?</h2>
+            <h2 class="text-center text-xl font-medium">Not a Recruiter?</h2>
             <p class="text-center text-base">Join our platform as a student to access countless opportunities</p>
             <form-btn @e="student">Register as Student</form-btn>
           </div>
@@ -30,7 +30,7 @@
         <org-register v-show="isOrg">
           <div @click="student" class="w-full flex flex-col justify-center items-center mt-3 space-y-3 md:hidden">
             <p class="uppercase text-xs">Or</p>
-            <form-btn class="bg-zinc-100 hover:bg-zinc-200"> Register as Student </form-btn>
+            <form-btn @submit.prevent class="text-black bg-zinc-100 flex hover:bg-zinc-200"> Register as Student </form-btn>
           </div>
         </org-register>
       </div>

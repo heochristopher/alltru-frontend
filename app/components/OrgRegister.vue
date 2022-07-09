@@ -1,7 +1,7 @@
 <template>
   <div id="signup" class="h-auto w-96 p-4 relative flex justify-center items-center">
     <form @submit.prevent="register" method="POST" class="space-y-4">
-      <h1 class="text-center text-2xl font-medium">Organizations</h1>
+      <h1 class="text-center text-2xl font-medium">Recruiters</h1>
       <div id="org" class="flex flex-col justify-center items-center mt-2">
         <form-input type="text" name="org" v-model="org" required> Organization </form-input>
       </div>
@@ -25,7 +25,7 @@
         <form-input type="password" name="password" v-model="password" required> Password </form-input>
       </div>
       <div id="btn" class="flex flex-col justify-center items-center mt-6">
-        <form-btn>Sign Up</form-btn>
+        <form-btn type="submit">Sign Up</form-btn>
         <slot></slot>
         <div class="flex justify-center items-center">
           <p class="px-1 py-4 text-sm text-zinc-400">Have an Account?</p>
@@ -49,7 +49,7 @@ export default {
     }
   },
   methods: {
-    async register() {
+    async register(arg) {
       try {
         const res = await this.$axios.$post('/orgRegister', {
           affiliation: this.org,

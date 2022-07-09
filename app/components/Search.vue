@@ -1,82 +1,31 @@
 <template>
-  <div
-    id="filter"
-    class="w-full h-full flex flex-col justify-center items-center space-y-4"
-  >
-    <div
-      class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm"
-      @click="toggleFilter"
-    >
+  <div id="filter" class="w-full h-full flex flex-col justify-center items-center space-y-4 -z-10">
+    <div class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm" @click="toggleFilter">
       <p class="mx-1 text-base">Filter</p>
-      <img
-        v-if="!isOpen"
-        class="mx-1"
-        src="@/assets/icons/chevron-down.svg"
-        alt="down"
-      />
-      <img
-        v-if="isOpen"
-        class="mx-1"
-        src="@/assets/icons/chevron-up.svg"
-        alt="up"
-      />
+      <img v-if="!isOpen" class="mx-1" src="@/assets/icons/chevron-down.svg" alt="down" />
+      <img v-if="isOpen" class="mx-1" src="@/assets/icons/chevron-up.svg" alt="up" />
     </div>
     <div class="flex justify-center item-start h-full w-full" v-if="isOpen">
-      <form
-        class="flex flex-col mx-auto space-y-6 w-full"
-        @submit.prevent="search"
-        method="GET"
-      >
-        <div
-          id="type"
-          class="flex flex-col justify-center items-start space-y-2"
-        >
+      <form class="flex flex-col mx-auto space-y-6 w-full" @submit.prevent="search" method="GET">
+        <div id="type" class="flex flex-col justify-center items-start space-y-2">
           <label for="type" class="text-sm">Opportunity Type</label>
-          <div
-            class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border cursor-pointer"
-          >
-            <toggle v-model="type" value="null" class="w-1/4"
-              >All</toggle
-            >
-            <toggle v-model="type" value="Volunteer" class="w-1/4"
-              >Volunteer</toggle
-            >
-            <toggle v-model="type" value="Internship" class="w-1/4"
-              >Internship</toggle
-            >
-            <toggle v-model="type" value="Job" class="w-1/4"
-              >Job</toggle
-            >
+          <div class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border cursor-pointer">
+            <toggle v-model="type" value="null" class="w-1/4">All</toggle>
+            <toggle v-model="type" value="Volunteer" class="w-1/4">Volunteer</toggle>
+            <toggle v-model="type" value="Internship" class="w-1/4">Internship</toggle>
+            <toggle v-model="type" value="Job" class="w-1/4">Job</toggle>
           </div>
         </div>
-        <div
-          id="remote"
-          class="flex flex-col justify-center items-start space-y-2"
-        >
+        <div id="remote" class="flex flex-col justify-center items-start space-y-2">
           <label for="remote" class="text-sm">Location Preferences</label>
-          <div
-            class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border"
-          >
-            <toggle v-model="remote" value="null" class="w-1/3"
-              >All</toggle
-            >
-            <toggle v-model="remote" value="false" class="w-1/3"
-              >On-Site</toggle
-            >
-            <toggle v-model="remote" value="true" class="w-1/3"
-              >Remote</toggle
-            >
+          <div class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border">
+            <toggle v-model="remote" value="null" class="w-1/3">All</toggle>
+            <toggle v-model="remote" value="false" class="w-1/3">On-Site</toggle>
+            <toggle v-model="remote" value="true" class="w-1/3">Remote</toggle>
           </div>
         </div>
-        <div
-          id="zipcode"
-          class="flex flex-col justify-center items-center space-y-2"
-          v-if="remote !== 'true'"
-        >
-          <div
-            id="search"
-            class="flex justify-start items-center w-full"
-          >
+        <div id="zipcode" class="flex flex-col justify-center items-center space-y-2" v-if="remote !== 'true'">
+          <div id="search" class="flex justify-start items-center w-full">
             <!-- <div class="">
               <img
                 class="mr-2.5 overflow-hidden"
@@ -84,15 +33,7 @@
                 alt="pin"
               />
             </div> -->
-            <form-input
-              type="number"
-              name="zipcode"
-              v-model="zipcode"
-              required
-            >
-
-              Search Zipcode
-            </form-input>
+            <form-input type="number" name="zipcode" v-model="zipcode" :required="false"> Search Zipcode </form-input>
           </div>
         </div>
         <!-- <div class="tags">
@@ -120,11 +61,7 @@ export default {
       if (this.remote) {
         this.zip === 'null'
       }
-      const inputs = [
-        { type: this.type },
-        { remote: this.remote },
-        { zip: this.zipcode },
-      ]
+      const inputs = [{ type: this.type }, { remote: this.remote }, { zip: this.zipcode }]
       const filters = []
       for (let i = 0; i < inputs.length; i++) {
         const entry = Object.entries(inputs[i])

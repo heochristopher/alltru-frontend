@@ -44,7 +44,7 @@
         <form-input type="password" name="password" v-model="password" required> Password </form-input>
       </div>
       <div id="btn" class="flex flex-col justify-center items-center mt-6">
-        <form-btn>Sign Up</form-btn>
+        <form-btn type="submit">Sign Up</form-btn>
         <slot></slot>
         <div class="flex justify-center items-center">
           <p class="px-1 py-4 text-sm text-zinc-400">Have an Account?</p>
