@@ -29,13 +29,13 @@
               <div class="h-16 w-16 aspect-square">
                 <img src="@/assets/icons/inmark.png" alt="" class="object-cover" />
               </div>
-              <form-input type="text" name="linkedIn" v-model="linkedIn" required> LinkedIn </form-input>
+              <form-input type="text" name="linkedIn" v-model="linkedIn" :required="false"> LinkedIn </form-input>
             </div>
             <div id="github" class="w-1/2 flex flex-row space-x-4">
               <div class="h-16 w-16 aspect-square">
                 <img src="@/assets/icons/github.png" alt="" class="object-cover" />
               </div>
-              <form-input type="text" name="github" v-model="github" required> GitHub </form-input>
+              <form-input type="text" name="github" v-model="github" :required="false"> GitHub </form-input>
             </div>
           </div>
         </div>

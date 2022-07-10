@@ -23,19 +23,19 @@
           <h3 id="" class="text-xl truncate sm:text-2xl">Students — through Alltru you can</h3>
           <ul class="" id="">
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">🥱</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">🥱</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Send your profile to recruiters with just <span class="font-semibold">one</span> click</h4>
             </li>
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">🤲</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">🤲</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Volunteer for causes you are <span class="font-semibold">passionate</span> about</h4>
             </li>
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">💼</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">💼</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Secure real-world <span class="font-semibold">experience</span> through internships</h4>
             </li>
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">🤝</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">🤝</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Establish <span class="font-semibold">connections</span> with potential employers</h4>
             </li>
           </ul>
@@ -49,19 +49,19 @@
           <h3 id="" class="text-xl sm:text-2xl">Recruiters — Alltru can help you</h3>
           <ul class="" id="">
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">🔍</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">🔍</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Search for <span class="font-semibold">talented</span> and <span class="font-semibold">eager</span> students</h4>
             </li>
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">✈️</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">✈️</h4>
               <h4 id="" class="sm:text-lg md:text-xl"><span class="font-semibold">Streamline</span> applications for vacant positions</h4>
             </li>
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">🔗</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">🔗</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Connect with applicants that <span class="font-semibold">catch your eye</span></h4>
             </li>
             <li id="" class="flex space-x-4 items-center">
-              <h4 class="text-3xl pr-2 truncate sm:text-4xl" id="">🚀</h4>
+              <h4 class="text-3xl pr-2 overflow-hidden sm:text-4xl" id="">🚀</h4>
               <h4 id="" class="sm:text-lg md:text-xl">Kickstart your organization's <span class="font-semibold">recruitment</span> process</h4>
             </li>
           </ul>
