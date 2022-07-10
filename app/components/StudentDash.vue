@@ -17,14 +17,23 @@
         </div>
         <div id="resume" class="py-4 w-11/12 max-w-4xl h-auto flex justify-between items-center rounded-lg shadow-md sm:p-4">
           <h2 class="text-2xl font-semibold mx-4">Resume</h2>
-          <div v-if="user.resume">
-            <button class="bg-grey mx-4" @click="toggleResume">View Resume</button>
-            <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
+          <div class="flex items-center mr-2" v-if="user.resume">
+            <button class="rounded-full p-2 hover:bg-zinc-200 ease-in duration-100" @click="showOptions = !showOptions"><img src="@/assets/icons/dots.svg" alt="" class="w-6" /></button>
+            <div id="options" class="absolute w-40 h-auto mt-72 mr-96 bg-white rounded-md shadow-md flex justify-center items-center" v-if="showOptions">
+              <!-- <div id="overlay" class="absolute inset-0 w-full h-full -z-10" @click="showOptions = false"></div> -->
+              <div class="flex flex-col">
+                <button id="" class=""><img src="@/assets/icons/external-link.svg" alt="" class="" />View</button>
+                <button id="" class=""><img src="@/assets/icons/download.svg" alt="" class="" />Download</button>
+                <button id="" class=""><img src="@/assets/icons/upload-cloud.svg" alt="" class="" />Upload</button>
+                <button id="" class=""><img src="@/assets/icons/trash.svg" alt="" class="" />Delete</button>
+              </div>
+            </div>
+            <!-- <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
               <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
               <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
                 <iframe :src="`https://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="" v-else>
             <label for="resume-input">Upload Resume</label>
@@ -66,12 +75,10 @@ export default {
   data() {
     return {
       selected: 'applied',
+      showOptions: false,
     }
   },
   methods: {
-    toggleModal() {
-      this.$store.dispatch('CHANGE_EDIT_MODAL')
-    },
     toggleResume() {
       this.$store.dispatch('CHANGE_RESUME_MODAL')
     },
