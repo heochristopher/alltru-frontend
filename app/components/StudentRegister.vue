@@ -68,7 +68,7 @@ export default {
       school: null,
       email: null,
       password: null,
-      yearRange: [2003, 2004, 2005, 2006, 2007, 2008, 2009],
+      yearRange: [...Array(2020 - 1990 + 1).keys()].map((x) => x + 1990).reverse(),
       monthRange: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     }
   },

@@ -40,7 +40,7 @@
             </li>
           </ul>
           <div id="actions" class="flex flex-row space-x-4">
-            <button class="rounded-md w-1/2 h-12 mt-4 text-black text-md ease-in duration-150 border-2 hover:bg-zinc-200">Search listings</button>
+            <nuxt-link to="/listings" class="rounded-md w-1/2 h-12 mt-4 text-black text-md ease-in duration-150 border-2 flex text-center justify-center items-center hover:bg-zinc-200">Search listings</nuxt-link>
             <button @click="route('Student')" class="rounded-md bg-zinc-900 w-1/2 h-12 mt-4 text-white text-md ease-in duration-150 hover:bg-zinc-700">Join now</button>
           </div>
         </div>
@@ -66,7 +66,7 @@
             </li>
           </ul>
           <div id="actions" class="flex flex-row space-x-4">
-            <button class="rounded-md w-1/2 h-12 mt-4 text-black text-md ease-in duration-150 border-2 hover:bg-zinc-200">Search listings</button>
+            <nuxt-link to="/listings" class="rounded-md w-1/2 h-12 mt-4 text-black text-md ease-in duration-150 border-2 flex text-center justify-center items-center hover:bg-zinc-200">Search listings</nuxt-link>
             <button @click="route('Org')" class="rounded-md bg-zinc-900 w-1/2 h-12 mt-4 text-white text-md ease-in duration-150 hover:bg-zinc-700">Join now</button>
           </div>
         </div>
