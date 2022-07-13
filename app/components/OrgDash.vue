@@ -7,13 +7,13 @@
           <div class="flex flex-col justify-start items-start space-y-4">
             <user :user="user" class="" />
 
-            <div id="bio" class="w-5/6 mx-4">
+            <div id="bio" class="w-4/5 mx-4">
               <p class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ user.biography }}</p>
             </div>
             <contact-info :mail="user.email" :github="user.contact.github" :linkedin="user.contact.linkedIn" />
           </div>
-          <div class="absolute right-6 sm:relative sm:right-0">
-            <edit-profile />
+          <div class="absolute right-6 sm:w-1/5 sm:relative sm:right-0">
+            <edit-profile :bio="user.biography" />
           </div>
         </div>
         <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">

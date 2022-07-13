@@ -7,23 +7,23 @@
         <div id="user-info" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
           <div class="flex flex-col justify-start items-start space-y-4">
             <user :user="user" class="w-5/6 sm:w-full" />
-            <div v-if="user.biography" id="bio" class="w-5/6 mx-4">
+            <div v-if="user.biography" id="bio" class="w-4/5 mx-4">
               <p class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ user.biography }}</p>
             </div>
             <contact-info :mail="user.email" :github="user.contact.github" :linkedin="user.contact.linkedIn" />
           </div>
-          <div class="absolute right-6 sm:relative sm:right-0">
-            <edit-profile />
+          <div class="absolute right-6 sm:w-1/5 sm:relative sm:right-0">
+            <edit-profile :bio="user.biography" />
           </div>
         </div>
         <div id="resume" class="py-4 w-11/12 max-w-4xl h-auto flex flex-col justify-between items-start sm:items-center rounded-lg shadow-md space-y-4 sm:flex-row sm:p-4">
-          <h2 class="text-2xl font-semibold mx-4">Resume</h2>
           <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
             <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
             <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
               <iframe :src="`https://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
             </div>
           </div>
+          <h2 class="text-2xl font-semibold mx-4">Resume</h2>
           <div class="space-y-6 ml-4 flex flex-col items-start sm:flex-row sm:mr-2 sm:items-center sm:space-y-0 sm:space-x-6">
             <button v-if="user.resume" @click="toggleResume" id="" class="flex justify-center items-center space-x-4 sm:space-x-2 h-full hover:text-zinc-600">
               <img src="@/assets/icons/external-link.svg" alt="" class="" />

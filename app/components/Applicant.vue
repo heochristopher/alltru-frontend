@@ -3,7 +3,7 @@
     <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
       <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="openResume"></div>
       <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
-        <iframe :src="`http://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
+        <iframe :src="`https://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
       </div>
     </div>
     <nuxt-link :to="`/students/${user._id}`" class="hover:text-gray-500 w-full sm:w-3/4 sm:h-20 md:h-24">

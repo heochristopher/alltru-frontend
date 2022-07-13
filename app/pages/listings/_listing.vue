@@ -68,7 +68,7 @@
       <!-- <div id="tags"></div> -->
       <div id="description" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2">
         <h5 class="text-xl font-semibold">Description</h5>
-        <p class="text-base text-zinc-600">{{ listing.description }}</p>
+        <p class="text-base text-zinc-600 whitespace-pre-wrap">{{ listing.description }}</p>
       </div>
       <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200">
         <div v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status !== 'Closed'" id="apply" class="w-full flex flex-col justify-center items-center space-y-4">

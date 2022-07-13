@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="flex justify-end">
     <button class="rounded-full m-2 p-2 hover:bg-zinc-200 ease-in duration-100 z-40 sm:p-3" @click="toggleModal">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
         <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
@@ -49,13 +49,16 @@
 
 <script>
 export default {
+  props: {
+    bio: String,
+  },
   data() {
     return {
       user: this.$store.state.user,
       formOpen: false,
       linkedIn: null,
       github: null,
-      biography: null,
+      biography: this.bio,
       birthday: null,
       avatar: null,
       avatarPreview: null,
