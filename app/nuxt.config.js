@@ -8,7 +8,6 @@ export default {
   target: 'server',
 
   server: {
-    host: '0',
     port: 8080,
   },
 

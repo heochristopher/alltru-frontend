@@ -8,7 +8,7 @@
             <user :user="user" class="" />
 
             <div id="bio" class="w-5/6 mx-4">
-              <p class="text-zinc-600 text-sm sm:text-base">{{ user.biography }}</p>
+              <p class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ user.biography }}</p>
             </div>
             <contact-info :mail="user.email" :github="user.contact.github" :linkedin="user.contact.linkedIn" />
           </div>
