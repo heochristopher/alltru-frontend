@@ -16,42 +16,33 @@
             <edit-profile />
           </div>
         </div>
-        <div id="resume" class="py-4 w-11/12 max-w-4xl h-auto flex justify-between items-center rounded-lg shadow-md sm:p-4">
+        <div id="resume" class="py-4 w-11/12 max-w-4xl h-auto flex flex-col justify-between items-start sm:items-center rounded-lg shadow-md space-y-4 sm:flex-row sm:p-4">
           <h2 class="text-2xl font-semibold mx-4">Resume</h2>
-          <div class="flex items-center mr-2">
-            <button class="rounded-full p-3 z-30 hover:bg-zinc-200 ease-in duration-100 sm:p-3" @click="showOptions = !showOptions"><img src="@/assets/icons/dots.svg" alt="" class="w-6" /></button>
-            <div id="options" class="absolute h-auto w-44 mt-72 mr-56 p-6 bg-white rounded-md shadow-md flex justify-start items-center z-20" v-if="showOptions">
-              <div class="flex flex-col items-start justify-center space-y-4">
-                <button v-if="user.resume" @click="toggleResume" id="" class="flex justify-center items-center space-x-2 hover:text-zinc-700">
-                  <img src="@/assets/icons/external-link.svg" alt="" class="" />
-                  <p>View</p>
-                </button>
-                <a v-if="user.resume" id="" target="_blank" :href="`https://docs.google.com/viewerng/viewer?url=${user.resume}`" class="flex justify-center items-center space-x-2 hover:text-zinc-700">
-                  <img src="@/assets/icons/download.svg" alt="" class="" />
-                  <p>Download</p>
-                </a>
-                <label for="resume-input" id="" class="flex justify-center items-center hover:text-zinc-700">
-                  <input id="resume-input" type="file" enctype="multipart/form-data" accept="application/pdf" class="hidden" @change="setImage" />
-                  <img src="@/assets/icons/upload-cloud.svg" alt="" class="mr-2" />
-                  <p>Upload</p>
-                </label>
-                <button v-if="user.resume" @click="deleteResume" id="" class="flex justify-center items-center space-x-2 hover:text-red-400">
-                  <img src="@/assets/icons/trash.svg" alt="" class="" />
-                  <p class="text-red-500">Delete</p>
-                </button>
-              </div>
-            </div>
-            <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
-              <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
-              <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
-                <iframe :src="`https://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
-              </div>
+          <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
+            <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
+            <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
+              <iframe :src="`https://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
             </div>
           </div>
-          <!-- <div class="" v-else>
-            <label for="resume-input">Upload Resume</label>
-            <input id="resume-input" type="file" enctype="multipart/form-data" accept="application/pdf" class="hidden" @change="setImage" />
-          </div> -->
+          <div class="space-y-6 ml-4 flex flex-col items-start sm:flex-row sm:mr-2 sm:items-center sm:space-y-0 sm:space-x-6">
+            <button v-if="user.resume" @click="toggleResume" id="" class="flex justify-center items-center space-x-4 sm:space-x-2 h-full hover:text-zinc-600">
+              <img src="@/assets/icons/external-link.svg" alt="" class="" />
+              <p>View</p>
+            </button>
+            <a v-if="user.resume" id="" target="_blank" :href="`https://docs.google.com/viewerng/viewer?url=${user.resume}`" class="flex justify-center items-center space-x-4 sm:space-x-2 hover:text-zinc-600">
+              <img src="@/assets/icons/download.svg" alt="" class="" />
+              <p>Download</p>
+            </a>
+            <label for="resume-input" id="" class="flex justify-center items-center hover:text-zinc-600">
+              <input id="resume-input" type="file" enctype="multipart/form-data" accept="application/pdf" class="hidden" @change="setImage" />
+              <img src="@/assets/icons/upload-cloud.svg" alt="" class="mr-4 sm:mr-2" />
+              <p>Upload</p>
+            </label>
+            <button v-if="user.resume" @click="deleteResume" id="" class="flex justify-center items-center space-x-4 sm:space-x-2 hover:text-red-300">
+              <img src="@/assets/icons/trash.svg" alt="" class="" />
+              <p class="text-red-500">Delete</p>
+            </button>
+          </div>
         </div>
         <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
           <h2 class="text-2xl font-semibold">My Listings</h2>
