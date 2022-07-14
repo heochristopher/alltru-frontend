@@ -1,5 +1,5 @@
 <template>
-  <div id="filter" class="w-full h-full flex flex-col justify-center items-center space-y-4 -z-10">
+  <div id="filter" class="w-full h-full flex flex-col justify-center items-center space-y-4">
     <div class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm" @click="toggleFilter">
       <p class="mx-1 text-base">Filter</p>
       <img v-if="!isOpen" class="mx-1" src="@/assets/icons/chevron-down.svg" alt="down" />
