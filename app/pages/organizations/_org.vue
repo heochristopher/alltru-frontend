@@ -7,7 +7,7 @@
           <div class="flex flex-col justify-start items-start space-y-4">
             <user :user="org" class="" />
             <div id="bio" class="w-5/6 mx-4">
-              <p class="text-zinc-600 text-sm sm:text-base">{{ org.biography }}</p>
+              <p class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ org.biography }}</p>
             </div>
             <contact-info :mail="org.email" :github="org.contact.github" :linkedin="org.contact.linkedIn" />
           </div>
