@@ -3,7 +3,8 @@ export const state = () => ({
   filters: null,
   alert: null,
   editModal: false,
-  resumeModal: false,
+  resume: null,
+  keyword: null,
   registerType: 'Student',
 })
 
@@ -20,17 +21,26 @@ export const mutations = {
     }
     state.alert = alert.response
   },
+  REMOVE_ALERT(state) {
+    state.alert = null
+  },
   DELETE_USER(state) {
     state.user = null
   },
   SET_EDIT_MODAL(state) {
     state.editModal = !state.editModal
   },
-  SET_RESUME_MODAL(state) {
-    state.resumeModal = !state.resumeModal
+  SET_RESUME_MODAL(state, resume) {
+    if (state.resume) {
+      return (state.resume = null)
+    }
+    state.resume = resume
   },
   SET_REGISTER_TYPE(state, type) {
     type === 'Org' ? (state.registerType = 'Org') : (state.registerType = 'Student')
+  },
+  SET_SEARCH_QUERY(state, keyword) {
+    state.keyword = keyword
   },
 }
 
@@ -59,14 +69,20 @@ export const actions = {
   },
   GET_ALERT({ commit }, alert) {
     commit('SET_ALERT', alert)
+    setTimeout(() => {
+      commit('REMOVE_ALERT')
+    }, '4000')
   },
   CHANGE_EDIT_MODAL({ commit }) {
     commit('SET_EDIT_MODAL')
   },
-  CHANGE_RESUME_MODAL({ commit }) {
-    commit('SET_RESUME_MODAL')
+  CHANGE_RESUME_MODAL({ commit }, resume) {
+    commit('SET_RESUME_MODAL', resume)
   },
   REGISTER_TYPE({ commit }, type) {
     commit('SET_REGISTER_TYPE', type)
+  },
+  ADD_SEARCH_QUERY({ commit }, keyword) {
+    commit('SET_SEARCH_QUERY', keyword)
   },
 }

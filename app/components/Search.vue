@@ -1,12 +1,19 @@
 <template>
   <div id="filter" class="w-full h-full flex flex-col justify-center items-center space-y-4">
+    <div class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm">
+      <p class="mx-1 text-base">Search</p>
+    </div>
+    <form class="flex flex-col mx-auto space-y-6 w-full" @submit.prevent="search" method="GET">
+      <form-input type="text" name="keywords" v-model="keywords"> Keywords </form-input>
+      <form-btn>Search Listings</form-btn>
+    </form>
     <div class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm" @click="toggleFilter">
-      <p class="mx-1 text-base">Filter</p>
+      <p class="mx-1 text-base">Filters</p>
       <img v-if="!isOpen" class="mx-1" src="@/assets/icons/chevron-down.svg" alt="down" />
       <img v-if="isOpen" class="mx-1" src="@/assets/icons/chevron-up.svg" alt="up" />
     </div>
-    <div class="flex justify-center item-start h-full w-full" v-if="isOpen">
-      <form class="flex flex-col mx-auto space-y-6 w-full" @submit.prevent="search" method="GET">
+    <div class="flex flex-col justify-center item-start h-full w-full" v-if="isOpen">
+      <form class="flex flex-col mx-auto space-y-6 w-full" @submit.prevent="filter" method="GET">
         <div id="type" class="flex flex-col justify-center items-start space-y-2">
           <label for="type" class="text-sm">Opportunity Type</label>
           <div class="flex h-10 w-full justify-evenly divide-x items-center text-sm rounded-md border-zinc-200 text-zinc-400 border-solid border cursor-pointer">
@@ -33,12 +40,12 @@
                 alt="pin"
               />
             </div> -->
-            <form-input type="number" name="zipcode" v-model="zipcode" :required="false"> Search Zipcode </form-input>
+            <form-input type="number" name="zipcode" v-model="zipcode" :required="false"> Zipcode </form-input>
           </div>
         </div>
         <!-- <div class="tags">
                 </div> -->
-        <form-btn>Search Listings</form-btn>
+        <form-btn>Filter Listings</form-btn>
       </form>
     </div>
   </div>
@@ -53,11 +60,14 @@ export default {
       type: 'null',
       remote: 'null',
       zipcode: 'null',
+      keywords: null,
     }
   },
   methods: {
     search() {
-      // this.isOpen = false
+      this.$store.dispatch('ADD_SEARCH_QUERY', this.keywords)
+    },
+    filter() {
       if (this.remote) {
         this.zip === 'null'
       }

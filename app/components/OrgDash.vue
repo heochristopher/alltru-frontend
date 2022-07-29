@@ -6,7 +6,9 @@
         <div id="user-info" class="w-11/12 max-w-4xl h-auto flex justify-between items-start rounded-lg shadow-md sm:p-4">
           <div class="flex flex-col justify-start items-start space-y-4">
             <user :user="user" class="" />
-
+            <div v-if="user.website" id="website" class="w-5/6 mx-4">
+              <a :href="user.website.includes('https://' || 'http://') ? user.website : `http://${user.website}`" class="text-zinc-600 text-sm sm:text-base hover:text-blue-500 hover:underline" target="_blank">{{ user.website }}</a>
+            </div>
             <div id="bio" class="w-4/5 mx-4">
               <p class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ user.biography }}</p>
             </div>
@@ -18,20 +20,20 @@
         </div>
         <div id="listings" class="w-11/12 max-w-4xl mb-4 h-auto flex flex-col justify-start items-start rounded-lg shadow-md p-4 sm:py-4 sm:px-8">
           <div class="w-full flex justify-center items-center">
-            <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base rounded-md border-zinc-200 text-zinc-400 border-solid border mt-2">
+            <!-- <div id="toggles" class="flex h-12 w-full max-w-2xl justify-evenly divide-x items-center text-base rounded-md border-zinc-200 text-zinc-400 border-solid border mt-2">
               <toggle v-model="selected" value="listings" class="w-1/2">Listings</toggle>
               <toggle v-model="selected" value="notifications" class="w-1/2">Notifications</toggle>
-            </div>
+            </div> -->
           </div>
-          <div class="w-full mt-4" v-if="selected === 'listings'">
+          <div class="w-full mt-4">
             <h3 class="text-xl font-semibold">My Listings</h3>
             <div class="w-full flex flex-col justify-center items-center">
-              <listing class="max-w-3xl" v-for="listing in listings" :key="listing._id" :listing="listing" :isSaved="null" />
+              <listing class="max-w-3xl" v-for="listing in listings" :key="listing._id" :listing="listing" :isSaved="null" :isDashboard="true" />
             </div>
           </div>
-          <div id="notifications" class="w-full m-4" v-if="selected === 'notifications'">
+          <!-- <div id="notifications" class="w-full m-4" v-if="selected === 'notifications'">
             <p class="text-base text-zinc-500">Coming Soon...</p>
-          </div>
+          </div> -->
         </div>
         <div id="logout" class="w-11/12 max-w-4xl h-auto flex justify-center items-center rounded-lg shadow-md p-2 sm:p-4">
           <button @click="logout" class="w-full max-w-sm h-12 text-base font-medium bg-white flex justify-center items-center rounded-md ease-in duration-150 text-red-500 hover:text-red-600">Logout</button>

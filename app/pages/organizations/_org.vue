@@ -7,6 +7,9 @@
           <div class="flex flex-col justify-start items-start space-y-4">
             <user :user="org" class="" />
             <div id="bio" class="w-5/6 mx-4">
+              <div v-if="org.website" id="website" class="">
+                <a :href="org.website.includes('https://' || 'http://') ? org.website : `http://${org.website}`" class="text-zinc-600 text-sm sm:text-base hover:text-blue-500 hover:underline" target="_blank">{{ org.website }}</a>
+              </div>
               <p class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ org.biography }}</p>
             </div>
             <contact-info :mail="org.email" :github="org.contact.github" :linkedin="org.contact.linkedIn" />
@@ -32,11 +35,12 @@ export default {
     try {
       const org = await $axios.$get(`/sendOther/${id}`)
       const listings = await $axios.$get(`/orgListings/${id}`)
+      const user = null
       if (store.state.user && store.state.user.role === 'Student') {
         const user = await $axios.$get('/sendUser')
         return { user, org, listings }
       }
-      return { org, listings }
+      return { org, listings, user }
     } catch (error) {
       this.$store.dispatch('GET_ALERT', error)
     }

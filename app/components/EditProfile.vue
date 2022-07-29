@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end">
-    <button class="rounded-full m-2 p-2 hover:bg-zinc-200 ease-in duration-100 z-40 sm:p-3" @click="toggleModal">
+    <button class="rounded-full m-2 p-2 hover:bg-zinc-200 ease-in duration-100 z-10 sm:p-3" @click="toggleModal">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
         <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
       </svg>
@@ -18,6 +18,8 @@
             <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
           </label>
         </div>
+        <form-input class="-mt-2" type="text" name="website" v-model="website" :required="false"> Website </form-input>
+
         <div class="w-full space-y-2">
           <label class="text-lg font-medium" for="biography">Biography</label>
           <textarea class="w-full h-36 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-violet-500" id="biography" name="biography" v-model="biography" :placeholder="bioText" />
@@ -59,6 +61,7 @@ export default {
       linkedIn: null,
       github: null,
       biography: this.bio,
+      website: null,
       birthday: null,
       avatar: null,
       avatarPreview: null,
@@ -95,6 +98,7 @@ export default {
           await this.$axios.patch('/profilePic', this.avatar)
         }
         const res = await this.$axios.patch('/editProfile', {
+          website: this.website,
           biography: this.biography,
           linkedIn: this.linkedIn,
           github: this.github,

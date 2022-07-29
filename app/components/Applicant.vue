@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-4xl w-full h-auto flex flex-col justify-between items-center rounded-lg shadow-md p-2 space-y-2 sm:p-4 sm:flex-row sm:space-x-4">
-    <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resumeModal">
-      <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="openResume"></div>
+    <div class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.resume === user.resume && this.$store.state.resume !== null">
+      <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleResume"></div>
       <div id="content" class="w-11/12 max-w-4xl h-5/6 flex flex-col justify-center items-center z-50 bg-white rounded shadow-md">
         <iframe :src="`https://docs.google.com/gview?url=${user.resume}&embedded=true`" frameborder="0" class="w-full h-full"></iframe>
       </div>
@@ -21,7 +21,7 @@
     </nuxt-link>
     <div id="actions" class="flex flex-row space-x-10 w-full max-w-lg h-12 justify-center items-center text-center m-4 sm:w-1/4 sm:flex-col sm:space-y-4 sm:h-20 sm:space-x-0 md:h-24">
       <a id="email" class="w-3/5 h-4/5 text-md bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-violet-500 sm:w-full sm:h-full" :href="`https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=${user.email}`" target="_blank">Send Email</a>
-      <button v-if="user.resume" id="resume" class="w-3/5 h-4/5 text-md bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-violet-500 sm:w-full sm:h-full" @click="openResume">View Resume</button>
+      <button v-if="user.resume" id="resume" class="w-3/5 h-4/5 text-md bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-violet-500 sm:w-full sm:h-full" @click="toggleResume(user.resume)">View Resume</button>
       <div v-else id="no-resume" class="m-auto flex text-center justify-center items-center w-3/5 h-4/5 text-md sm:w-full sm:h-full">
         <h1>Resume N/A</h1>
       </div>
@@ -35,8 +35,8 @@ export default {
     user: Object,
   },
   methods: {
-    openResume() {
-      this.$store.dispatch('CHANGE_RESUME_MODAL')
+    toggleResume(resume) {
+      this.$store.dispatch('CHANGE_RESUME_MODAL', resume)
     },
   },
   computed: {
