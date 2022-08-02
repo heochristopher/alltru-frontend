@@ -1,10 +1,23 @@
 <template>
   <div class="m-4">
     <navbar />
-    <div class="mt-20 flex flex-col justify-center items-center" id="">
+    <div class="mt-24 flex flex-col justify-center items-center" id="">
       <h2 class="text-3xl text-center font-semibold truncate h-auto">Create Listing</h2>
       <form method="POST" class="flex flex-col space-y-4 mt-4 w-4/5 md:w-1/2" @submit.prevent="create" v-if="authorized">
-        <div class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="type">
+        <select class="w-full border border-zinc-200 text-zinc-500 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 block py-2.5 px-2 mt-2.5" type="number" name="floating_month" v-model="month" required>
+              <option disabled selected value="">Listing Type</option>
+              <!-- <option v-for="month in monthRange" :key="month" :value="month">{{ month }}</option> -->
+              <option value="Volunteer">Volunteer</option>
+              <option value="Internship" >Internship</option>
+              <option value="Job">Job</option>
+        </select>
+        <select class="w-full border border-zinc-200 text-zinc-500 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 block py-2.5 px-2 mt-2.5" type="number" name="floating_month" v-model="month" required>
+              <option disabled selected value="">Location</option>
+              <!-- <option v-for="month in monthRange" :key="month" :value="month">{{ month }}</option> -->
+              <option value="true">Remote</option>
+              <option value="false" >On-Site</option>
+        </select>
+        <!-- <div class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="type">
           <toggle v-model="type" value="Volunteer" class="w-1/3">Volunteer</toggle>
           <toggle v-model="type" value="Internship" class="w-1/3">Internship</toggle>
           <toggle v-model="type" value="Job" class="w-1/3">Job</toggle>
@@ -12,11 +25,11 @@
         <div class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="remote">
           <toggle v-model="remote" value="true" class="w-1/2">Remote</toggle>
           <toggle v-model="remote" value="false" class="w-1/2">On-Site</toggle>
-        </div>
+        </div> -->
         <form-input id="position" type="text" name="position" v-model="position" required>Position</form-input>
         <form-input v-if="remote !== 'true'" id="borough" type="text" name="borough" v-model="location.borough" required>Borough</form-input>
         <form-input v-if="remote !== 'true'" id="zip" type="number" name="zip" v-model="location.zip" required>Zipcode</form-input>
-        <textarea class="block py-2.5 px-2 mt-2.5 w-full text-sm text-zinc-900 bg-transparent rounded-md border border-solid border-zinc-200 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer" id="description" name="description" v-model="description" placeholder="Description, dates, additional information..." />
+        <textarea class="block h-28 py-2.5 px-2 mt-2.5 w-full text-sm text-zinc-900 bg-transparent rounded-md border border-solid border-zinc-200 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer" id="description" name="description" v-model="description" placeholder="Description, dates, additional information..." />
         <div id="supplementals" class="flex flex-col space-y-4 mt-4 items-center">
           <h3 class="text-2xl text-center font-semibold truncate h-auto">Optional Supplementals</h3>
           <div v-for="e in supplementals" :key="e" id="supplemental" class="flex flex-row">
