@@ -46,6 +46,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#btn {
+  background: linear-gradient(90.73deg, rgb(253 164 175) 4%, rgb(168 85 247) 97.46%);
+}
 </style>
