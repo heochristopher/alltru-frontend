@@ -12,7 +12,7 @@
         </NuxtLink>
       </div>
       <div id="info" class="w-full h-auto flex flex-col justify-start items-start space-y-4 pb-6 px-4 border-b border-solid border-zinc-200 relative">
-        <h3 v-if="listing.status === 'Closed'" id="closed" class="absolute top-0 right-0 text-lg px-2 py-1 rounded-full bg-red-500 text-white">CLOSED</h3>
+        <h3 v-if="listing.status === 'Closed'" id="closed" class="absolute top-3 right-0 text-md font-semibold px-2 py-1 rounded-full text-red-500">CLOSED</h3>
         <div id="profile" class="w-full flex flex-col justify-start items-start space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-4">
           <nuxt-link :to="`/organizations/${listing.org._id}`" id="avatar" class="h-40 w-40 sm:h-28 sm:w-28 md:h-32 md:w-32">
             <img :src="listing.org.avatar" alt="logo" class="object-cover" />
@@ -85,17 +85,26 @@
           <div class="w-full flex flex-col justify-center items-start space-y-1">
             <h5 class="text-xl font-semibold">Apply</h5>
             <p class="text-zinc-600 text-base pb-2">Your profile and resume will be sent automatically to the organization when you apply.</p>
-            <div v-if="listing.supplementals && listing.supplementals.length > 0" id="supplementals" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2">
+          </div>
+          <div v-if="listing.supplementals && listing.supplementals.length > 0" id="supplementals" class="w-full h-auto flex flex-col justify-start items-start space-y-3 pt-4 border-t border-solid border-zinc-200 pb-2">
               <h5 class="text-xl font-semibold">Supplementals</h5>
-              <div id="supp" class="" v-for="e in listing.supplementals" :key="e">
-                <h6 class="text-md">{{ e.prompt }} · {{ e.input }}</h6>
-                <form-input type="text" :name="e.prompt" :value="text">Your Answer</form-input>
-                <div v-if="e.input === 'Select'" class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="select">
-                  <toggle v-for="option in e.options" :key="option" v-model="suppType" :value="option" class="w-1/3">{{ option }}</toggle>
+              <div id="supp" class="w-full space-y-1" v-for="e in listing.supplementals" :key="e">
+                <h6 class="text-md">{{ e.prompt }}</h6>
+                <textarea v-if="e.input === 'Text'" class="w-full h-24 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-violet-500" id="biography" name="biography" v-model="biography" placeholder="Answer" />
+
+                <div v-if="e.input === 'File'" class="flex flex-col justify-center items-start">
+                  <label for="file" class="w-1/3 flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                    <form-btn class="mb-2 bg-zinc-600 hover:bg-zinc-700">Upload File</form-btn>
+                    <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
+                  </label>
                 </div>
+
+                <select v-if="e.input === 'Select'" class="w-1/3 border border-zinc-200 text-zinc-500 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 block py-2.5 px-2 mt-2.5" type="number" name="floating_month" v-model="month" required>
+                  <option disabled selected value="">Grade</option>
+                  <option v-for="option in e.options" :key="option" :value="option">{{ option }}</option>
+                </select>
               </div>
             </div>
-          </div>
           <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" type="submit">Apply</button>
         </form>
         <div v-else-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status === 'Closed'" class="" id="">
@@ -122,58 +131,64 @@
 </template>
 
 <script>
+import FormBtn from '~/components/FormBtn.vue'
 export default {
-  data() {
-    return {
-      suppType: null,
-    }
-  },
-  async asyncData({ $axios, params, store, from }) {
-    const id = params.listing
-    let route = '/dashboard'
-    if (from) {
-      route = from
-    }
-    const listing = await $axios.$get(`/findListing/${id}`)
-    let applied = null
-    let user = null
-    let applicants = null
-    if (store.state.user) {
-      user = await $axios.$get('/sendUser')
-      if (user.role === 'Student') {
-        applied = user.appliedListings.find((e) => e === listing._id)
-        return { listing, user, applied, route, applicants }
-      } else if (user._id === listing.org._id) {
-        applicants = await $axios.$get(`/queryApplicants/${listing._id}`)
-        return { listing, user, applied, route, applicants }
-      } else if (user._id !== listing.org._id) {
-        return { listing, user, applied, route, applicants }
-      }
-    }
-    return { listing, user, applied, route, applicants }
-  },
-  methods: {
-    async apply(id) {
-      try {
-        const res = await this.$axios.$post(`/apply/${id}`)
-        this.$nuxt.refresh()
-        this.$store.dispatch('GET_ALERT', res)
-      } catch (error) {
-        this.$store.dispatch('GET_ALERT', error)
-      }
+    data() {
+        return {
+            suppType: null,
+        };
     },
-    async closeListing(id) {
-      try {
-        const res = await this.$axios.patch('/closeListing', {
-          id: id,
-        })
-        this.$nuxt.refresh()
-        this.$store.dispatch('GET_ALERT', res)
-      } catch (error) {
-        this.$store.dispatch('GET_ALERT', error)
-      }
+    async asyncData({ $axios, params, store, from }) {
+        const id = params.listing;
+        let route = "/dashboard";
+        if (from) {
+            route = from;
+        }
+        const listing = await $axios.$get(`/findListing/${id}`);
+        let applied = null;
+        let user = null;
+        let applicants = null;
+        if (store.state.user) {
+            user = await $axios.$get("/sendUser");
+            if (user.role === "Student") {
+                applied = user.appliedListings.find((e) => e === listing._id);
+                return { listing, user, applied, route, applicants };
+            }
+            else if (user._id === listing.org._id) {
+                applicants = await $axios.$get(`/queryApplicants/${listing._id}`);
+                return { listing, user, applied, route, applicants };
+            }
+            else if (user._id !== listing.org._id) {
+                return { listing, user, applied, route, applicants };
+            }
+        }
+        return { listing, user, applied, route, applicants };
     },
-  },
+    methods: {
+        async apply(id) {
+            try {
+                const res = await this.$axios.$post(`/apply/${id}`);
+                this.$nuxt.refresh();
+                this.$store.dispatch("GET_ALERT", res);
+            }
+            catch (error) {
+                this.$store.dispatch("GET_ALERT", error);
+            }
+        },
+        async closeListing(id) {
+            try {
+                const res = await this.$axios.patch("/closeListing", {
+                    id: id,
+                });
+                this.$nuxt.refresh();
+                this.$store.dispatch("GET_ALERT", res);
+            }
+            catch (error) {
+                this.$store.dispatch("GET_ALERT", error);
+            }
+        },
+    },
+    components: { FormBtn }
 }
 </script>
 

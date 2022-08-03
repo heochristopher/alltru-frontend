@@ -7,25 +7,25 @@
       <h1 class="text-center text-2xl font-medium">Welcome back,</h1>
       <div id="email" class="w-80 flex flex-col justify-center items-center mt-2">
         <!-- <label for="email">Email</label> -->
-        <form-input
+        <login-input
           type="text"
           name="email"
           v-model="email"
           required
         >
           Email
-        </form-input>
+        </login-input>
       </div>
       <div id="pass" class="w-80 flex flex-col justify-center items-center mt-2">
         <!-- <label for="password">Password</label> -->
-        <form-input
+        <login-input
           type="password"
           name="password"
           v-model="password"
           required
         >
           Password
-        </form-input>
+        </login-input>
       </div>
       <div id="btn" class="mt-6 flex flex-col justify-center items-center space-y-2">
         <form-btn>Login</form-btn>

@@ -5,10 +5,10 @@
       <div id="name" class="flex flex-col justify-center items-center mt-2">
         <div id="name-field" class="flex items-center justify-evenly">
           <div id="first-name" class="flex justify-start items-center w-1/2 mr-1">
-            <form-input type="text" name="first-name" v-model="firstName" required> First Name </form-input>
+            <login-input type="text" name="first-name" v-model="firstName" required> First Name </login-input>
           </div>
           <div id="last-name" class="flex justify-start items-center w-1/2 ml-2">
-            <form-input type="text" name="last-name" v-model="lastName" required> Last Name </form-input>
+            <login-input type="text" name="last-name" v-model="lastName" required> Last Name </login-input>
           </div>
         </div>
       </div>
@@ -35,13 +35,13 @@
         </div>
       </div>
       <div id="school" class="flex flex-col justify-center items-center mt-2">
-        <form-input type="text" name="school" v-model="school" required> School/Institution </form-input>
+        <login-input type="text" name="school" v-model="school" required> School/Institution </login-input>
       </div>
       <div id="email" class="flex flex-col justify-center items-center mt-2">
-        <form-input type="text" name="email" v-model="email" required> Email </form-input>
+        <login-input type="text" name="email" v-model="email" required> Email </login-input>
       </div>
       <div id="pass" class="flex flex-col justify-center items-center mt-2">
-        <form-input type="password" name="password" v-model="password" required> Password </form-input>
+        <login-input type="password" name="password" v-model="password" required> Password </login-input>
       </div>
       <div id="btn" class="flex flex-col justify-center items-center mt-6">
         <form-btn type="submit">Sign Up</form-btn>
