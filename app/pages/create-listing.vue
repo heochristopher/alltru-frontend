@@ -109,6 +109,11 @@ export default {
   methods: {
     async create() {
       try {
+        if (this.supplementals.length > 0) {
+          for (let i = 0; i < this.supplementals.length; i++) {
+            this.supplementals[i].identifier = i
+          }
+        }
         const res = await this.$axios.$post('/listing', {
           position: this.position,
           type: this.type,
@@ -122,6 +127,7 @@ export default {
                 },
           description: this.description,
           tags: [],
+          supplementals: this.supplementals,
         })
         this.$router.push('/dashboard')
         this.$store.dispatch('GET_ALERT', res)

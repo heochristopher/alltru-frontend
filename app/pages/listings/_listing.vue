@@ -70,14 +70,34 @@
         <h5 class="text-xl font-semibold">Description</h5>
         <p class="text-base text-zinc-600 whitespace-pre-wrap">{{ listing.description }}</p>
       </div>
+      <div v-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.supplementals && listing.supplementals.length > 0" id="supplementals" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2">
+        <h5 class="text-xl font-semibold">Supplementals</h5>
+        <div id="supp" class="" v-for="e in listing.supplementals" :key="e">
+          <h6 class="text-md">{{ e.prompt }}</h6>
+          <h6 class="text-md font-semibold">{{ e.input }}</h6>
+          <div v-if="e.input === 'Select'" class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="select">
+            <toggle v-for="option in e.options" :key="option" v-model="suppType" :value="option" class="w-1/3">{{ option }}</toggle>
+          </div>
+        </div>
+      </div>
       <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200">
-        <div v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status !== 'Closed'" id="apply" class="w-full flex flex-col justify-center items-center space-y-4">
+        <form method="POST" @submit.prevent="apply(listing._id)" v-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status !== 'Closed'" id="apply" class="w-full flex flex-col justify-center items-center space-y-4">
           <div class="w-full flex flex-col justify-center items-start space-y-1">
             <h5 class="text-xl font-semibold">Apply</h5>
-            <p class="text-zinc-600 text-base pb-2">Your information and resume will be sent automatically to the organization when you apply.</p>
+            <p class="text-zinc-600 text-base pb-2">Your profile and resume will be sent automatically to the organization when you apply.</p>
+            <div v-if="listing.supplementals && listing.supplementals.length > 0" id="supplementals" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2">
+              <h5 class="text-xl font-semibold">Supplementals</h5>
+              <div id="supp" class="" v-for="e in listing.supplementals" :key="e">
+                <h6 class="text-md">{{ e.prompt }} · {{ e.input }}</h6>
+                <form-input type="text" :name="e.prompt" :value="text">Your Answer</form-input>
+                <div v-if="e.input === 'Select'" class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="select">
+                  <toggle v-for="option in e.options" :key="option" v-model="suppType" :value="option" class="w-1/3">{{ option }}</toggle>
+                </div>
+              </div>
+            </div>
           </div>
-          <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" @click="apply(listing._id)">Apply</button>
-        </div>
+          <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" type="submit">Apply</button>
+        </form>
         <div v-else-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status === 'Closed'" class="" id="">
           <h5 id="closed" class="text-xl font-semibold">This listing is closed</h5>
           <p class="text-zinc-600 text-base pb-2">Email the organization if you have any questions!</p>
@@ -105,7 +125,7 @@
 export default {
   data() {
     return {
-      notes: null,
+      suppType: null,
     }
   },
   async asyncData({ $axios, params, store, from }) {
