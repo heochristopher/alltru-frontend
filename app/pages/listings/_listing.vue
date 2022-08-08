@@ -73,11 +73,15 @@
       <div v-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.supplementals && listing.supplementals.length > 0" id="supplementals" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2">
         <h5 class="text-xl font-semibold">Supplementals</h5>
         <div id="supp" class="" v-for="e in listing.supplementals" :key="e">
-          <h6 class="text-md">{{ e.prompt }}</h6>
-          <h6 class="text-md font-semibold">{{ e.input }}</h6>
-          <div v-if="e.input === 'Select'" class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="select">
-            <toggle v-for="option in e.options" :key="option" v-model="suppType" :value="option" class="w-1/3">{{ option }}</toggle>
-          </div>
+          <span class="text-md">
+            {{ e.prompt }} · <span class="text-md font-semibold">{{ e.input }}</span>
+          </span>
+          <span v-if="e.input === 'Select'" id="select">
+            (
+            <span v-for="(option, index) in e.options" :key="option" class="text-md">{{ option }}<span class="text-md" v-if="index !== e.options.length - 1">, </span></span>
+            )
+          </span>
+          <span class="text-red-500 text-md" v-if="!e.optional">*</span>
         </div>
       </div>
       <div id="apply" class="w-full h-auto flex flex-col justify-start items-start space-y-1 pt-4 border-t border-solid border-zinc-200">
@@ -87,24 +91,22 @@
             <p class="text-zinc-600 text-base pb-2">Your profile and resume will be sent automatically to the organization when you apply.</p>
           </div>
           <div v-if="listing.supplementals && listing.supplementals.length > 0" id="supplementals" class="w-full h-auto flex flex-col justify-start items-start space-y-3 pt-4 border-t border-solid border-zinc-200 pb-2">
-              <h5 class="text-xl font-semibold">Supplementals</h5>
-              <div id="supp" class="w-full space-y-1" v-for="e in listing.supplementals" :key="e">
-                <h6 class="text-md">{{ e.prompt }}</h6>
-                <textarea v-if="e.input === 'Text'" class="w-full h-24 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-violet-500" id="biography" name="biography" v-model="biography" placeholder="Answer" />
-
-                <div v-if="e.input === 'File'" class="flex flex-col justify-center items-start">
-                  <label for="file" class="w-1/3 flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
-                    <form-btn class="mb-2 bg-zinc-600 hover:bg-zinc-700">Upload File</form-btn>
-                    <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
-                  </label>
-                </div>
-
-                <select v-if="e.input === 'Select'" class="w-1/3 border border-zinc-200 text-zinc-500 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 block py-2.5 px-2 mt-2.5" type="number" name="floating_month" v-model="month" required>
-                  <option disabled selected value="">Grade</option>
-                  <option v-for="option in e.options" :key="option" :value="option">{{ option }}</option>
-                </select>
+            <h5 class="text-xl font-semibold">Supplementals</h5>
+            <div id="supp" class="w-full space-y-1" v-for="(supp, index) in listing.supplementals" :key="supp">
+              <h6 class="text-md">{{ supp.prompt }} <span class="text-red-500 text-md" v-if="!supp.optional">*</span></h6>
+              <textarea v-if="supp.input === 'Text'" class="w-full h-24 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-violet-500" id="biography" name="biography" v-model="answers[index.toString()].input" placeholder="Answer" :required="!supp.optional" />
+              <div v-if="supp.input === 'File'" class="flex flex-col justify-center items-start">
+                <label for="file" class="w-1/3 flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                  <div class="w-full h-10 text-sm bg-zinc-600 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-zinc-700">Upload File</div>
+                  <input id="file" type="file" accept="image/png, image/jpg, image/jpeg, image/pdf, image/heic" :ref="supp.identifier" @change="setImage(supp.identifier)" :required="!supp.optional" />
+                </label>
               </div>
+              <select v-if="supp.input === 'Select'" class="w-1/3 border border-zinc-200 text-zinc-500 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 block py-2.5 px-2 mt-2.5" type="number" name="floating_month" v-model="answers[index.toString()].input" :required="!supp.optional">
+                <option disabled selected value="">Answer</option>
+                <option v-for="option in supp.options" :key="option" :value="option">{{ option }}</option>
+              </select>
             </div>
+          </div>
           <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" type="submit">Apply</button>
         </form>
         <div v-else-if="this.$store.state.user && this.$store.state.user.role === 'Student' && !applied && listing.status === 'Closed'" class="" id="">
@@ -131,64 +133,82 @@
 </template>
 
 <script>
-import FormBtn from '~/components/FormBtn.vue'
 export default {
-    data() {
-        return {
-            suppType: null,
-        };
-    },
-    async asyncData({ $axios, params, store, from }) {
-        const id = params.listing;
-        let route = "/dashboard";
-        if (from) {
-            route = from;
+  data() {
+    return {}
+  },
+  async asyncData({ $axios, params, store, from, $set }) {
+    const id = params.listing
+    let route = '/dashboard'
+    if (from) {
+      route = from
+    }
+    const listing = await $axios.$get(`/findListing/${id}`)
+    let applied = null
+    let user = null
+    let applicants = null
+    let answers = {}
+    for (let i = 0; i < listing.supplementals.length; i++) {
+      answers[i.toString()] = {
+        identifier: i,
+        input: '',
+      }
+    }
+    if (store.state.user) {
+      user = await $axios.$get('/sendUser')
+      if (user.role === 'Student') {
+        applied = user.appliedListings.find((e) => e === listing._id)
+        return { listing, user, applied, route, applicants, answers }
+      } else if (user._id === listing.org._id) {
+        applicants = await $axios.$get(`/queryApplicants/${listing._id}`)
+        return { listing, user, applied, route, applicants }
+      } else if (user._id !== listing.org._id) {
+        return { listing, user, applied, route, applicants }
+      }
+    }
+    return { listing, user, applied, route, applicants }
+  },
+  methods: {
+    async apply(id) {
+      try {
+        let answers = []
+        for (const property in this.answers) {
+          if (this.answers[property].input !== '') {
+            answers.push({
+              identifier: parseInt(this.answers[property].identifier),
+              answer: this.answers[property].input,
+            })
+          }
         }
-        const listing = await $axios.$get(`/findListing/${id}`);
-        let applied = null;
-        let user = null;
-        let applicants = null;
-        if (store.state.user) {
-            user = await $axios.$get("/sendUser");
-            if (user.role === "Student") {
-                applied = user.appliedListings.find((e) => e === listing._id);
-                return { listing, user, applied, route, applicants };
-            }
-            else if (user._id === listing.org._id) {
-                applicants = await $axios.$get(`/queryApplicants/${listing._id}`);
-                return { listing, user, applied, route, applicants };
-            }
-            else if (user._id !== listing.org._id) {
-                return { listing, user, applied, route, applicants };
-            }
-        }
-        return { listing, user, applied, route, applicants };
+        const res = await this.$axios.$post(`/apply/${id}`, {
+          supplementals: answers,
+        })
+        this.$nuxt.refresh()
+        this.$store.dispatch('GET_ALERT', res)
+      } catch (error) {
+        this.$store.dispatch('GET_ALERT', error)
+      }
     },
-    methods: {
-        async apply(id) {
-            try {
-                const res = await this.$axios.$post(`/apply/${id}`);
-                this.$nuxt.refresh();
-                this.$store.dispatch("GET_ALERT", res);
-            }
-            catch (error) {
-                this.$store.dispatch("GET_ALERT", error);
-            }
-        },
-        async closeListing(id) {
-            try {
-                const res = await this.$axios.patch("/closeListing", {
-                    id: id,
-                });
-                this.$nuxt.refresh();
-                this.$store.dispatch("GET_ALERT", res);
-            }
-            catch (error) {
-                this.$store.dispatch("GET_ALERT", error);
-            }
-        },
+    async closeListing(id) {
+      try {
+        const res = await this.$axios.patch('/closeListing', {
+          id: id,
+        })
+        this.$nuxt.refresh()
+        this.$store.dispatch('GET_ALERT', res)
+      } catch (error) {
+        this.$store.dispatch('GET_ALERT', error)
+      }
     },
-    components: { FormBtn }
+    setImage(id) {
+      const file = this.$refs[id.toString()][0].files[0]
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      const formData = new FormData()
+      formData.append('image', file)
+      this.answers[id.toString()].input = formData
+    },
+  },
 }
 </script>
 

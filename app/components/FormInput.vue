@@ -6,8 +6,8 @@
     :value="value"
   /> -->
     <!--  -->
-    
-    <input class="block py-2.5 px-3 mt-2.5 w-full text-sm text-zinc-900 bg-transparent rounded-md border border-solid border-zinc-200 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500" id="biography" :name="name" :type="type" :value="value" :required="required ? true : false" :placeholder="placeholder" />
+
+    <input class="block py-2.5 px-3 mt-2.5 w-full text-sm text-zinc-900 bg-transparent rounded-md border border-solid border-zinc-200 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500" id="biography" @input="updateValue($event.target.value)" :name="name" :type="type" :value="value" :required="required ? true : false" :placeholder="placeholder" />
   </div>
 </template>
 

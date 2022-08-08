@@ -15,10 +15,10 @@
           <label for="file" class="flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
             <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-20 pb-2 rounded-full object-cover" alt="" />
             Upload Profile Picture
-            <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
+            <input id="file" type="file" accept="image/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
           </label>
         </div>
-        <form-input class="-mt-2" type="text" name="website" v-model="website" :required="false" placeholder="Website" /> 
+        <form-input class="-mt-2" type="text" name="website" v-model="website" :required="false" placeholder="Website" />
 
         <div class="w-full space-y-2">
           <label class="text-lg font-medium" for="biography">Biography</label>
