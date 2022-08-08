@@ -4,7 +4,7 @@
       <p class="mx-1 text-base">Search</p>
     </div>
     <form class="flex flex-col mx-auto space-y-6 w-full" @submit.prevent="search" method="GET">
-      <form-input type="text" name="keywords" v-model="keywords"> Keywords </form-input>
+      <form-input type="text" name="keywords" v-model="keywords" placeholder="Keywords"/> 
       <form-btn>Search Listings</form-btn>
     </form>
     <div class="w-full h-10 flex justify-between items-center cursor-pointer shadow-sm" @click="toggleFilter">
@@ -40,7 +40,10 @@
                 alt="pin"
               />
             </div> -->
-            <form-input type="number" name="zipcode" v-model="zipcode" :required="false"> Zipcode </form-input>
+            <form-input type="number" name="zipcode" v-model="zipcode" :required="false" placeholder="Zipcode" />
+
+            <!-- ** THIS DOESN'T WORK ** -->
+
           </div>
         </div>
         <!-- <div class="tags">
@@ -56,7 +59,7 @@ export default {
   name: 'Search',
   data() {
     return {
-      isOpen: true,
+      isOpen: false,
       type: 'null',
       remote: 'null',
       zipcode: 'null',

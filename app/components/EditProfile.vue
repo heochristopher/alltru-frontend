@@ -13,12 +13,12 @@
       <div id="content" class="w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
         <div class="flex flex-col justify-center items-center">
           <label for="file" class="flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
-            <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-20 rounded-full object-cover" alt="" />
+            <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-20 pb-2 rounded-full object-cover" alt="" />
             Upload Profile Picture
-            <input id="file" type="file" accept="iamge/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
+            <input id="file" type="file" accept="image/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
           </label>
         </div>
-        <form-input class="-mt-2" type="text" name="website" v-model="website" :required="false"> Website </form-input>
+        <form-input class="-mt-2" type="text" name="website" v-model="website" :required="false" placeholder="Website" />
 
         <div class="w-full space-y-2">
           <label class="text-lg font-medium" for="biography">Biography</label>
@@ -27,17 +27,17 @@
         <div id="socials" class="w-full space-y-2">
           <label class="text-lg font-medium" for="socials">Add Platforms</label>
           <div class="w-full flex flex-col justify-start items-start space-y-2">
-            <div id="linkedin" class="w-1/2 flex flex-row space-x-4">
-              <div class="h-16 w-16 aspect-square">
+            <div id="linkedin" class="w-2/3 flex flex-row space-x-4">
+              <div class="ml-2.5 h-16 w-16 aspect-square">
                 <img src="@/assets/icons/inmark.png" alt="" class="object-cover" />
               </div>
-              <form-input type="text" name="linkedIn" v-model="linkedIn" :required="false"> LinkedIn </form-input>
+              <form-input type="text" name="linkedIn" v-model="linkedIn" :required="false" placeholder="Add LinkedIn" />
             </div>
-            <div id="github" class="w-1/2 flex flex-row space-x-4">
-              <div class="h-16 w-16 aspect-square">
+            <div id="github" class="w-2/3 flex flex-row space-x-4">
+              <div class="ml-2.5 h-16 w-16 aspect-square">
                 <img src="@/assets/icons/github.png" alt="" class="object-cover" />
               </div>
-              <form-input type="text" name="github" v-model="github" :required="false"> GitHub </form-input>
+              <form-input type="text" name="github" v-model="github" :required="false" placeholder="Add Github" />
             </div>
           </div>
         </div>
