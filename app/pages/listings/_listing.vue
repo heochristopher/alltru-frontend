@@ -96,9 +96,9 @@
               <h6 class="text-md">{{ supp.prompt }} <span class="text-red-500 text-md" v-if="!supp.optional">*</span></h6>
               <textarea v-if="supp.input === 'Text'" class="w-full h-24 px-3 py-2 rounded-md border-zinc-200 border-solid border text-sm focus:border-violet-500" id="biography" name="biography" v-model="answers[index.toString()].input" placeholder="Answer" :required="!supp.optional" />
               <div v-if="supp.input === 'File'" class="flex flex-col justify-center items-start">
-                <label for="file" class="w-1/3 flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
+                <label :for="supp.identifier" class="w-1/3 flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
                   <div class="w-full h-10 text-sm bg-zinc-600 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-zinc-700">Upload File</div>
-                  <input id="file" type="file" accept="image/png, image/jpg, image/jpeg, image/pdf, image/heic" :ref="supp.identifier" @change="setImage(supp.identifier)" :required="!supp.optional" />
+                  <input :id="supp.identifier" type="file" accept="application/pdf" :ref="supp.identifier" @change="setImage(supp.identifier)" :required="!supp.optional" />
                 </label>
               </div>
               <select v-if="supp.input === 'Select'" class="w-1/3 border border-zinc-200 text-zinc-500 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 block py-2.5 px-2 mt-2.5" type="number" name="floating_month" v-model="answers[index.toString()].input" :required="!supp.optional">
@@ -172,17 +172,43 @@ export default {
     async apply(id) {
       try {
         let answers = []
+        let files = []
         for (const property in this.answers) {
           if (this.answers[property].input !== '') {
-            answers.push({
-              identifier: parseInt(this.answers[property].identifier),
-              answer: this.answers[property].input,
-            })
+            if (typeof this.answers[property].input === 'object') {
+              files.push({
+                identifier: parseInt(this.answers[property].identifier),
+                input: this.answers[property].input,
+              })
+            } else {
+              answers.push({
+                identifier: parseInt(this.answers[property].identifier),
+                answer: this.answers[property].input,
+              })
+            }
           }
         }
         const res = await this.$axios.$post(`/apply/${id}`, {
           supplementals: answers,
         })
+        if (files.length > 0) {
+          // files.forEach(async (file) => {
+          //   await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
+          // })
+          // for await (const file of files) {
+          //   await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
+          // }
+          // await Promise.all(
+          //   files.map(async (file) => {
+          //     await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
+          //   })
+          // )
+
+          for (let i = 0; i < files.length; i++) {
+            const file = files[i]
+            await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
+          }
+        }
         this.$nuxt.refresh()
         this.$store.dispatch('GET_ALERT', res)
       } catch (error) {
