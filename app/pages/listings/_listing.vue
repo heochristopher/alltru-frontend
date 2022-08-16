@@ -116,11 +116,29 @@
         <div class="w-full h-auto flex flex-col justify-start items-start space-y-1 pb-2" v-else-if="applied">
           <h5 class="text-xl font-semibold">Applied</h5>
           <p class="text-zinc-600 text-base pb-2">Check your email for updates from this organization!</p>
+          <button class="w-full h-10 text-sm bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 sm:w-1/2 hover:bg-violet-500" @click="toggleApplication(listing.application)" type="button">View Application</button>
+          <div v-if="this.$store.state.application !== null && this.$store.state.application.student === user._id" id="application-modal" class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center">
+            <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleApplication"></div>
+            <div id="container" class="w-11/12 max-w-4xl h-5/6 z-50 bg-white rounded shadow-md">
+              <div id="content" class="flex flex-col space-y-4 m-12">
+                <div id="" class="border-b border-solid border-zinc-200">
+                  <h3 class="text-2xl font-semibold mb-2">Your Application</h3>
+                </div>
+                <div v-for="question in listing.supplementals" :key="question.identifier" id="supplemental" class="space-y-2 pb-2 border-b border-solid border-zinc-200">
+                  <h5 class="text-xl font-semibold">{{ question.prompt }} <span class="text-red-500 text-md" v-if="!question.optional">*</span></h5>
+                  <p v-if="question.input !== 'File'" class="text-zinc-600 text-sm whitespace-pre-wrap sm:text-base">{{ listing.application.supplementals.find((e) => e.identifier === question.identifier).answer }}</p>
+                  <div class="w-1/3 h-8" v-else>
+                    <a id="application" class="w-full h-full text-md bg-violet-400 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-violet-500 sm:w-full sm:h-full" :href="`https://docs.google.com/gview?url=${listing.application.supplementals.find((e) => e.identifier === question.identifier).answer}`" target="_blank">View File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="w-full" v-else-if="this.$store.state.user && this.$store.state.user.role === 'Organization' && listing.org._id === this.$store.state.user._id">
           <h5 class="text-xl font-semibold">Applicants</h5>
           <div id="applicants" class="flex flex-col space-y-4 mt-2 w-full">
-            <applicant v-for="applicant in applicants" :key="applicant._id" :user="applicant" />
+            <applicant v-for="applicant in applicants" :key="applicant._id" :user="applicant" :application="listing.applicants.find((e) => e.student === applicant._id)" :questions="listing.supplementals" />
           </div>
         </div>
       </div>
@@ -192,18 +210,6 @@ export default {
           supplementals: answers,
         })
         if (files.length > 0) {
-          // files.forEach(async (file) => {
-          //   await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
-          // })
-          // for await (const file of files) {
-          //   await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
-          // }
-          // await Promise.all(
-          //   files.map(async (file) => {
-          //     await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
-          //   })
-          // )
-
           for (let i = 0; i < files.length; i++) {
             const file = files[i]
             await this.$axios.$patch(`/uploadSupplemental/${id}-${file.identifier}`, file.input)
@@ -233,6 +239,9 @@ export default {
       const formData = new FormData()
       formData.append('image', file)
       this.answers[id.toString()].input = formData
+    },
+    toggleApplication(app) {
+      this.$store.dispatch('CHANGE_APPLICATION_MODAL', app)
     },
   },
 }

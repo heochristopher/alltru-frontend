@@ -4,6 +4,7 @@ export const state = () => ({
   alert: null,
   editModal: false,
   resume: null,
+  application: null,
   keyword: null,
   registerType: 'Student',
 })
@@ -35,6 +36,12 @@ export const mutations = {
       return (state.resume = null)
     }
     state.resume = resume
+  },
+  SET_APPLICATION_MODAL(state, app) {
+    if (state.application) {
+      return (state.application = null)
+    }
+    state.application = app
   },
   SET_REGISTER_TYPE(state, type) {
     type === 'Org' ? (state.registerType = 'Org') : (state.registerType = 'Student')
@@ -78,6 +85,9 @@ export const actions = {
   },
   CHANGE_RESUME_MODAL({ commit }, resume) {
     commit('SET_RESUME_MODAL', resume)
+  },
+  CHANGE_APPLICATION_MODAL({ commit }, app) {
+    commit('SET_APPLICATION_MODAL', app)
   },
   REGISTER_TYPE({ commit }, type) {
     commit('SET_REGISTER_TYPE', type)
