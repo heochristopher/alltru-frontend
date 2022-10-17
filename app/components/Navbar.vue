@@ -2,9 +2,10 @@
   <div>
     <div class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-40">
       <div id="content" class="w-full h-full flex justify-between items-center">
-        <h1 class="text-3xl ml-10 font-medium truncate z-50">
-          <NuxtLink to="/listings">Alltru</NuxtLink>
-        </h1>
+        <NuxtLink to="/listings" class="text-3xl ml-10 font-medium truncate z-50 flex space-x-2 py-2 justify-center items-center">
+          <img src="@/static/favicon.png" class="aspect-square h-12 rounded-full" alt="" />
+          <h1 class="p-2">Alltru</h1>
+        </NuxtLink>
         <div id="links" class="hidden justify-center items-center mr-10 space-x-10 sm:flex" v-if="!user">
           <button @click="route('Student')" class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Students</button>
           <button @click="route('Org')" class="text-base text-zinc-900 ease-in duration-100 hover:text-zinc-800">For Recruiters</button>

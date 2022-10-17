@@ -13,8 +13,8 @@
       <div id="content" class="w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
         <div class="flex flex-col justify-center items-center">
           <label for="file" class="flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
-            <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-20 pb-2 rounded-full object-cover" alt="" />
-            Upload Profile Picture
+            <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-20 rounded-full object-cover" alt="" />
+            <h5 class="pt-2">Upload Profile Picture</h5>
             <input id="file" type="file" accept="image/png, image/jpg, image/jpeg, image/pdf, image/heic" @change="setImage" />
           </label>
         </div>
