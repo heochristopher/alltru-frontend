@@ -1,7 +1,7 @@
 <template>
   <div class="m-4">
     <navbar />
-    <div class="mt-20 flex flex-col justify-center items-center" id="">
+    <div class="mt-24 flex flex-col justify-center items-center" id="">
       <h2 class="text-3xl text-center font-semibold truncate h-auto">Create Listing</h2>
       <form method="POST" class="flex flex-col space-y-4 mt-4 w-4/5 max-w-2xl" @submit.prevent="create" v-if="authorized">
         <div class="flex h-12 justify-evenly divide-x items-center text-sm rounded-md border-zinc-300 border-solid border w-full" id="type">
