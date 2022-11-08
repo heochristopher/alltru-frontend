@@ -10,7 +10,8 @@
         </div>
         <!-- <h1 id="heading" class="text-4xl font-semibold py-2">Everyone can have an impact, no matter their age</h1> -->
         <div id="search" class="mt-6 flex flex-col space-y-8">
-          <h2 id="subheading" class="text-2xl sm:text-3xl sm:pb-2">Everyone can have an impact, no matter their age</h2>
+          <h2 id="subheading" class="text-2xl sm:text-3xl sm:pb-2">Everyone can have an impact, no matter their age.</h2>
+          <h2 id="subheading" class="text-2xl sm:text-3xl sm:pb-2"><span class="font-semibold text-emerald-600">217</span> users, <span class="font-semibold text-green-600">23</span> connections and counting!</h2>
           <nuxt-link to="/listings" id="search">
             <button class="rounded-md bg-zinc-900 w-52 h-12 text-white text-md ease-in duration-150 hover:bg-zinc-700">Start Searching</button>
           </nuxt-link>
@@ -76,8 +77,21 @@
 </template>
 
 <script>
+import { CountUp } from 'countUp.js';
+
 export default {
   middleware: 'redirect',
+  mounted() {
+    const users = {
+      startVal: 100,
+    };
+    let demo = new CountUp('myTargetElement', 217, users);
+    if (!demo.error) {
+      demo.start();
+    } else {
+      console.error(demo.error);
+    }
+  },
   methods: {
     route(type) {
       this.$store.dispatch('REGISTER_TYPE', type)

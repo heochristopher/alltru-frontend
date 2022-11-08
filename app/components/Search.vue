@@ -48,7 +48,7 @@
         </div>
         <!-- <div class="tags">
                 </div> -->
-        <form-btn>Filter Listings</form-btn>
+        <form-btn>Filter</form-btn>
       </form>
     </div>
   </div>
