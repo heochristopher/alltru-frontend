@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { CountUp } from '@/node_modules/countUp.js'
+import { CountUp } from 'countup.js'
 
 export default {
   middleware: 'redirect',
