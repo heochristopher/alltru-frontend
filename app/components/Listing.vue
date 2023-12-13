@@ -67,9 +67,9 @@ export default {
       } else if (date >= 60 && date < 365) {
         return `${Math.floor(difference / (1000 * 3600 * 24 * 30)) | 0} months ago`
       } else if (date >= 365 && date < 730) {
-        return `${Math.floor(difference / (1000 * 3600 * 24 * 30)) | 0} year ago`
+        return `${Math.floor(difference / (1000 * 3600 * 24 * 30 * 12)) | 0} year ago`
       } else if (date >= 730) {
-        return `${Math.floor(difference / (1000 * 3600 * 24 * 30)) | 0} years ago`
+        return `${Math.floor(difference / (1000 * 3600 * 24 * 30 * 12)) | 0} years ago`
       }
     },
   },

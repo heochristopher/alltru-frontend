@@ -1,16 +1,20 @@
 <template>
   <div class="flex justify-end">
     <button class="rounded-full m-2 p-2 hover:bg-zinc-200 ease-in duration-100 z-10 sm:p-3" @click="toggleModal">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
       </svg>
     </button>
     <form method="PATCH" @submit.prevent="editProfile" id="" enctype="multipart/form-data" class="fixed inset-0 w-screen h-screen z-50 flex justify-center items-center" v-if="this.$store.state.editModal">
       <div id="overlay" class="absolute inset-0 w-full h-full bg-black opacity-70 -z-10" @click="toggleModal"></div>
-      <!-- <div id="close" class="absolute top-6 right-6 -z-20 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </div> -->
-      <div id="content" class="w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
+      <div id="content" class="relative w-5/6 max-w-3xl h-auto p-6 flex flex-col justify-center items-center z-50 bg-white space-y-4 rounded-md shadow-md">
+        <button class="absolute top-0 left-0 rounded-full m-2 p-1 hover:bg-zinc-200 ease-in duration-100 z-10 sm:p-2" @click="toggleModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
         <div class="flex flex-col justify-center items-center">
           <label for="file" class="flex flex-col justify-center items-center text-sm text-zinc-500 font-medium pt-1 cursor-pointer">
             <img :src="this.avatar ? this.avatarPreview : user.avatar" class="w-20 h-20 rounded-full object-cover" alt="" />
@@ -68,6 +72,7 @@ export default {
       resume: null,
     }
   },
+
   methods: {
     toggleModal() {
       this.$store.dispatch('CHANGE_EDIT_MODAL')
@@ -110,6 +115,13 @@ export default {
         this.$store.dispatch('GET_ALERT', error)
       }
     },
+  },
+  mounted() {
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape' && this.$store.state.editModal) {
+        this.toggleModal()
+      }
+    })
   },
   computed: {
     bioText() {

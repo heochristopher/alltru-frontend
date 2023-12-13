@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('e')" id="btn" class="w-full h-10 text-sm  text-white flex justify-center items-center rounded-md ease-in duration-150 hover:opacity-90">
+  <button @click="$emit('e')" id="btn" class="w-full h-10 text-md text-white flex justify-center items-center rounded-md ease-in duration-150 hover:opacity-90">
     <slot></slot>
   </button>
 </template>

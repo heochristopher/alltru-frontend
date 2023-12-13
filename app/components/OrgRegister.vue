@@ -58,6 +58,7 @@ export default {
           email: this.email,
           password: this.password,
         })
+        this.$store.dispatch('GET_USER')
         this.$router.push('/dashboard')
         this.$store.dispatch('GET_ALERT', res)
       } catch (error) {

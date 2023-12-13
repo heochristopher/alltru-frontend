@@ -54,17 +54,15 @@
           <form-input v-if="suppType === 'Select'" id="select-options" type="text" name="select-options" v-model="selectInput" placeholder="Option" class="mb-4"></form-input>
           <div id="if-select" class="w-full flex flex-col justify-center items-center">
             <button v-if="suppType === 'Select'" type="button" @click="setOption" class="w-2/5 h-10 text-sm bg-green-400 text-white flex justify-center items-center rounded-md ease-in duration-150 mb-2 hover:bg-green-500">Add Option</button>
-            <ul v-if="suppType === 'Select'" class="mb-4 ">
+            <ul v-if="suppType === 'Select'" class="mb-4">
               <li v-for="option in selectOptions" :key="option">
-                {{
-                  option
-                }}
+                {{ option }}
               </li>
             </ul>
           </div>
           <h4 v-if="suppType === 'File'" id="info" class="text-base mb-4">* File input will accept a .pdf file</h4>
           <div class="flex justify-center items-center space-x-2 mb-4">
-             <input v-if="suppType" type="checkbox" name="is-optional" v-model="isOptional" />
+            <input v-if="suppType" type="checkbox" name="is-optional" v-model="isOptional" />
             <label class="font-medium" v-if="suppType" for="is-optional">Optional</label>
           </div>
           <button type="submit" class="w-2/5 h-10 text-sm bg-green-400 text-white flex justify-center items-center rounded-md ease-in duration-150 hover:bg-green-500">Add Supplemental</button>

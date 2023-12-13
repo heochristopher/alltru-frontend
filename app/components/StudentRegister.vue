@@ -74,7 +74,6 @@ export default {
   },
   methods: {
     async register() {
-      console.log(this.month, this.day, this.year)
       const birthday = Date.parse(`${this.day} ${this.month} ${this.year}`)
       try {
         const res = await this.$axios.$post('/studentRegister', {
@@ -85,8 +84,8 @@ export default {
           password: this.password,
           birthday: birthday,
         })
+        this.$store.dispatch('GET_USER')
         this.$router.push('/dashboard')
-        this.$nuxt.refresh()
         this.$store.dispatch('GET_ALERT', res)
       } catch (error) {
         this.$store.dispatch('GET_ALERT', error)

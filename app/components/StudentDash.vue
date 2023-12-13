@@ -119,6 +119,13 @@ export default {
       }
     },
   },
+  mounted() {
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape' && this.$store.state.resume !== null) {
+        this.toggleResume(resume)
+      }
+    })
+  },
   props: {
     user: Object,
     saved: Array,
